@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slozw - Créations Digitales</title>
+    <title>Slozw - Boutique & Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -12,66 +12,100 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">Slozw</a>
-            <ul class="nav-menu">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Mes Créations</a></li>
-                <li><a href="#commande">Passer Commande</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="menu-btn">
+            <div class="nav-links">
+                <a href="#accueil">Accueil</a>
+                <a href="#boutique">Boutique</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+            </div>
+            <button class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
-    <!-- Section Hero -->
+    <!-- Hero Section -->
     <section id="accueil" class="hero">
         <div class="hero-content">
             <h1>Créations Digitales Slozw</h1>
-            <p>Design & Développement Web sur mesure</p>
-            <a href="#commande" class="btn">Commander maintenant</a>
+            <p>Design • Développement • E-commerce</p>
+            <div class="hero-btns">
+                <a href="#boutique" class="btn btn-primary">Voir la boutique</a>
+                <a href="#portfolio" class="btn btn-secondary">Voir le portfolio</a>
+            </div>
         </div>
     </section>
 
-    <!-- Section Services -->
-    <section id="services" class="services">
+    <!-- Section Boutique -->
+    <section id="boutique" class="boutique">
         <div class="container">
-            <h2 class="section-title">Mes Services</h2>
-            <p class="section-subtitle">Choisissez le service qui correspond à vos besoins</p>
+            <h2 class="section-title">Boutique</h2>
+            <p class="section-subtitle">Commandez vos designs préférés</p>
             
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card" data-service="design">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
+            <div class="produits-grid">
+                <!-- Produit 1 -->
+                <div class="produit-card">
+                    <div class="produit-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Template Site Web">
                     </div>
-                    <h3>Design de Site</h3>
-                    <p>Maquette complète avec UX/UI design</p>
-                    <div class="service-price">À partir de 299€</div>
-                    <button class="btn-service" onclick="selectService('design')">Sélectionner</button>
+                    <div class="produit-info">
+                        <h3>Template Site Web</h3>
+                        <p>Design moderne et responsive</p>
+                        <div class="produit-prix">299€</div>
+                        <button class="btn-ajouter" data-id="1" data-nom="Template Site Web" data-prix="299">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-card" data-service="dev">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
+                <!-- Produit 2 -->
+                <div class="produit-card">
+                    <div class="produit-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design Logo">
                     </div>
-                    <h3>Site Web Complet</h3>
-                    <p>Site responsive HTML/CSS/JS</p>
-                    <div class="service-price">À partir de 599€</div>
-                    <button class="btn-service" onclick="selectService('dev')">Sélectionner</button>
+                    <div class="produit-info">
+                        <h3>Design Logo</h3>
+                        <p>Logo personnalisé professionnel</p>
+                        <div class="produit-prix">199€</div>
+                        <button class="btn-ajouter" data-id="2" data-nom="Design Logo" data-prix="199">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-card" data-service="ecommerce">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
+                <!-- Produit 3 -->
+                <div class="produit-card">
+                    <div class="produit-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce">
                     </div>
-                    <h3>Boutique en Ligne</h3>
-                    <p>Site e-commerce avec paiement</p>
-                    <div class="service-price">À partir de 899€</div>
-                    <button class="btn-service" onclick="selectService('ecommerce')">Sélectionner</button>
+                    <div class="produit-info">
+                        <h3>Site E-commerce</h3>
+                        <p>Boutique en ligne complète</p>
+                        <div class="produit-prix">899€</div>
+                        <button class="btn-ajouter" data-id="3" data-nom="Site E-commerce" data-prix="899">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Produit 4 -->
+                <div class="produit-card">
+                    <div class="produit-img">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile">
+                    </div>
+                    <div class="produit-info">
+                        <h3>Application Mobile</h3>
+                        <p>App iOS & Android native</p>
+                        <div class="produit-prix">1499€</div>
+                        <button class="btn-ajouter" data-id="4" data-nom="Application Mobile" data-prix="1499">
+                            <i class="fas fa-cart-plus"></i> Ajouter au panier
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,185 +114,66 @@
     <!-- Section Portfolio -->
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Mes Réalisations</h2>
-            <p class="section-subtitle">Exemples de projets que je peux créer pour vous</p>
+            <h2 class="section-title">Portfolio</h2>
+            <p class="section-subtitle">Mes réalisations</p>
             
             <div class="portfolio-grid">
-                <!-- Projet 1 -->
                 <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce">
-                    </div>
-                    <div class="portfolio-info">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet 1">
+                    <div class="portfolio-overlay">
                         <h3>Boutique Fashion</h3>
                         <p>Site e-commerce mode</p>
-                        <span class="project-price">899€</span>
-                        <button class="btn-order" onclick="orderProject('boutique-fashion')">Commander ce design</button>
                     </div>
                 </div>
-
-                <!-- Projet 2 -->
+                
                 <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site Corporate">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Site Corporate</h3>
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet 2">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Website</h3>
                         <p>Site vitrine entreprise</p>
-                        <span class="project-price">599€</span>
-                        <button class="btn-order" onclick="orderProject('site-corporate')">Commander ce design</button>
                     </div>
                 </div>
-
-                <!-- Projet 3 -->
+                
                 <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Dashboard Admin</h3>
-                        <p>Interface administrateur</p>
-                        <span class="project-price">799€</span>
-                        <button class="btn-order" onclick="orderProject('dashboard-admin')">Commander ce design</button>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet 3">
+                    <div class="portfolio-overlay">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Interface admin moderne</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Commande -->
-    <section id="commande" class="commande">
+    <!-- Section Services -->
+    <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Passer une Commande</h2>
-            <p class="section-subtitle">Remplissez ce formulaire pour votre projet</p>
+            <h2 class="section-title">Mes Services</h2>
+            <p class="section-subtitle">Ce que je propose</p>
             
-            <div class="commande-container">
-                <div class="commande-form">
-                    <h3><i class="fas fa-shopping-cart"></i> Formulaire de Commande</h3>
-                    
-                    <div class="form-step active" id="step1">
-                        <h4>Étape 1 : Choisissez votre service</h4>
-                        <div class="service-options">
-                            <div class="option-card" onclick="selectOrderService('design', 'Design de Site', 299)">
-                                <i class="fas fa-paint-brush"></i>
-                                <h5>Design uniquement</h5>
-                                <p>299€</p>
-                            </div>
-                            <div class="option-card" onclick="selectOrderService('dev', 'Site Web Complet', 599)">
-                                <i class="fas fa-code"></i>
-                                <h5>Site Web</h5>
-                                <p>599€</p>
-                            </div>
-                            <div class="option-card" onclick="selectOrderService('ecommerce', 'Boutique en Ligne', 899)">
-                                <i class="fas fa-store"></i>
-                                <h5>E-commerce</h5>
-                                <p>899€</p>
-                            </div>
-                        </div>
-                        
-                        <div class="selected-service" id="selectedService">
-                            <!-- Service sélectionné s'affichera ici -->
-                        </div>
-                        
-                        <button class="btn-next" onclick="nextStep()">Suivant <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                    
-                    <div class="form-step" id="step2">
-                        <h4>Étape 2 : Détails du projet</h4>
-                        <div class="form-group">
-                            <label for="projectName">Nom du projet *</label>
-                            <input type="text" id="projectName" placeholder="Ex: Mon site e-commerce" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="projectDesc">Description détaillée *</label>
-                            <textarea id="projectDesc" rows="4" placeholder="Décrivez votre projet en détail..." required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="deadline">Délai souhaité</label>
-                            <select id="deadline">
-                                <option value="7">1 semaine (urgence +30%)</option>
-                                <option value="14" selected>2 semaines</option>
-                                <option value="30">1 mois</option>
-                                <option value="60">2 mois</option>
-                            </select>
-                        </div>
-                        <div class="form-buttons">
-                            <button class="btn-prev" onclick="prevStep()"><i class="fas fa-arrow-left"></i> Précédent</button>
-                            <button class="btn-next" onclick="nextStep()">Suivant <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-step" id="step3">
-                        <h4>Étape 3 : Vos informations</h4>
-                        <div class="form-group">
-                            <label for="clientName">Nom complet *</label>
-                            <input type="text" id="clientName" placeholder="Votre nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="clientEmail">Email *</label>
-                            <input type="email" id="clientEmail" placeholder="votre@email.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="clientPhone">Téléphone</label>
-                            <input type="tel" id="clientPhone" placeholder="+33 1 23 45 67 89">
-                        </div>
-                        <div class="form-group">
-                            <label for="budget">Budget maximum</label>
-                            <input type="number" id="budget" placeholder="€" min="0">
-                        </div>
-                        <div class="form-buttons">
-                            <button class="btn-prev" onclick="prevStep()"><i class="fas fa-arrow-left"></i> Précédent</button>
-                            <button class="btn-submit" onclick="submitOrder()">Envoyer la commande <i class="fas fa-paper-plane"></i></button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-step" id="step4">
-                        <h4><i class="fas fa-check-circle"></i> Commande envoyée !</h4>
-                        <div class="success-message">
-                            <p>Merci pour votre commande !</p>
-                            <p>Je vous contacte dans les 24h pour discuter de votre projet.</p>
-                            <p><strong>Récapitulatif :</strong></p>
-                            <div id="orderSummary"></div>
-                        </div>
-                        <button class="btn-home" onclick="resetOrder()">Nouvelle commande</button>
-                    </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Création d'interfaces utilisateur modernes</p>
                 </div>
                 
-                <div class="commande-info">
-                    <h3><i class="fas fa-info-circle"></i> Comment ça marche ?</h3>
-                    <div class="info-card">
-                        <div class="info-step">
-                            <span class="step-number">1</span>
-                            <h5>Vous commandez</h5>
-                            <p>Remplissez le formulaire avec vos besoins</p>
-                        </div>
-                        <div class="info-step">
-                            <span class="step-number">2</span>
-                            <h5>Je vous contacte</h5>
-                            <p>Échange pour affiner votre projet</p>
-                        </div>
-                        <div class="info-step">
-                            <span class="step-number">3</span>
-                            <h5>Développement</h5>
-                            <p>Création de votre site selon vos attentes</p>
-                        </div>
-                        <div class="info-step">
-                            <span class="step-number">4</span>
-                            <h5>Livraison</h5>
-                            <p>Vous recevez votre site clé en main</p>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-card">
-                        <h4>Tarifs</h4>
-                        <ul>
-                            <li>Design : <strong>299€</strong></li>
-                            <li>Site web : <strong>599€</strong></li>
-                            <li>E-commerce : <strong>899€</strong></li>
-                            <li>Sur-mesure : <strong>Devis gratuit</strong></li>
-                        </ul>
-                        <p class="note"><i class="fas fa-clock"></i> Livraison sous 2 semaines</p>
-                    </div>
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Développement Web</h3>
+                    <p>Sites web responsives et performants</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-commerce</h3>
+                    <p>Boutiques en ligne sécurisées</p>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Applications Mobile</h3>
+                    <p>Apps iOS et Android natives</p>
                 </div>
             </div>
         </div>
@@ -267,50 +182,98 @@
     <!-- Section Contact -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contactez Slozw</h2>
+            <h2 class="section-title">Contactez-moi</h2>
+            
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <h3>Email pour commandes</h3>
-                        <p>commandes@slozw.com</p>
-                        <button class="btn-copy" onclick="copyText('commandes@slozw.com')">Copier</button>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@slozw.com</p>
+                        </div>
                     </div>
+                    
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <h3>Téléphone</h3>
-                        <p>+33 1 23 45 67 89</p>
-                        <button class="btn-copy" onclick="copyText('+33123456789')">Copier</button>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p>+33 1 23 45 67 89</p>
+                        </div>
                     </div>
+                    
                     <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <h3>Disponibilité</h3>
-                        <p>Lun-Ven : 9h-18h</p>
-                        <p>Réponse sous 24h</p>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>Paris, France</p>
+                        </div>
                     </div>
                 </div>
+                
+                <form class="contact-form" id="form-contact">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="email" placeholder="Votre email" required>
+                    <textarea placeholder="Votre message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
+    <!-- Panier Modal -->
+    <div class="panier-modal" id="panierModal">
+        <div class="panier-content">
+            <div class="panier-header">
+                <h2>Votre Panier</h2>
+                <button class="close-panier">&times;</button>
+            </div>
+            <div class="panier-items" id="panierItems">
+                <!-- Items ajoutés dynamiquement -->
+            </div>
+            <div class="panier-footer">
+                <div class="panier-total">
+                    <span>Total:</span>
+                    <span id="totalPanier">0€</span>
+                </div>
+                <button class="btn btn-primary" id="btnCommander">
+                    <i class="fas fa-check"></i> Commander
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Slozw - Créations Digitales. Tous droits réservés.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Slozw</h3>
+                    <p>Créations digitales & e-commerce</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#boutique">Boutique</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
-            <p class="footer-note"><i class="fas fa-bolt"></i> Commandes traitées sous 24h</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
-
-    <!-- Panier flottant -->
-    <div class="cart-floating" id="cartFloating">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count">0</span>
-    </div>
 
     <!-- Notification -->
     <div class="notification" id="notification"></div>
