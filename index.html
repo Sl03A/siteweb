@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sl03A | Services Créatifs & Développement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Sl03<span>A</span></a>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Réalisations</a></li>
+                    <li><a href="index.html#process"><i class="fas fa-cogs"></i> Processus</a></li>
+                    <li><a href="contact.html" class="btn-nav"><i class="fas fa-paper-plane"></i> Contact</a></li>
+                </ul>
+                <div class="nav-footer">
+                    <div class="social-mini">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="copyright">© 2024 Sl03A Services</p>
+                </div>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="contact.html" class="btn btn-primary btn-sm">Devis Gratuit</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">🎯 Freelance Professionnel</span>
+                <h1 class="hero-title">Je transforme <span class="highlight">vos idées</span> en réalité digitale</h1>
+                <p class="hero-subtitle">Développement web • Montage vidéo • Design créatif • Solutions sur mesure pour particuliers & professionnels</p>
+                
+                <div class="hero-cta">
+                    <a href="services.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-rocket"></i> Découvrir mes services
+                    </a>
+                    <a href="#portfolio" class="btn btn-outline btn-lg">
+                        <i class="fas fa-eye"></i> Voir mes réalisations
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projets livrés</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Satisfaction client</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support réactif</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-element">
+                    <div class="circle circle-1"></div>
+                    <div class="circle circle-2"></div>
+                    <div class="circle circle-3"></div>
+                    <div class="service-icon-large">
+                        <i class="fas fa-code"></i>
+                        <i class="fas fa-video"></i>
+                        <i class="fas fa-paint-brush"></i>
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="section services-preview" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mes <span class="highlight">Services</span> Populaires</h2>
+                <p class="section-subtitle">Des solutions adaptées à vos besoins et à votre budget</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <span class="service-badge bestseller">Best-seller</span>
+                    </div>
+                    <h3 class="service-title">Montage Vidéo Pro</h3>
+                    <p class="service-description">
+                        Montage dynamique pour YouTube, TikTok, vidéos d'entreprise. Ajout d'effets, transitions, sound design et étalonnage.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Montage avec Adobe Premiere Pro</li>
+                        <li><i class="fas fa-check"></i> Création de miniatures percutantes</li>
+                        <li><i class="fas fa-check"></i> Sound design & mixage audio</li>
+                        <li><i class="fas fa-check"></i> Sous-titres inclus</li>
+                    </ul>
+                    <div class="service-pricing">
+                        <div class="price">À partir de <span class="price-amount">50€</span></div>
+                        <div class="price-note">par vidéo de 10min</div>
+                    </div>
+                    <a href="contact.html?service=montage" class="btn btn-block">
+                        <i class="fas fa-shopping-cart"></i> Commander ce service
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card featured">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span class="service-badge popular">Le plus demandé</span>
+                    </div>
+                    <h3 class="service-title">Développement Web</h3>
+                    <p class="service-description">
+                        Création de sites vitrines, e-commerce, applications web. Technologies modernes : HTML5, CSS3, JavaScript, React, etc.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Site responsive (mobile first)</li>
+                        <li><i class="fas fa-check"></i> Optimisation SEO intégrée</li>
+                        <li><i class="fas fa-check"></i> Hébergement & maintenance 1 mois</li>
+                        <li><i class="fas fa-check"></i> Formulaire de contact sécurisé</li>
+                    </ul>
+                    <div class="service-pricing">
+                        <div class="price">À partir de <span class="price-amount">300€</span></div>
+                        <div class="price-note">pour un site vitrine</div>
+                    </div>
+                    <a href="contact.html?service=developpement" class="btn btn-primary btn-block">
+                        <i class="fas fa-shopping-cart"></i> Commander ce service
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <span class="service-badge">Créatif</span>
+                    </div>
+                    <h3 class="service-title">Design & Identité Visuelle</h3>
+                    <p class="service-description">
+                        Logo, charte graphique, maquettes UI/UX, bannières réseaux sociaux, templates personnalisés.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Logo unique & mémorable</li>
+                        <li><i class="fas fa-check"></i> Charte graphique complète</li>
+                        <li><i class="fas fa-check"></i> Maquettes Figma/Adobe XD</li>
+                        <li><i class="fas fa-check"></i> Formats print & web inclus</li>
+                    </ul>
+                    <div class="service-pricing">
+                        <div class="price">À partir de <span class="price-amount">150€</span></div>
+                        <div class="price-note">pour un logo + charte</div>
+                    </div>
+                    <a href="contact.html?service=design" class="btn btn-block">
+                        <i class="fas fa-shopping-cart"></i> Commander ce service
+                    </a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <a href="services.html" class="btn btn-outline">
+                    <i class="fas fa-list"></i> Voir tous mes services (8+)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="section portfolio-section" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mes <span class="highlight">Réalisations</span></h2>
+                <p class="section-subtitle">Des projets concrets qui parlent d'eux-mêmes</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="portfolio-category">Développement Web</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Site E-commerce "TechStore"</h3>
+                        <p>Plateforme de vente en ligne avec panier, paiement sécurisé et dashboard administrateur.</p>
+                        <div class="portfolio-tech">
+                            <span>HTML/CSS</span>
+                            <span>JavaScript</span>
+                            <span>PHP</span>
+                        </div>
+                        <a href="#" class="portfolio-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="portfolio-category">Montage Vidéo</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Série YouTube "Apprendre à Coder"</h3>
+                        <p>Montage de 20 épisodes avec effets, animations, sous-titres et habillage personnalisé.</p>
+                        <div class="portfolio-tech">
+                            <span>Premiere Pro</span>
+                            <span>After Effects</span>
+                            <span>Photoshop</span>
+                        </div>
+                        <a href="#" class="portfolio-link">Voir la série <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <div class="portfolio-category">Design Graphique</div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Identité Visuelle "Café Artisan"</h3>
+                        <p>Création complète de logo, carte de visite, menu et packaging pour un café parisien.</p>
+                        <div class="portfolio-tech">
+                            <span>Illustrator</span>
+                            <span>InDesign</span>
+                            <span>Photoshop</span>
+                        </div>
+                        <a href="#" class="portfolio-link">Voir les designs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mon <span class="highlight">Processus</span> de Travail</h2>
+                <p class="section-subtitle">4 étapes simples pour un projet réussi</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Consultation</h3>
+                        <p>Nous échangeons sur votre projet, vos besoins et vos attentes. Définition des objectifs.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Devis & Planification</h3>
+                        <p>Je vous envoie un devis détaillé avec délais et échéances. Validation du planning.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Réalisation</h3>
+                        <p>Je travaille sur votre projet avec des points réguliers pour validation des avancées.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Livraison & Support</h3>
+                        <p>Livraison du projet final et support post-livraison pour garantir votre satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ce que disent <span class="highlight">mes clients</span></h2>
+                <p class="section-subtitle">Ils m'ont fait confiance pour leurs projets</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Sl03A a créé mon site de A à Z. Professionnel, réactif et d'une grande qualité. Je recommande à 100% !"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Marie Dubois</h4>
+                            <p>Fondatrice de "Ma Boutique Bio"</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Mes vidéos YouTube ont gagné en qualité grâce à son montage pro. Les délais sont toujours respectés."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Thomas Leroy</h4>
+                            <p>Créateur de contenu tech</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Un freelance sérieux qui comprend rapidement les besoins. Mon nouveau logo est parfait !"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Sophie Martin</h4>
+                            <p>Artisan pâtissier</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Prêt à donner vie à votre projet ?</h2>
+                <p class="cta-text">Contactez-moi pour un devis gratuit et personnalisé. Réponse sous 24h.</p>
+                
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-xl">
+                        <i class="fas fa-paper-plane"></i> Demander un devis
+                    </a>
+                    <a href="tel:+33612345678" class="btn btn-outline-light btn-xl">
+                        <i class="fas fa-phone"></i> 06 12 34 56 78
+                    </a>
+                </div>
+                
+                <div class="cta-features">
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>Démarrage rapide</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-lock"></i>
+                        <span>Paiement sécurisé</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-headset"></i>
+                        <span>Support 7j/7</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-col">
+                    <div class="logo">Sl03<span>A</span></div>
+                    <p class="footer-description">
+                        Freelance spécialisé en développement web, montage vidéo et design créatif. 
+                        Des solutions sur mesure pour vos projets digitaux.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#development">Développement Web</a></li>
+                        <li><a href="services.html#video">Montage Vidéo</a></li>
+                        <li><a href="services.html#design">Design Graphique</a></li>
+                        <li><a href="services.html#seo">Référencement SEO</a></li>
+                        <li><a href="services.html#consulting">Conseil Digital</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="index.html#portfolio">Réalisations</a></li>
+                        <li><a href="index.html#process">Processus</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 class="footer-title">Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:contact@sl03a.fr">contact@sl03a.fr</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+33612345678">+33 6 12 34 56 78</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Disponible en remote</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <span>Lun-Ven: 9h-19h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-paypal" title="PayPal"></i>
+                    <i class="fab fa-cc-stripe" title="Stripe"></i>
+                    <i class="fab fa-bitcoin" title="Bitcoin"></i>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Sl03A Services. Tous droits réservés.</p>
+                    <p class="footer-credits">Créé avec passion par Sl03A</p>
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">Conditions générales</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

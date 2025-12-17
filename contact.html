@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Sl03A - Demander un devis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Sl03<span>A</span></a>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
+                    <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Réalisations</a></li>
+                    <li><a href="contact.html" class="active"><i class="fas fa-paper-plane"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-actions">
+                <a href="#contactForm" class="btn btn-primary btn-sm">Devis Gratuit</a>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Contact & <span class="highlight">Devis</span></h1>
+            <p class="page-subtitle">Discutons de votre projet et obtenez un devis personnalisé gratuit</p>
+            <div class="page-breadcrumb">
+                <a href="index.html">Accueil</a> <i class="fas fa-chevron-right"></i> <span>Contact</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 class="form-title">Envoyez-moi un message</h2>
+                    <p class="form-subtitle">Remplissez ce formulaire, je vous réponds sous 24h</p>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="serviceType">Type de service *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="development">Développement Web</option>
+                                <option value="video">Montage Vidéo</option>
+                                <option value="design">Design Graphique</option>
+                                <option value="seo">Référencement SEO</option>
+                                <option value="consulting">Conseil Digital</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Prénom *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Nom *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Budget estimé *</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Sélectionnez une fourchette</option>
+                                <option value="0-500">0 - 500€</option>
+                                <option value="500-1000">500 - 1 000€</option>
+                                <option value="1000-3000">1 000 - 3 000€</option>
+                                <option value="3000+">Plus de 3 000€</option>
+                                <option value="undecided">À déterminer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deadline">Délai souhaité</label>
+                            <select id="deadline" name="deadline">
+                                <option value="none">Pas de délai particulier</option>
+                                <option value="urgent">Urgent (moins d'1 semaine)</option>
+                                <option value="1-2weeks">1-2 semaines</option>
+                                <option value="1month">1 mois</option>
+                                <option value="2-3months">2-3 mois</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Décrivez votre projet *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Décrivez votre projet en détail, vos objectifs, vos besoins spécifiques, vos inspirations..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fileUpload">Fichiers joints (optionnel)</label>
+                            <div class="file-upload">
+                                <input type="file" id="fileUpload" name="fileUpload" multiple>
+                                <label for="fileUpload" class="file-upload-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Glissez-déposez vos fichiers ou <u>parcourez</u></span>
+                                    <small>Max. 10MB - Images, PDF, ZIP</small>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked>
+                            <label for="newsletter">Je souhaite recevoir des conseils et offres exclusives (désinscription à tout moment)</label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">J'accepte la <a href="#">politique de confidentialité</a> *</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-paper-plane"></i> Envoyer ma demande
+                        </button>
+                        
+                        <p class="form-note">* Champs obligatoires. Vos données sont sécurisées et ne seront jamais partagées.</p>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="contact-info-container">
+                    <div class="contact-info-card">
+                        <h2 class="info-title">Informations de contact</h2>
+                        <p class="info-subtitle">Plusieurs façons de me contacter</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>Email</h3>
+                                    <p>Pour les demandes détaillées et devis</p>
+                                    <a href="mailto:contact@sl03a.fr" class="method-link">contact@sl03a.fr</a>
+                                    <small>Réponse sous 24h</small>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>Téléphone</h3>
+                                    <p>Pour discuter rapidement de votre projet</p>
+                                    <a href="tel:+33612345678" class="method-link">+33 6 12 34 56 78</a>
+                                    <small>Lun-Ven: 9h-19h</small>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>WhatsApp</h3>
+                                    <p>Messages rapides et partage de fichiers</p>
+                                    <a href="https://wa.me/33612345678" class="method-link">Envoyer un message</a>
+                                    <small>Réponse en temps réel</small>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fab fa-discord"></i>
+                                </div>
+                                <div class="method-content">
+                                    <h3>Discord</h3>
+                                    <p>Pour les discussions techniques et suivi</p>
+                                    <span class="method-link">Sl03A#1234</span>
+                                    <small>Disponible sur rendez-vous</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-cta">
+                            <h3>Vous préférez planifier un appel ?</h3>
+                            <p>Choisissez un créneau qui vous convient pour une consultation gratuite de 30 minutes.</p>
+                            <a href="https://calendly.com/sl03a/consultation" class="btn btn-outline btn-block">
+                                <i class="fas fa-calendar-check"></i> Prendre rendez-vous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Quick -->
+    <section class="section faq-quick">
+        <div class="container">
+            <h2 class="section-title">Questions avant de <span class="highlight">me contacter</span> ?</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>Quelle information dois-je fournir ?</h3>
+                    <p>Décrivez votre projet le plus précisément possible : objectifs, public cible, inspirations, contraintes techniques, délais souhaités. Plus vous êtes détaillé, plus mon devis sera précis.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Comment obtenir un devis précis ?</h3>
+                    <p>Après réception de votre demande, je vous envoie un questionnaire complémentaire si nécessaire, puis un devis détaillé avec le coût, le planning et les livrables.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Quels sont vos moyens de paiement ?</h3>
+                    <p>Virement bancaire, PayPal, carte bancaire, et cryptomonnaies (Bitcoin, Ethereum). Pour les gros projets, un échéancier est proposé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="footer">
+        <!-- Copy footer from index.html -->
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Service type detection from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const serviceParam = urlParams.get('service');
+        
+        if (serviceParam) {
+            const serviceSelect = document.getElementById('serviceType');
+            const messageTextarea = document.getElementById('message');
+            
+            // Map URL parameters to select options
+            const serviceMap = {
+                'montage': 'video',
+                'developpement': 'development',
+                'design': 'design',
+                'site-vitre': 'development',
+                'ecommerce': 'development',
+                'montage-basic': 'video',
+                'montage-pro': 'video',
+                'youtube-pack': 'video'
+            };
+            
+            if (serviceMap[serviceParam]) {
+                serviceSelect.value = serviceMap[serviceParam];
+                
+                // Add service info to message
+                if (serviceParam.includes('montage')) {
+                    messageTextarea.value = "Bonjour,\n\nJe suis intéressé par vos services de montage vidéo.\n\n";
+                } else if (serviceParam.includes('development') || serviceParam.includes('site') || serviceParam.includes('ecommerce')) {
+                    messageTextarea.value = "Bonjour,\n\nJe suis intéressé par vos services de développement web.\n\n";
+                } else if (serviceParam.includes('design')) {
+                    messageTextarea.value = "Bonjour,\n\nJe suis intéressé par vos services de design.\n\n";
+                }
+            }
+        }
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to a server
+            // For now, we'll just show a success message
+            alert('Merci ! Votre demande a été envoyée. Je vous répondrai dans les 24h.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
