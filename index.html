@@ -3,199 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services & Portfolio</title>
+    <title>Portfolio - Services & Réalisations</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Principale -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">MonPortfolio</a>
+            <a href="#accueil" class="logo">
+                <span class="logo-text">Portfolio</span>
+                <span class="logo-dot">.</span>
+            </a>
+            
             <ul class="nav-menu">
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#accueil" class="nav-link active"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="#services" class="nav-link"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#portfolio" class="nav-link"><i class="fas fa-briefcase"></i> Portfolio</a></li>
+                <li><a href="#competences" class="nav-link"><i class="fas fa-star"></i> Compétences</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
-            <button class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-btn" aria-label="Menu mobile">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <!-- Section Hero -->
+    <!-- Section Hero / Accueil -->
     <section id="accueil" class="hero">
-        <div class="hero-content">
-            <h1>Créateur Digital</h1>
-            <p>Design & Développement Web sur mesure</p>
-            <a href="#portfolio" class="btn">Voir mon travail</a>
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">Bienvenue</span>
+                <h1 class="hero-title">
+                    <span class="title-line">Je suis</span>
+                    <span class="title-highlight">Développeur Créatif</span>
+                    <span class="title-line">& Designer UX/UI</span>
+                </h1>
+                <p class="hero-description">
+                    Je crée des expériences digitales uniques qui marient design innovant 
+                    et développement technique performant. Passionné par l'innovation et 
+                    les nouvelles technologies.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <i class="fas fa-eye"></i> Voir mes projets
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i> Me contacter
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="50">0</span>
+                        <span class="stat-label">Projets réalisés</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="35">0</span>
+                        <span class="stat-label">Clients satisfaits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="4">0</span>
+                        <span class="stat-label">Années d'expérience</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Développeur créatif">
+                    <div class="image-overlay"></div>
+                    <div class="floating-elements">
+                        <div class="floating-element element-1">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <div class="floating-element element-2">
+                            <i class="fab fa-react"></i>
+                        </div>
+                        <div class="floating-element element-3">
+                            <i class="fab fa-figma"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <a href="#services" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
         </div>
     </section>
 
     <!-- Section Services -->
     <section id="services" class="services">
-        <div class="container">
+        <div class="section-header">
+            <span class="section-subtitle">Ce que je propose</span>
             <h2 class="section-title">Mes Services</h2>
-            <p class="section-subtitle">Des solutions adaptées à vos besoins</p>
-            
+            <p class="section-description">
+                Des solutions sur mesure pour transformer vos idées en réalité digitale
+            </p>
+        </div>
+        
+        <div class="services-container">
             <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
+                <!-- Service 1 - Design -->
+                <div class="service-card design">
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="service-title">UI/UX Design</h3>
+                        <p class="service-description">
+                            Création d'interfaces intuitives et esthétiques qui offrent 
+                            la meilleure expérience utilisateur possible.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Design d'interface moderne</li>
+                            <li><i class="fas fa-check"></i> Prototypage interactif</li>
+                            <li><i class="fas fa-check"></i> Recherche utilisateur</li>
+                            <li><i class="fas fa-check"></i> Design System complet</li>
+                        </ul>
+                        <div class="service-footer">
+                            <span class="service-price">À partir de 800€</span>
+                            <button class="service-btn" data-service="design">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <h3>UI/UX Design</h3>
-                    <p>Création d'interfaces utilisateur intuitives et esthétiques pour une expérience optimale.</p>
-                    <ul class="service-features">
-                        <li>Design d'interface</li>
-                        <li>Prototypage</li>
-                        <li>Tests utilisateur</li>
-                    </ul>
+                    <div class="service-hover-effect"></div>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
+                <!-- Service 2 - Développement -->
+                <div class="service-card development">
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="service-title">Développement Web</h3>
+                        <p class="service-description">
+                            Sites web et applications performantes, responsives et optimisées 
+                            avec les dernières technologies.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Sites vitrines & corporate</li>
+                            <li><i class="fas fa-check"></i> Applications web sur mesure</li>
+                            <li><i class="fas fa-check"></i> E-commerce & marketplaces</li>
+                            <li><i class="fas fa-check"></i> Maintenance & hébergement</li>
+                        </ul>
+                        <div class="service-footer">
+                            <span class="service-price">À partir de 1200€</span>
+                            <button class="service-btn" data-service="development">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <h3>Développement Web</h3>
-                    <p>Sites web responsives et applications modernes avec les dernières technologies.</p>
-                    <ul class="service-features">
-                        <li>HTML5/CSS3</li>
-                        <li>JavaScript</li>
-                        <li>React/Vue.js</li>
-                    </ul>
+                    <div class="service-hover-effect"></div>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <!-- Service 3 - Mobile -->
+                <div class="service-card mobile">
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="service-title">Applications Mobile</h3>
+                        <p class="service-description">
+                            Développement d'applications iOS et Android natives ou hybrides 
+                            pour toucher votre audience mobile.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Applications React Native</li>
+                            <li><i class="fas fa-check"></i> Design UI mobile optimisé</li>
+                            <li><i class="fas fa-check"></i> Publication sur les stores</li>
+                            <li><i class="fas fa-check"></i> Maintenance & mises à jour</li>
+                        </ul>
+                        <div class="service-footer">
+                            <span class="service-price">À partir de 1500€</span>
+                            <button class="service-btn" data-service="mobile">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <h3>Applications Mobile</h3>
-                    <p>Applications iOS et Android natives ou hybrides pour toucher votre audience mobile.</p>
-                    <ul class="service-features">
-                        <li>React Native</li>
-                        <li>UI Mobile</li>
-                        <li>Publication stores</li>
-                    </ul>
+                    <div class="service-hover-effect"></div>
                 </div>
 
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
+                <!-- Service 4 - Conseil -->
+                <div class="service-card conseil">
+                    <div class="service-card-inner">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="service-title">Conseil Digital</h3>
+                        <p class="service-description">
+                            Accompagnement stratégique pour optimiser votre présence digitale 
+                            et atteindre vos objectifs business.
+                        </p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Audit de site existant</li>
+                            <li><i class="fas fa-check"></i> Stratégie digitale</li>
+                            <li><i class="fas fa-check"></i> Formation & coaching</li>
+                            <li><i class="fas fa-check"></i> Optimisation SEO</li>
+                        </ul>
+                        <div class="service-footer">
+                            <span class="service-price">À partir de 500€</span>
+                            <button class="service-btn" data-service="conseil">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
-                    <h3>E-commerce</h3>
-                    <p>Boutiques en ligne performantes avec solutions de paiement sécurisées.</p>
-                    <ul class="service-features">
-                        <li>WooCommerce</li>
-                        <li>Shopify</li>
-                        <li>Paiements en ligne</li>
-                    </ul>
+                    <div class="service-hover-effect"></div>
                 </div>
+            </div>
+            
+            <div class="services-cta">
+                <p>Vous avez un projet spécifique ? Parlons-en !</p>
+                <a href="#contact" class="btn btn-large">
+                    <i class="fas fa-comments"></i> Discuter de mon projet
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Section Portfolio -->
     <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Mon Portfolio</h2>
-            <p class="section-subtitle">Une sélection de mes projets récents</p>
-            
-            <!-- Filtres -->
+        <div class="section-header">
+            <span class="section-subtitle">Mes réalisations</span>
+            <h2 class="section-title">Portfolio</h2>
+            <p class="section-description">
+                Une sélection de mes projets les plus récents et significatifs
+            </p>
+        </div>
+        
+        <div class="portfolio-container">
+            <!-- Filtres Portfolio -->
             <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">Tous</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-layer-group"></i> Tous
+                </button>
+                <button class="filter-btn" data-filter="web">
+                    <i class="fas fa-globe"></i> Web
+                </button>
+                <button class="filter-btn" data-filter="mobile">
+                    <i class="fas fa-mobile"></i> Mobile
+                </button>
+                <button class="filter-btn" data-filter="design">
+                    <i class="fas fa-palette"></i> Design
+                </button>
+                <button class="filter-btn" data-filter="ecommerce">
+                    <i class="fas fa-shopping-cart"></i> E-commerce
+                </button>
             </div>
-
-            <!-- Galerie Portfolio -->
+            
+            <!-- Grille Portfolio -->
             <div class="portfolio-grid">
                 <!-- Projet 1 -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Boutique Moderne</h3>
-                                <p>Site e-commerce avec React</p>
-                                <a href="#" class="view-btn">Voir le projet</a>
+                <div class="portfolio-item" data-category="web design">
+                    <div class="portfolio-item-inner">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Application Fintech">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h3>Application Fintech</h3>
+                                    <p>Dashboard financier avec React & D3.js</p>
+                                    <div class="project-tags">
+                                        <span class="tag">React</span>
+                                        <span class="tag">Chart.js</span>
+                                        <span class="tag">API REST</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" title="Voir le projet">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="#" class="project-link" title="Code source">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Dashboard Financier</h3>
+                            <p>Application de gestion financière en temps réel</p>
+                            <span class="project-date">2024</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projet 2 -->
                 <div class="portfolio-item" data-category="design">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI Design">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Application Fintech</h3>
-                                <p>UI/UX Design complet</p>
-                                <a href="#" class="view-btn">Voir le projet</a>
+                    <div class="portfolio-item-inner">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI Design">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h3>Système Design</h3>
+                                    <p>UI Kit complet pour applications mobiles</p>
+                                    <div class="project-tags">
+                                        <span class="tag">Figma</span>
+                                        <span class="tag">Design System</span>
+                                        <span class="tag">UI Kit</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" title="Voir le projet">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="#" class="project-link" title="Fichiers design">
+                                            <i class="fab fa-figma"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>UI Kit Mobile</h3>
+                            <p>Système de design complet pour applications</p>
+                            <span class="project-date">2024</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projet 3 -->
                 <div class="portfolio-item" data-category="mobile">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>App Fitness</h3>
-                                <p>Application React Native</p>
-                                <a href="#" class="view-btn">Voir le projet</a>
+                    <div class="portfolio-item-inner">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Fitness">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h3>App Fitness Pro</h3>
+                                    <p>Application de suivi sportif avec React Native</p>
+                                    <div class="project-tags">
+                                        <span class="tag">React Native</span>
+                                        <span class="tag">Firebase</span>
+                                        <span class="tag">HealthKit</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" title="Voir le projet">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="#" class="project-link" title="Code source">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Fitness Tracker</h3>
+                            <p>Application de suivi d'activités sportives</p>
+                            <span class="project-date">2023</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projet 4 -->
-                <div class="portfolio-item" data-category="web">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Dashboard Analytics</h3>
-                                <p>Vue.js + Chart.js</p>
-                                <a href="#" class="view-btn">Voir le projet</a>
+                <div class="portfolio-item" data-category="ecommerce">
+                    <div class="portfolio-item-inner">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique en ligne">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h3>Boutique Éco</h3>
+                                    <p>Plateforme e-commerce durable avec Vue.js</p>
+                                    <div class="project-tags">
+                                        <span class="tag">Vue.js</span>
+                                        <span class="tag">Stripe</span>
+                                        <span class="tag">Node.js</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" title="Voir le projet">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="#" class="project-link" title="Code source">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Boutique Éco-responsable</h3>
+                            <p>Marketplace de produits durables</p>
+                            <span class="project-date">2023</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projet 5 -->
-                <div class="portfolio-item" data-category="design">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Branding">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>Identité Visuelle</h3>
-                                <p>Logo & Branding</p>
-                                <a href="#" class="view-btn">Voir le projet</a>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-item-inner">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h3>Analytics Pro</h3>
+                                    <p>Dashboard d'analyse de données en temps réel</p>
+                                    <div class="project-tags">
+                                        <span class="tag">Next.js</span>
+                                        <span class="tag">MongoDB</span>
+                                        <span class="tag">WebSockets</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" title="Voir le projet">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="#" class="project-link" title="Code source">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Dashboard Analytics</h3>
+                            <p>Visualisation de données complexes</p>
+                            <span class="project-date">2023</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Projet 6 -->
-                <div class="portfolio-item" data-category="mobile">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1546054451-aa3d3aee2a6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food App">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <h3>App Restaurant</h3>
-                                <p>Commande en ligne</p>
-                                <a href="#" class="view-btn">Voir le projet</a>
+                <div class="portfolio-item" data-category="design mobile">
+                    <div class="portfolio-item-inner">
+                        <div class="portfolio-image">
+                            <img src="https://images.unsplash.com/photo-1546054451-aa3d3aee2a6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Food">
+                            <div class="portfolio-overlay">
+                                <div class="overlay-content">
+                                    <h3>Food Delivery</h3>
+                                    <p>Application de livraison de repas</p>
+                                    <div class="project-tags">
+                                        <span class="tag">Flutter</span>
+                                        <span class="tag">Firebase</span>
+                                        <span class="tag">Google Maps</span>
+                                    </div>
+                                    <div class="project-links">
+                                        <a href="#" class="project-link" title="Voir le projet">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                        <a href="#" class="project-link" title="Code source">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="portfolio-info">
+                            <h3>App Livraison Repas</h3>
+                            <p>Solution de commande en ligne</p>
+                            <span class="project-date">2022</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-cta">
+                <p>Vous voulez voir plus de projets ?</p>
+                <a href="#" class="btn btn-outline">
+                    <i class="fas fa-book-open"></i> Voir tous les projets
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Compétences -->
+    <section id="competences" class="competences">
+        <div class="section-header">
+            <span class="section-subtitle">Mon expertise</span>
+            <h2 class="section-title">Compétences Techniques</h2>
+            <p class="section-description">
+                Maîtrise des technologies modernes pour des projets performants
+            </p>
+        </div>
+        
+        <div class="competences-container">
+            <div class="skills-grid">
+                <!-- Compétence 1 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fab fa-html5"></i>
+                        <span class="skill-name">HTML5 / CSS3</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="95"></div>
+                    </div>
+                    <span class="skill-percentage">95%</span>
+                </div>
+
+                <!-- Compétence 2 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fab fa-js"></i>
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90"></div>
+                    </div>
+                    <span class="skill-percentage">90%</span>
+                </div>
+
+                <!-- Compétence 3 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fab fa-react"></i>
+                        <span class="skill-name">React</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="88"></div>
+                    </div>
+                    <span class="skill-percentage">88%</span>
+                </div>
+
+                <!-- Compétence 4 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fab fa-vuejs"></i>
+                        <span class="skill-name">Vue.js</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85"></div>
+                    </div>
+                    <span class="skill-percentage">85%</span>
+                </div>
+
+                <!-- Compétence 5 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fab fa-node-js"></i>
+                        <span class="skill-name">Node.js</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80"></div>
+                    </div>
+                    <span class="skill-percentage">80%</span>
+                </div>
+
+                <!-- Compétence 6 -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <i class="fab fa-figma"></i>
+                        <span class="skill-name">UI/UX Design</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="92"></div>
+                    </div>
+                    <span class="skill-percentage">92%</span>
+                </div>
+            </div>
+            
+            <div class="tools-section">
+                <h3>Outils & Technologies</h3>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-npm"></i>
+                        <span>npm / yarn</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-database"></i>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-server"></i>
+                        <span>Firebase</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-docker"></i>
+                        <span>Docker</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-cloud"></i>
+                        <span>AWS</span>
                     </div>
                 </div>
             </div>
@@ -204,48 +593,189 @@
 
     <!-- Section Contact -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Travaillons ensemble</h2>
+        <div class="section-header">
+            <span class="section-subtitle">Travaillons ensemble</span>
+            <h2 class="section-title">Contactez-moi</h2>
+            <p class="section-description">
+                Discutons de votre projet et voyons comment je peux vous aider
+            </p>
+        </div>
+        
+        <div class="contact-container">
             <div class="contact-content">
+                <!-- Informations de contact -->
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>contact@monportfolio.com</p>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p>contact@portfolio.dev</p>
+                            <button class="copy-btn" data-text="contact@portfolio.dev">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3>Téléphone</h3>
-                        <p>+33 1 23 45 67 89</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Téléphone</h3>
+                            <p>+33 1 23 45 67 89</p>
+                            <button class="copy-btn" data-text="+33123456789">
+                                <i class="fas fa-copy"></i> Copier
+                            </button>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Localisation</h3>
-                        <p>Paris, France</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Localisation</h3>
+                            <p>Paris, France</p>
+                            <span class="availability">
+                                <i class="fas fa-circle"></i> Disponible pour des missions
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Behance">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" class="social-link" title="Dribbble">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
                     </div>
                 </div>
+                
+                <!-- Formulaire de contact -->
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Votre nom *</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Votre email *</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder=" " required>
+                        <label for="subject">Sujet *</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Type de service</option>
+                            <option value="design">UI/UX Design</option>
+                            <option value="web">Développement Web</option>
+                            <option value="mobile">Application Mobile</option>
+                            <option value="conseil">Conseil Digital</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                        <label for="message">Votre message *</label>
+                    </div>
+                    
+                    <div class="form-footer">
+                        <div class="form-info">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Je réponds sous 24h</span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 MonPortfolio. Tous droits réservés.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-                <a href="#"><i class="fab fa-dribbble"></i></a>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#accueil" class="logo">
+                        <span class="logo-text">Portfolio</span>
+                        <span class="logo-dot">.</span>
+                    </a>
+                    <p class="footer-description">
+                        Création de solutions digitales innovantes et performantes
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#accueil">Accueil</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#competences">Compétences</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#services" data-service="design">UI/UX Design</a></li>
+                            <li><a href="#services" data-service="development">Développement Web</a></li>
+                            <li><a href="#services" data-service="mobile">Applications Mobile</a></li>
+                            <li><a href="#services" data-service="conseil">Conseil Digital</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Légal</h4>
+                        <ul>
+                            <li><a href="#">Mentions légales</a></li>
+                            <li><a href="#">Politique de confidentialité</a></li>
+                            <li><a href="#">CGV</a></li>
+                            <li><a href="#">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2024</span> Portfolio. Tous droits réservés.</p>
+                <p class="footer-made">
+                    <i class="fas fa-heart"></i> Fait avec passion
+                </p>
             </div>
         </div>
     </footer>
 
     <!-- Bouton Retour en haut -->
-    <button class="back-to-top">
+    <button class="back-to-top" aria-label="Retour en haut">
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 </html>
