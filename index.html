@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slozw - Boutique & Portfolio</title>
+    <title>Slozw - Accueil | Créations Digitales</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,273 +11,166 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">Slozw</a>
+            <a href="index.html" class="logo">Slozw</a>
             <div class="nav-links">
-                <a href="#accueil">Accueil</a>
-                <a href="#boutique">Boutique</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#services">Services</a>
-                <a href="#contact">Contact</a>
-                <a href="#panier" class="panier-btn">
+                <a href="index.html" class="active">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="boutique.html">Boutique</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="boutique.html" class="panier-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="panier-count">0</span>
                 </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="hero">
+    <section class="hero">
         <div class="hero-content">
-            <h1>Créations Digitales Slozw</h1>
-            <p>Design • Développement • E-commerce</p>
-            <div class="hero-btns">
-                <a href="#boutique" class="btn btn-primary">Voir la boutique</a>
-                <a href="#portfolio" class="btn btn-secondary">Voir le portfolio</a>
+            <h1>Créations Digitales d'Excellence</h1>
+            <p>Design, Développement & Solutions E-commerce sur mesure</p>
+            <div class="hero-buttons">
+                <a href="portfolio.html" class="btn btn-primary">Voir mon travail</a>
+                <a href="contact.html" class="btn btn-secondary">Me contacter</a>
             </div>
         </div>
     </section>
 
-    <!-- Section Boutique -->
-    <section id="boutique" class="boutique">
-        <div class="container">
-            <h2 class="section-title">Boutique</h2>
-            <p class="section-subtitle">Commandez vos designs préférés</p>
-            
-            <div class="produits-grid">
-                <!-- Produit 1 -->
-                <div class="produit-card">
-                    <div class="produit-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Template Site Web">
-                    </div>
-                    <div class="produit-info">
-                        <h3>Template Site Web</h3>
-                        <p>Design moderne et responsive</p>
-                        <div class="produit-prix">299€</div>
-                        <button class="btn-ajouter" data-id="1" data-nom="Template Site Web" data-prix="299">
-                            <i class="fas fa-cart-plus"></i> Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Produit 2 -->
-                <div class="produit-card">
-                    <div class="produit-img">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design Logo">
-                    </div>
-                    <div class="produit-info">
-                        <h3>Design Logo</h3>
-                        <p>Logo personnalisé professionnel</p>
-                        <div class="produit-prix">199€</div>
-                        <button class="btn-ajouter" data-id="2" data-nom="Design Logo" data-prix="199">
-                            <i class="fas fa-cart-plus"></i> Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Produit 3 -->
-                <div class="produit-card">
-                    <div class="produit-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce">
-                    </div>
-                    <div class="produit-info">
-                        <h3>Site E-commerce</h3>
-                        <p>Boutique en ligne complète</p>
-                        <div class="produit-prix">899€</div>
-                        <button class="btn-ajouter" data-id="3" data-nom="Site E-commerce" data-prix="899">
-                            <i class="fas fa-cart-plus"></i> Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Produit 4 -->
-                <div class="produit-card">
-                    <div class="produit-img">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile">
-                    </div>
-                    <div class="produit-info">
-                        <h3>Application Mobile</h3>
-                        <p>App iOS & Android native</p>
-                        <div class="produit-prix">1499€</div>
-                        <button class="btn-ajouter" data-id="4" data-nom="Application Mobile" data-prix="1499">
-                            <i class="fas fa-cart-plus"></i> Ajouter au panier
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Portfolio -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Portfolio</h2>
-            <p class="section-subtitle">Mes réalisations</p>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet 1">
-                    <div class="portfolio-overlay">
-                        <h3>Boutique Fashion</h3>
-                        <p>Site e-commerce mode</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet 2">
-                    <div class="portfolio-overlay">
-                        <h3>Corporate Website</h3>
-                        <p>Site vitrine entreprise</p>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Projet 3">
-                    <div class="portfolio-overlay">
-                        <h3>Dashboard Analytics</h3>
-                        <p>Interface admin moderne</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Services -->
-    <section id="services" class="services">
+    <!-- Services Preview -->
+    <section class="section services-preview">
         <div class="container">
             <h2 class="section-title">Mes Services</h2>
-            <p class="section-subtitle">Ce que je propose</p>
+            <p class="section-subtitle">Des solutions complètes pour votre présence digitale</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-paint-brush"></i>
                     <h3>UI/UX Design</h3>
-                    <p>Création d'interfaces utilisateur modernes</p>
+                    <p>Interfaces intuitives et esthétiques</p>
+                    <a href="services.html#design" class="service-link">En savoir plus →</a>
                 </div>
                 
                 <div class="service-card">
                     <i class="fas fa-code"></i>
                     <h3>Développement Web</h3>
-                    <p>Sites web responsives et performants</p>
+                    <p>Sites performants et responsives</p>
+                    <a href="services.html#developpement" class="service-link">En savoir plus →</a>
                 </div>
                 
                 <div class="service-card">
                     <i class="fas fa-shopping-cart"></i>
                     <h3>E-commerce</h3>
-                    <p>Boutiques en ligne sécurisées</p>
-                </div>
-                
-                <div class="service-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Applications Mobile</h3>
-                    <p>Apps iOS et Android natives</p>
+                    <p>Boutiques en ligne optimisées</p>
+                    <a href="services.html#ecommerce" class="service-link">En savoir plus →</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Section Contact -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez-moi</h2>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>contact@slozw.com</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Téléphone</h3>
-                            <p>+33 1 23 45 67 89</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Adresse</h3>
-                            <p>Paris, France</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" id="form-contact">
-                    <input type="text" placeholder="Votre nom" required>
-                    <input type="email" placeholder="Votre email" required>
-                    <textarea placeholder="Votre message" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Envoyer
-                    </button>
-                </form>
+            <div class="text-center">
+                <a href="services.html" class="btn btn-outline">Voir tous les services</a>
             </div>
         </div>
     </section>
 
-    <!-- Panier Modal -->
-    <div class="panier-modal" id="panierModal">
-        <div class="panier-content">
-            <div class="panier-header">
-                <h2>Votre Panier</h2>
-                <button class="close-panier">&times;</button>
-            </div>
-            <div class="panier-items" id="panierItems">
-                <!-- Items ajoutés dynamiquement -->
-            </div>
-            <div class="panier-footer">
-                <div class="panier-total">
-                    <span>Total:</span>
-                    <span id="totalPanier">0€</span>
+    <!-- Portfolio Preview -->
+    <section class="section portfolio-preview">
+        <div class="container">
+            <h2 class="section-title">Derniers Projets</h2>
+            <p class="section-subtitle">Quelques-unes de mes réalisations récentes</p>
+            
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce">
+                    <div class="project-info">
+                        <h3>Boutique Moderne</h3>
+                        <p>E-commerce avec paiement sécurisé</p>
+                        <a href="portfolio.html#projet1" class="project-link">Voir le projet</a>
+                    </div>
                 </div>
-                <button class="btn btn-primary" id="btnCommander">
-                    <i class="fas fa-check"></i> Commander
-                </button>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard">
+                    <div class="project-info">
+                        <h3>Dashboard Analytics</h3>
+                        <p>Interface d'administration complète</p>
+                        <a href="portfolio.html#projet2" class="project-link">Voir le projet</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile">
+                    <div class="project-info">
+                        <h3>Application Mobile</h3>
+                        <p>App iOS & Android native</p>
+                        <a href="portfolio.html#projet3" class="project-link">Voir le projet</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="portfolio.html" class="btn btn-outline">Voir tout le portfolio</a>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Prêt à donner vie à votre projet ?</h2>
+                <p>Contactez-moi pour discuter de vos besoins</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary">Prendre rendez-vous</a>
+                    <a href="boutique.html" class="btn btn-secondary">Voir la boutique</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
+            <div class="footer-grid">
+                <div class="footer-col">
                     <h3>Slozw</h3>
-                    <p>Créations digitales & e-commerce</p>
+                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
                 </div>
                 
-                <div class="footer-links">
-                    <a href="#boutique">Boutique</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#services">Services</a>
-                    <a href="#contact">Contact</a>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="index.html">Accueil</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="boutique.html">Boutique</a>
+                    <a href="contact.html">Contact</a>
                 </div>
                 
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
                 <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Notification -->
-    <div class="notification" id="notification"></div>
-
+    <!-- Script -->
     <script src="script.js"></script>
 </body>
 </html>
