@@ -3,28 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Sl03A - Demander un devis</title>
+    <title>Contact | Sl03A - Demander un Devis Personnalisé</title>
+    <meta name="description" content="Contactez-moi pour un devis personnalisé. Développement web, montage vidéo, design créatif. Réponse sous 24h.">
+    <meta name="keywords" content="contact freelance, devis site web, demande montage vidéo, consultation design">
+    <meta name="author" content="Sl03A">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://selllite-vb.onrender.com/contact">
+    <meta property="og:title" content="Contact & Devis | Sl03A">
+    <meta property="og:description" content="Demandez un devis personnalisé pour vos projets de développement web, montage vidéo ou design. Réponse sous 24h.">
+    <meta property="og:image" content="https://selllite-vb.onrender.com/og-contact.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://selllite-vb.onrender.com/contact">
+    <meta property="twitter:title" content="Contact & Devis | Sl03A">
+    <meta property="twitter:description" content="Demandez un devis personnalisé pour vos projets de développement web, montage vidéo ou design. Réponse sous 24h.">
+    <meta property="twitter:image" content="https://selllite-vb.onrender.com/og-contact.jpg">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo">Sl03<span>A</span></a>
+            <a href="/" class="logo">
+                <span class="logo-icon">◈</span>
+                <span class="logo-text">Sl03<span class="logo-accent">A</span></span>
+            </a>
             
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
-                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
-                    <li><a href="services.html"><i class="fas fa-concierge-bell"></i> Services</a></li>
-                    <li><a href="index.html#portfolio"><i class="fas fa-briefcase"></i> Réalisations</a></li>
-                    <li><a href="contact.html" class="active"><i class="fas fa-paper-plane"></i> Contact</a></li>
+                    <li><a href="/" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">Accueil</span>
+                    </a></li>
+                    <li><a href="/services" class="nav-link">
+                        <i class="fas fa-concierge-bell nav-icon"></i>
+                        <span class="nav-text">Services</span>
+                    </a></li>
+                    <li><a href="/#portfolio" class="nav-link">
+                        <i class="fas fa-briefcase nav-icon"></i>
+                        <span class="nav-text">Réalisations</span>
+                    </a></li>
+                    <li><a href="/contact" class="nav-link active">
+                        <i class="fas fa-paper-plane nav-icon"></i>
+                        <span class="nav-text">Contact</span>
+                    </a></li>
                 </ul>
             </div>
             
             <div class="nav-actions">
-                <a href="#contactForm" class="btn btn-primary btn-sm">Devis Gratuit</a>
-                <button class="menu-toggle" id="menuToggle">
+                <a href="#contactForm" class="btn btn-primary btn-sm nav-cta">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Devis Gratuit</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu mobile">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -32,29 +70,64 @@
     </nav>
 
     <!-- Contact Header -->
-    <section class="page-header">
+    <section class="page-header contact-header">
         <div class="container">
-            <h1 class="page-title">Contact & <span class="highlight">Devis</span></h1>
-            <p class="page-subtitle">Discutons de votre projet et obtenez un devis personnalisé gratuit</p>
-            <div class="page-breadcrumb">
-                <a href="index.html">Accueil</a> <i class="fas fa-chevron-right"></i> <span>Contact</span>
+            <div class="header-content">
+                <h1 class="page-title">
+                    Contact & <span class="highlight">Devis</span>
+                </h1>
+                <p class="page-subtitle">
+                    Discutons de votre projet et obtenez un devis personnalisé gratuit
+                </p>
+                
+                <div class="page-breadcrumb">
+                    <a href="/" class="breadcrumb-link">
+                        <i class="fas fa-home"></i>
+                        Accueil
+                    </a>
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-current">Contact</span>
+                </div>
+            </div>
+            
+            <div class="header-features">
+                <div class="feature">
+                    <i class="fas fa-clock feature-icon"></i>
+                    <span class="feature-text">Réponse sous 24h</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-euro-sign feature-icon"></i>
+                    <span class="feature-text">Devis gratuit</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <span class="feature-text">100% confidentiel</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section contact-section">
+    <section class="section contact-section" id="contact">
         <div class="container">
             <div class="contact-grid">
                 <!-- Contact Form -->
                 <div class="contact-form-container">
-                    <h2 class="form-title">Envoyez-moi un message</h2>
-                    <p class="form-subtitle">Remplissez ce formulaire, je vous réponds sous 24h</p>
+                    <div class="form-header">
+                        <h2 class="form-title">Envoyez-moi un message</h2>
+                        <p class="form-subtitle">
+                            Remplissez ce formulaire, je vous réponds sous 24 heures
+                        </p>
+                    </div>
                     
                     <form id="contactForm" class="contact-form">
+                        <!-- Service Type -->
                         <div class="form-group">
-                            <label for="serviceType">Type de service *</label>
-                            <select id="serviceType" name="serviceType" required>
+                            <label for="serviceType" class="form-label">
+                                <i class="fas fa-concierge-bell label-icon"></i>
+                                Type de service souhaité *
+                            </label>
+                            <select id="serviceType" name="serviceType" class="form-select" required>
                                 <option value="">Sélectionnez un service</option>
                                 <option value="development">Développement Web</option>
                                 <option value="video">Montage Vidéo</option>
@@ -65,147 +138,279 @@
                             </select>
                         </div>
                         
+                        <!-- Personal Information -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="firstName">Prénom *</label>
-                                <input type="text" id="firstName" name="firstName" required>
+                                <label for="firstName" class="form-label">
+                                    <i class="fas fa-user label-icon"></i>
+                                    Prénom *
+                                </label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Nom *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget">Budget estimé *</label>
-                            <select id="budget" name="budget" required>
-                                <option value="">Sélectionnez une fourchette</option>
-                                <option value="0-500">0 - 500€</option>
-                                <option value="500-1000">500 - 1 000€</option>
-                                <option value="1000-3000">1 000 - 3 000€</option>
-                                <option value="3000+">Plus de 3 000€</option>
-                                <option value="undecided">À déterminer</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="deadline">Délai souhaité</label>
-                            <select id="deadline" name="deadline">
-                                <option value="none">Pas de délai particulier</option>
-                                <option value="urgent">Urgent (moins d'1 semaine)</option>
-                                <option value="1-2weeks">1-2 semaines</option>
-                                <option value="1month">1 mois</option>
-                                <option value="2-3months">2-3 mois</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Décrivez votre projet *</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Décrivez votre projet en détail, vos objectifs, vos besoins spécifiques, vos inspirations..." required></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="fileUpload">Fichiers joints (optionnel)</label>
-                            <div class="file-upload">
-                                <input type="file" id="fileUpload" name="fileUpload" multiple>
-                                <label for="fileUpload" class="file-upload-label">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <span>Glissez-déposez vos fichiers ou <u>parcourez</u></span>
-                                    <small>Max. 10MB - Images, PDF, ZIP</small>
+                                <label for="lastName" class="form-label">
+                                    <i class="fas fa-user label-icon"></i>
+                                    Nom *
                                 </label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
                             </div>
                         </div>
                         
+                        <!-- Contact Information -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label">
+                                    <i class="fas fa-envelope label-icon"></i>
+                                    Email *
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">
+                                    <i class="fas fa-phone label-icon"></i>
+                                    Téléphone
+                                </label>
+                                <input type="tel" id="phone" name="phone" class="form-input">
+                            </div>
+                        </div>
+                        
+                        <!-- Project Details -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="budget" class="form-label">
+                                    <i class="fas fa-euro-sign label-icon"></i>
+                                    Budget estimé *
+                                </label>
+                                <select id="budget" name="budget" class="form-select" required>
+                                    <option value="">Sélectionnez une fourchette</option>
+                                    <option value="0-500">0 - 500€</option>
+                                    <option value="500-1000">500 - 1 000€</option>
+                                    <option value="1000-3000">1 000 - 3 000€</option>
+                                    <option value="3000+">Plus de 3 000€</option>
+                                    <option value="undecided">À déterminer</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="deadline" class="form-label">
+                                    <i class="fas fa-calendar-alt label-icon"></i>
+                                    Délai souhaité
+                                </label>
+                                <select id="deadline" name="deadline" class="form-select">
+                                    <option value="none">Pas de délai particulier</option>
+                                    <option value="urgent">Urgent (moins d'1 semaine)</option>
+                                    <option value="1-2weeks">1-2 semaines</option>
+                                    <option value="1month">1 mois</option>
+                                    <option value="2-3months">2-3 mois</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Description -->
+                        <div class="form-group">
+                            <label for="message" class="form-label">
+                                <i class="fas fa-comment-dots label-icon"></i>
+                                Décrivez votre projet *
+                            </label>
+                            <textarea id="message" name="message" class="form-textarea" rows="6" 
+                                      placeholder="Décrivez votre projet en détail, vos objectifs, vos besoins spécifiques, vos inspirations..." 
+                                      required></textarea>
+                            <div class="textarea-counter">
+                                <span id="charCount">0</span>/1000 caractères
+                            </div>
+                        </div>
+                        
+                        <!-- File Upload -->
+                        <div class="form-group">
+                            <label class="form-label">
+                                <i class="fas fa-paperclip label-icon"></i>
+                                Fichiers joints (optionnel)
+                            </label>
+                            <div class="file-upload-area" id="fileUploadArea">
+                                <div class="upload-content">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <div class="upload-text">
+                                        <span class="upload-title">Glissez-déposez vos fichiers</span>
+                                        <span class="upload-subtitle">ou <u>parcourez</u> votre ordinateur</span>
+                                        <span class="upload-note">Max. 10MB - Images, PDF, ZIP</span>
+                                    </div>
+                                </div>
+                                <input type="file" id="fileUpload" name="fileUpload" multiple 
+                                       class="file-input" accept=".jpg,.jpeg,.png,.pdf,.zip,.rar">
+                            </div>
+                            <div class="file-list" id="fileList"></div>
+                        </div>
+                        
+                        <!-- Checkboxes -->
                         <div class="form-group checkbox-group">
-                            <input type="checkbox" id="newsletter" name="newsletter" checked>
-                            <label for="newsletter">Je souhaite recevoir des conseils et offres exclusives (désinscription à tout moment)</label>
+                            <input type="checkbox" id="newsletter" name="newsletter" class="checkbox-input" checked>
+                            <label for="newsletter" class="checkbox-label">
+                                <i class="fas fa-envelope-open-text checkbox-icon"></i>
+                                Je souhaite recevoir des conseils et offres exclusives 
+                                (désinscription à tout moment)
+                            </label>
                         </div>
                         
                         <div class="form-group checkbox-group">
-                            <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">J'accepte la <a href="#">politique de confidentialité</a> *</label>
+                            <input type="checkbox" id="privacy" name="privacy" class="checkbox-input" required>
+                            <label for="privacy" class="checkbox-label">
+                                <i class="fas fa-shield-alt checkbox-icon"></i>
+                                J'accepte la <a href="#" class="privacy-link">politique de confidentialité</a> *
+                            </label>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">
-                            <i class="fas fa-paper-plane"></i> Envoyer ma demande
-                        </button>
-                        
-                        <p class="form-note">* Champs obligatoires. Vos données sont sécurisées et ne seront jamais partagées.</p>
+                        <!-- Submit Button -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block submit-btn">
+                                <i class="fas fa-paper-plane btn-icon"></i>
+                                Envoyer ma demande
+                            </button>
+                            <p class="form-note">
+                                <i class="fas fa-info-circle note-icon"></i>
+                                * Champs obligatoires. Vos données sont sécurisées et ne seront jamais partagées.
+                            </p>
+                        </div>
                     </form>
                 </div>
                 
-                <!-- Contact Info -->
+                <!-- Contact Information -->
                 <div class="contact-info-container">
-                    <div class="contact-info-card">
-                        <h2 class="info-title">Informations de contact</h2>
-                        <p class="info-subtitle">Plusieurs façons de me contacter</p>
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h2 class="info-title">
+                                <i class="fas fa-info-circle title-icon"></i>
+                                Informations de contact
+                            </h2>
+                            <p class="info-subtitle">
+                                Plusieurs façons de me contacter
+                            </p>
+                        </div>
                         
+                        <!-- Contact Methods -->
                         <div class="contact-methods">
+                            <!-- Email -->
                             <div class="contact-method">
-                                <div class="method-icon">
+                                <div class="method-icon email-icon">
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div class="method-content">
-                                    <h3>Email</h3>
-                                    <p>Pour les demandes détaillées et devis</p>
-                                    <a href="mailto:contact@sl03a.fr" class="method-link">contact@sl03a.fr</a>
-                                    <small>Réponse sous 24h</small>
+                                    <h3 class="method-title">Email</h3>
+                                    <p class="method-description">
+                                        Pour les demandes détaillées et devis
+                                    </p>
+                                    <a href="mailto:contact@sl03a.fr" class="method-link">
+                                        <i class="fas fa-external-link-alt link-icon"></i>
+                                        contact@sl03a.fr
+                                    </a>
+                                    <div class="method-note">
+                                        <i class="fas fa-clock note-icon"></i>
+                                        Réponse sous 24h
+                                    </div>
                                 </div>
                             </div>
                             
+                            <!-- Phone -->
                             <div class="contact-method">
-                                <div class="method-icon">
+                                <div class="method-icon phone-icon">
                                     <i class="fas fa-phone"></i>
                                 </div>
                                 <div class="method-content">
-                                    <h3>Téléphone</h3>
-                                    <p>Pour discuter rapidement de votre projet</p>
-                                    <a href="tel:+33612345678" class="method-link">+33 6 12 34 56 78</a>
-                                    <small>Lun-Ven: 9h-19h</small>
+                                    <h3 class="method-title">Téléphone</h3>
+                                    <p class="method-description">
+                                        Pour discuter rapidement de votre projet
+                                    </p>
+                                    <a href="tel:+33612345678" class="method-link">
+                                        <i class="fas fa-external-link-alt link-icon"></i>
+                                        +33 6 12 34 56 78
+                                    </a>
+                                    <div class="method-note">
+                                        <i class="fas fa-clock note-icon"></i>
+                                        Lun-Ven: 9h-19h
+                                    </div>
                                 </div>
                             </div>
                             
+                            <!-- WhatsApp -->
                             <div class="contact-method">
-                                <div class="method-icon">
+                                <div class="method-icon whatsapp-icon">
                                     <i class="fab fa-whatsapp"></i>
                                 </div>
                                 <div class="method-content">
-                                    <h3>WhatsApp</h3>
-                                    <p>Messages rapides et partage de fichiers</p>
-                                    <a href="https://wa.me/33612345678" class="method-link">Envoyer un message</a>
-                                    <small>Réponse en temps réel</small>
+                                    <h3 class="method-title">WhatsApp</h3>
+                                    <p class="method-description">
+                                        Messages rapides et partage de fichiers
+                                    </p>
+                                    <a href="https://wa.me/33612345678" target="_blank" class="method-link">
+                                        <i class="fas fa-external-link-alt link-icon"></i>
+                                        Envoyer un message
+                                    </a>
+                                    <div class="method-note">
+                                        <i class="fas fa-bolt note-icon"></i>
+                                        Réponse en temps réel
+                                    </div>
                                 </div>
                             </div>
                             
+                            <!-- Discord -->
                             <div class="contact-method">
-                                <div class="method-icon">
+                                <div class="method-icon discord-icon">
                                     <i class="fab fa-discord"></i>
                                 </div>
                                 <div class="method-content">
-                                    <h3>Discord</h3>
-                                    <p>Pour les discussions techniques et suivi</p>
-                                    <span class="method-link">Sl03A#1234</span>
-                                    <small>Disponible sur rendez-vous</small>
+                                    <h3 class="method-title">Discord</h3>
+                                    <p class="method-description">
+                                        Pour les discussions techniques et suivi
+                                    </p>
+                                    <span class="method-link discord-id">
+                                        <i class="fas fa-hashtag link-icon"></i>
+                                        Sl03A#1234
+                                    </span>
+                                    <div class="method-note">
+                                        <i class="fas fa-calendar-alt note-icon"></i>
+                                        Disponible sur rendez-vous
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <div class="contact-cta">
-                            <h3>Vous préférez planifier un appel ?</h3>
-                            <p>Choisissez un créneau qui vous convient pour une consultation gratuite de 30 minutes.</p>
-                            <a href="https://calendly.com/sl03a/consultation" class="btn btn-outline btn-block">
-                                <i class="fas fa-calendar-check"></i> Prendre rendez-vous
+                        <!-- Appointment CTA -->
+                        <div class="appointment-cta">
+                            <div class="cta-header">
+                                <h3 class="cta-title">
+                                    <i class="fas fa-calendar-check cta-icon"></i>
+                                    Vous préférez planifier un appel ?
+                                </h3>
+                                <p class="cta-description">
+                                    Choisissez un créneau qui vous convient pour une 
+                                    consultation gratuite de 30 minutes.
+                                </p>
+                            </div>
+                            <a href="https://calendly.com/sl03a/consultation" target="_blank" 
+                               class="btn btn-outline btn-block appointment-btn">
+                                <i class="fas fa-video btn-icon"></i>
+                                Prendre rendez-vous en ligne
                             </a>
+                        </div>
+                        
+                        <!-- Response Time -->
+                        <div class="response-time">
+                            <div class="time-card">
+                                <div class="time-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="time-content">
+                                    <div class="time-value">2h</div>
+                                    <div class="time-label">Réponse rapide garantie</div>
+                                </div>
+                            </div>
+                            <div class="time-card">
+                                <div class="time-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="time-content">
+                                    <div class="time-value">100%</div>
+                                    <div class="time-label">Projets suivis</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -216,31 +421,311 @@
     <!-- FAQ Quick -->
     <section class="section faq-quick">
         <div class="container">
-            <h2 class="section-title">Questions avant de <span class="highlight">me contacter</span> ?</h2>
+            <div class="section-header">
+                <span class="section-badge">Questions</span>
+                <h2 class="section-title">
+                    Questions avant de <span class="highlight">me contacter</span> ?
+                </h2>
+            </div>
             
             <div class="faq-grid">
+                <!-- FAQ 1 -->
                 <div class="faq-item">
-                    <h3>Quelle information dois-je fournir ?</h3>
-                    <p>Décrivez votre projet le plus précisément possible : objectifs, public cible, inspirations, contraintes techniques, délais souhaités. Plus vous êtes détaillé, plus mon devis sera précis.</p>
+                    <div class="faq-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="faq-content">
+                        <h3 class="faq-question">Quelle information dois-je fournir pour un devis précis ?</h3>
+                        <p class="faq-answer">
+                            Décrivez votre projet le plus précisément possible : objectifs, 
+                            public cible, inspirations, contraintes techniques, délais souhaités. 
+                            Plus vous êtes détaillé, plus mon devis sera précis. N'hésitez pas à 
+                            joindre des exemples ou maquettes si vous en avez.
+                        </p>
+                    </div>
                 </div>
                 
+                <!-- FAQ 2 -->
                 <div class="faq-item">
-                    <h3>Comment obtenir un devis précis ?</h3>
-                    <p>Après réception de votre demande, je vous envoie un questionnaire complémentaire si nécessaire, puis un devis détaillé avec le coût, le planning et les livrables.</p>
+                    <div class="faq-icon">
+                        <i class="fas fa-euro-sign"></i>
+                    </div>
+                    <div class="faq-content">
+                        <h3 class="faq-question">Comment obtenez-vous un devis précis ?</h3>
+                        <p class="faq-answer">
+                            Après réception de votre demande, je vous envoie un questionnaire 
+                            complémentaire si nécessaire, puis un devis détaillé avec le coût, 
+                            le planning et les livrables. Je peux également proposer un appel 
+                            de découverte gratuit pour mieux comprendre vos besoins.
+                        </p>
+                    </div>
                 </div>
                 
+                <!-- FAQ 3 -->
                 <div class="faq-item">
-                    <h3>Quels sont vos moyens de paiement ?</h3>
-                    <p>Virement bancaire, PayPal, carte bancaire, et cryptomonnaies (Bitcoin, Ethereum). Pour les gros projets, un échéancier est proposé.</p>
+                    <div class="faq-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="faq-content">
+                        <h3 class="faq-question">Quels sont vos moyens de paiement acceptés ?</h3>
+                        <p class="faq-answer">
+                            Virement bancaire, PayPal, carte bancaire, et cryptomonnaies 
+                            (Bitcoin, Ethereum). Pour les gros projets, un échéancier est 
+                            proposé avec des paiements échelonnés. Tous les paiements sont 
+                            sécurisés et je fournis des factures détaillées.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="faq-content">
+                        <h3 class="faq-question">Combien de temps faut-il pour commencer un projet ?</h3>
+                        <p class="faq-answer">
+                            Après validation du devis, je peux généralement commencer sous 
+                            2-3 jours ouvrables. Pour les projets urgents, un démarrage 
+                            sous 24h est possible avec un supplément. Je vous tiens informé 
+                            de chaque étape du processus.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="faq-content">
+                        <h3 class="faq-question">Travaillez-vous avec des clients internationaux ?</h3>
+                        <p class="faq-answer">
+                            Absolument ! Je travaille régulièrement avec des clients en Europe, 
+                            Amérique du Nord et Afrique. Je m'adapte à votre fuseau horaire et 
+                            propose des communications en français, anglais ou espagnol. Les 
+                            paiements internationaux sont acceptés.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <div class="faq-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="faq-content">
+                        <h3 class="faq-question">Fournissez-vous un contrat pour les projets ?</h3>
+                        <p class="faq-answer">
+                            Oui, pour tous les projets, je fournis un contrat détaillant les 
+                            engagements de part et d'autre, les délais, les livrables et les 
+                            conditions de paiement. La protection de vos intérêts et la 
+                            transparence sont mes priorités.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (same as index.html) -->
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2 class="cta-title">Une question urgente ?</h2>
+                    <p class="cta-description">
+                        N'attendez pas pour me contacter directement. Je suis disponible 
+                        pour répondre à vos questions en temps réel.
+                    </p>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="tel:+33612345678" class="btn btn-primary btn-lg cta-btn">
+                        <i class="fas fa-phone-alt btn-icon"></i>
+                        Appeler maintenant
+                    </a>
+                    <a href="https://wa.me/33612345678" target="_blank" class="btn btn-outline btn-lg cta-btn">
+                        <i class="fab fa-whatsapp btn-icon"></i>
+                        WhatsApp
+                    </a>
+                    <a href="mailto:contact@sl03a.fr" class="btn btn-outline btn-lg cta-btn">
+                        <i class="fas fa-envelope btn-icon"></i>
+                        Email rapide
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
-        <!-- Copy footer from index.html -->
+        <div class="container">
+            <div class="footer-main">
+                <!-- Colonne 1 -->
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">◈</span>
+                        <span class="logo-text">Sl03<span class="logo-accent">A</span></span>
+                    </div>
+                    
+                    <p class="footer-description">
+                        Freelance spécialisé en développement web, montage vidéo 
+                        et design créatif. Des solutions sur mesure pour vos projets digitaux.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Colonne 2 -->
+                <div class="footer-col">
+                    <h4 class="footer-title">
+                        <i class="fas fa-concierge-bell title-icon"></i>
+                        Services
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="/services#development">Développement Web</a></li>
+                        <li><a href="/services#video">Montage Vidéo</a></li>
+                        <li><a href="/services#design">Design Graphique</a></li>
+                        <li><a href="/services#seo">Référencement SEO</a></li>
+                        <li><a href="/services#consulting">Conseil Digital</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne 3 -->
+                <div class="footer-col">
+                    <h4 class="footer-title">
+                        <i class="fas fa-compass title-icon"></i>
+                        Navigation
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/services">Services</a></li>
+                        <li><a href="/#portfolio">Réalisations</a></li>
+                        <li><a href="/#process">Processus</a></li>
+                        <li><a href="/contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne 4 -->
+                <div class="footer-col">
+                    <h4 class="footer-title">
+                        <i class="fas fa-envelope title-icon"></i>
+                        Contact
+                    </h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <a href="mailto:contact@sl03a.fr">contact@sl03a.fr</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone contact-icon"></i>
+                            <a href="tel:+33612345678">+33 6 12 34 56 78</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <span>Disponible en télétravail</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock contact-icon"></i>
+                            <span>Lun-Ven: 9h-19h</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa payment-icon" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard payment-icon" title="Mastercard"></i>
+                    <i class="fab fa-cc-paypal payment-icon" title="PayPal"></i>
+                    <i class="fab fa-cc-stripe payment-icon" title="Stripe"></i>
+                    <i class="fab fa-bitcoin payment-icon" title="Bitcoin"></i>
+                </div>
+                
+                <div class="footer-copyright">
+                    <p>&copy; 2024 Sl03A Services. Tous droits réservés.</p>
+                    <p class="footer-credits">
+                        <i class="fas fa-heart heart-icon"></i>
+                        Créé avec passion par Sl03A
+                    </p>
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="#" class="legal-link">Mentions légales</a>
+                    <a href="#" class="legal-link">Politique de confidentialité</a>
+                    <a href="#" class="legal-link">Conditions générales</a>
+                </div>
+            </div>
+        </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="modal-title">Message envoyé avec succès !</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <p class="modal-message">
+                    Merci pour votre message. Je vous répondrai dans les plus brefs délais 
+                    (généralement sous 24 heures).
+                </p>
+                <div class="modal-next">
+                    <p class="next-title">Prochaines étapes :</p>
+                    <ul class="next-steps">
+                        <li>
+                            <i class="fas fa-envelope step-icon"></i>
+                            <span>Vous recevrez une confirmation par email</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-comments step-icon"></i>
+                            <span>Je vous contacterai pour discuter de votre projet</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-file-contract step-icon"></i>
+                            <span>Vous recevrez un devis détaillé</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-block modal-btn" id="modalClose">
+                    <i class="fas fa-thumbs-up btn-icon"></i>
+                    Parfait, merci !
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>
@@ -261,32 +746,413 @@
                 'ecommerce': 'development',
                 'montage-basic': 'video',
                 'montage-pro': 'video',
-                'youtube-pack': 'video'
+                'youtube-pack': 'video',
+                'logo-design': 'design',
+                'charte-graphique': 'design',
+                'ui-ux': 'design'
             };
             
             if (serviceMap[serviceParam]) {
                 serviceSelect.value = serviceMap[serviceParam];
                 
                 // Add service info to message
-                if (serviceParam.includes('montage')) {
-                    messageTextarea.value = "Bonjour,\n\nJe suis intéressé par vos services de montage vidéo.\n\n";
-                } else if (serviceParam.includes('development') || serviceParam.includes('site') || serviceParam.includes('ecommerce')) {
-                    messageTextarea.value = "Bonjour,\n\nJe suis intéressé par vos services de développement web.\n\n";
-                } else if (serviceParam.includes('design')) {
-                    messageTextarea.value = "Bonjour,\n\nJe suis intéressé par vos services de design.\n\n";
+                const serviceNames = {
+                    'montage': 'montage vidéo',
+                    'developpement': 'développement web',
+                    'design': 'design graphique',
+                    'site-vitre': 'site vitrine',
+                    'ecommerce': 'site e-commerce',
+                    'montage-basic': 'montage vidéo (Pack Basic)',
+                    'montage-pro': 'montage vidéo (Pack Pro)',
+                    'youtube-pack': 'montage vidéo YouTube',
+                    'logo-design': 'création de logo',
+                    'charte-graphique': 'charte graphique',
+                    'ui-ux': 'design UI/UX'
+                };
+                
+                const serviceName = serviceNames[serviceParam] || 'ce service';
+                messageTextarea.value = `Bonjour,\n\nJe suis intéressé par ${serviceName}.\n\n`;
+            }
+        }
+        
+        // Character counter for textarea
+        const messageTextarea = document.getElementById('message');
+        const charCount = document.getElementById('charCount');
+        
+        if (messageTextarea && charCount) {
+            messageTextarea.addEventListener('input', function() {
+                const count = this.value.length;
+                charCount.textContent = count;
+                
+                if (count > 1000) {
+                    charCount.style.color = '#E53E3E';
+                } else if (count > 800) {
+                    charCount.style.color = '#D69E2E';
+                } else {
+                    charCount.style.color = '#38A169';
                 }
+            });
+        }
+        
+        // File upload functionality
+        const fileUploadArea = document.getElementById('fileUploadArea');
+        const fileInput = document.getElementById('fileUpload');
+        const fileList = document.getElementById('fileList');
+        
+        if (fileUploadArea && fileInput) {
+            // Click on area triggers file input
+            fileUploadArea.addEventListener('click', () => {
+                fileInput.click();
+            });
+            
+            // Drag and drop
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                fileUploadArea.addEventListener(eventName, preventDefaults, false);
+            });
+            
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            
+            ['dragenter', 'dragover'].forEach(eventName => {
+                fileUploadArea.addEventListener(eventName, highlight, false);
+            });
+            
+            ['dragleave', 'drop'].forEach(eventName => {
+                fileUploadArea.addEventListener(eventName, unhighlight, false);
+            });
+            
+            function highlight() {
+                fileUploadArea.classList.add('highlight');
+            }
+            
+            function unhighlight() {
+                fileUploadArea.classList.remove('highlight');
+            }
+            
+            // Handle dropped files
+            fileUploadArea.addEventListener('drop', handleDrop, false);
+            
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                handleFiles(files);
+            }
+            
+            // Handle selected files
+            fileInput.addEventListener('change', function() {
+                handleFiles(this.files);
+            });
+            
+            function handleFiles(files) {
+                [...files].forEach(file => {
+                    if (file.size > 10 * 1024 * 1024) {
+                        alert(`Le fichier "${file.name}" dépasse la taille maximale de 10MB.`);
+                        return;
+                    }
+                    
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <div class="file-info">
+                            <i class="fas fa-file file-icon"></i>
+                            <div class="file-details">
+                                <span class="file-name">${file.name}</span>
+                                <span class="file-size">${formatFileSize(file.size)}</span>
+                            </div>
+                        </div>
+                        <button type="button" class="file-remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    fileList.appendChild(fileItem);
+                    
+                    // Remove file
+                    fileItem.querySelector('.file-remove').addEventListener('click', () => {
+                        fileItem.remove();
+                    });
+                });
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
             }
         }
         
         // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would normally send the form data to a server
-            // For now, we'll just show a success message
-            alert('Merci ! Votre demande a été envoyée. Je vous répondrai dans les 24h.');
-            this.reset();
+        const contactForm = document.getElementById('contactForm');
+        const successModal = document.getElementById('successModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalCloseBtn = document.querySelector('.modal-close');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validation
+                const requiredFields = contactForm.querySelectorAll('[required]');
+                let isValid = true;
+                
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add('error');
+                        isValid = false;
+                        
+                        // Remove error class after 3 seconds
+                        setTimeout(() => {
+                            field.classList.remove('error');
+                        }, 3000);
+                    }
+                });
+                
+                if (!isValid) {
+                    showNotification('Veuillez remplir tous les champs obligatoires.', 'error');
+                    return;
+                }
+                
+                // Simulate form submission
+                const submitBtn = contactForm.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Show success modal
+                    successModal.classList.add('show');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    if (fileList) fileList.innerHTML = '';
+                    if (charCount) charCount.textContent = '0';
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 1500);
+            });
+        }
+        
+        // Modal close functionality
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                successModal.classList.remove('show');
+            });
+        }
+        
+        if (modalCloseBtn) {
+            modalCloseBtn.addEventListener('click', () => {
+                successModal.classList.remove('show');
+            });
+        }
+        
+        // Close modal on outside click
+        window.addEventListener('click', (e) => {
+            if (e.target === successModal) {
+                successModal.classList.remove('show');
+            }
         });
+        
+        // Notification function
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span>${message}</span>
+                </div>
+                <button class="notification-close"><i class="fas fa-times"></i></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+            
+            // Close button
+            notification.querySelector('.notification-close').addEventListener('click', () => {
+                notification.remove();
+            });
+        }
+        
+        // Add CSS for modal and notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            .modal {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 10000;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .modal.show {
+                display: flex;
+            }
+            
+            .modal-content {
+                background: white;
+                border-radius: 16px;
+                max-width: 500px;
+                width: 90%;
+                animation: modalSlideIn 0.3s ease;
+            }
+            
+            @keyframes modalSlideIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .modal-header {
+                padding: 24px;
+                border-bottom: 1px solid #E2E8F0;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+            
+            .modal-icon.success {
+                color: #38A169;
+                font-size: 32px;
+            }
+            
+            .modal-title {
+                flex: 1;
+                margin: 0;
+                font-size: 1.5rem;
+            }
+            
+            .modal-close {
+                background: none;
+                border: none;
+                font-size: 1.2rem;
+                color: #718096;
+                cursor: pointer;
+                padding: 4px;
+            }
+            
+            .modal-body {
+                padding: 24px;
+            }
+            
+            .modal-message {
+                margin-bottom: 24px;
+                color: #4A5568;
+            }
+            
+            .next-title {
+                font-weight: 600;
+                margin-bottom: 12px;
+                color: #2D3748;
+            }
+            
+            .next-steps {
+                list-style: none;
+                padding: 0;
+            }
+            
+            .next-steps li {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+                color: #4A5568;
+            }
+            
+            .step-icon {
+                color: #4299E1;
+            }
+            
+            .modal-footer {
+                padding: 0 24px 24px;
+            }
+            
+            .modal-btn {
+                margin: 0;
+            }
+            
+            .notification {
+                position: fixed;
+                top: 24px;
+                right: 24px;
+                background: #2D3748;
+                color: white;
+                padding: 16px 20px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                z-index: 10001;
+                animation: slideInRight 0.3s ease;
+            }
+            
+            .notification-error {
+                background: #E53E3E;
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .notification-close {
+                background: none;
+                border: none;
+                color: white;
+                cursor: pointer;
+                padding: 4px;
+            }
+            
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            .file-upload-area.highlight {
+                border-color: #4299E1;
+                background: #EBF8FF;
+            }
+            
+            .form-input.error,
+            .form-select.error,
+            .form-textarea.error {
+                border-color: #E53E3E;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
