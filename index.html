@@ -3,729 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sl03A | Services Créatifs & Développement Professionnel</title>
-    <meta name="description" content="Services de développement web, montage vidéo et design créatif. Solutions sur mesure pour vos projets digitaux.">
-    <meta name="keywords" content="développement web, montage vidéo, design, freelance, site web, vidéo YouTube">
-    <meta name="author" content="Sl03A">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://selllite-vb.onrender.com/">
-    <meta property="og:title" content="Sl03A | Services Créatifs & Développement">
-    <meta property="og:description" content="Services professionnels de développement web, montage vidéo et design créatif.">
-    <meta property="og:image" content="https://selllite-vb.onrender.com/og-image.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://selllite-vb.onrender.com/">
-    <meta property="twitter:title" content="Sl03A | Services Créatifs & Développement">
-    <meta property="twitter:description" content="Services professionnels de développement web, montage vidéo et design créatif.">
-    <meta property="twitter:image" content="https://selllite-vb.onrender.com/og-image.jpg">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Services & Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <a href="/" class="logo">
-                <span class="logo-icon">◈</span>
-                <span class="logo-text">Sl03<span class="logo-accent">A</span></span>
-            </a>
-            
-            <div class="nav-menu" id="navMenu">
-                <ul class="nav-list">
-                    <li><a href="/" class="nav-link active">
-                        <i class="fas fa-home nav-icon"></i>
-                        <span class="nav-text">Accueil</span>
-                    </a></li>
-                    <li><a href="/services" class="nav-link">
-                        <i class="fas fa-concierge-bell nav-icon"></i>
-                        <span class="nav-text">Services</span>
-                    </a></li>
-                    <li><a href="/#portfolio" class="nav-link">
-                        <i class="fas fa-briefcase nav-icon"></i>
-                        <span class="nav-text">Réalisations</span>
-                    </a></li>
-                    <li><a href="/#process" class="nav-link">
-                        <i class="fas fa-cogs nav-icon"></i>
-                        <span class="nav-text">Processus</span>
-                    </a></li>
-                    <li><a href="/contact" class="nav-link cta-link">
-                        <i class="fas fa-paper-plane nav-icon"></i>
-                        <span class="nav-text">Contact</span>
-                    </a></li>
-                </ul>
-                
-                <div class="nav-footer">
-                    <div class="social-mini">
-                        <a href="#" aria-label="GitHub" class="social-mini-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" aria-label="YouTube" class="social-mini-link">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" aria-label="Discord" class="social-mini-link">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <a href="#" aria-label="Instagram" class="social-mini-link">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                    <p class="copyright-mini">© 2024 Sl03A Services</p>
-                </div>
-            </div>
-            
-            <div class="nav-actions">
-                <a href="/contact" class="btn btn-primary btn-sm nav-cta">
-                    <i class="fas fa-paper-plane"></i>
-                    <span>Devis Gratuit</span>
-                </a>
-                <button class="menu-toggle" id="menuToggle" aria-label="Menu mobile">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+        <div class="nav-container">
+            <a href="#" class="logo">MonPortfolio</a>
+            <ul class="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <span class="hero-badge">
-                    <i class="fas fa-star badge-icon"></i>
-                    Freelance Professionnel
-                </span>
-                
-                <h1 class="hero-title">
-                    Donnez vie à 
-                    <span class="highlight-wrap">
-                        <span class="highlight">vos projets</span>
-                        <span class="highlight-underline"></span>
-                    </span>
-                    digitaux
-                </h1>
-                
-                <p class="hero-subtitle">
-                    Développement web sur mesure • Montage vidéo professionnel • 
-                    Solutions créatives pour particuliers & entreprises
-                </p>
-                
-                <div class="hero-cta">
-                    <a href="/services" class="btn btn-primary btn-lg hero-btn">
-                        <i class="fas fa-rocket btn-icon"></i>
-                        Découvrir mes services
-                    </a>
-                    <a href="/#portfolio" class="btn btn-outline btn-lg hero-btn">
-                        <i class="fas fa-eye btn-icon"></i>
-                        Voir mes réalisations
-                    </a>
-                </div>
-                
-                <div class="hero-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Projets livrés</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Satisfaction</div>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <div class="stat-content">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">Support</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="hero-visual">
-                <div class="visual-container">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                    
-                    <div class="service-icons">
-                        <div class="icon-item icon-1">
-                            <i class="fas fa-code"></i>
-                            <span class="icon-label">Dev Web</span>
-                        </div>
-                        <div class="icon-item icon-2">
-                            <i class="fas fa-video"></i>
-                            <span class="icon-label">Vidéo</span>
-                        </div>
-                        <div class="icon-item icon-3">
-                            <i class="fas fa-paint-brush"></i>
-                            <span class="icon-label">Design</span>
-                        </div>
-                        <div class="icon-item icon-4">
-                            <i class="fas fa-lightbulb"></i>
-                            <span class="icon-label">Conseil</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="scroll-indicator" aria-label="Défiler vers le bas">
-            <i class="fas fa-chevron-down"></i>
+    <!-- Section Hero -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Créateur Digital</h1>
+            <p>Design & Développement Web sur mesure</p>
+            <a href="#portfolio" class="btn">Voir mon travail</a>
         </div>
     </section>
 
-    <!-- Services Preview -->
-    <section class="section services-preview" id="services">
+    <!-- Section Services -->
+    <section id="services" class="services">
         <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Expertises</span>
-                <h2 class="section-title">
-                    Mes <span class="highlight">Services</span> Professionnels
-                </h2>
-                <p class="section-subtitle">
-                    Des solutions adaptées à chaque besoin, avec une approche personnalisée
-                </p>
-            </div>
+            <h2 class="section-title">Mes Services</h2>
+            <p class="section-subtitle">Des solutions adaptées à vos besoins</p>
             
             <div class="services-grid">
                 <!-- Service 1 -->
                 <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <span class="service-badge bestseller">
-                            <i class="fas fa-crown"></i>
-                            Best-seller
-                        </span>
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
-                    
-                    <h3 class="service-title">Montage Vidéo Professionnel</h3>
-                    
-                    <p class="service-description">
-                        Montage dynamique pour YouTube, TikTok et vidéos d'entreprise. 
-                        Effets, transitions, sound design et étalonnage couleur professionnel.
-                    </p>
-                    
+                    <h3>UI/UX Design</h3>
+                    <p>Création d'interfaces utilisateur intuitives et esthétiques pour une expérience optimale.</p>
                     <ul class="service-features">
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Montage Adobe Premiere Pro</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Miniatures optimisées</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Sound design & mixage</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Sous-titres inclus</span>
-                        </li>
+                        <li>Design d'interface</li>
+                        <li>Prototypage</li>
+                        <li>Tests utilisateur</li>
                     </ul>
-                    
-                    <div class="service-pricing">
-                        <div class="price-main">
-                            À partir de <span class="price-amount">50€</span>
-                        </div>
-                        <div class="price-note">par vidéo de 10 minutes</div>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="/contact?service=montage" class="btn btn-block service-btn">
-                            <i class="fas fa-shopping-cart btn-icon"></i>
-                            Commander ce service
-                        </a>
-                        <a href="/services#video" class="service-link">
-                            Voir les détails <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
                 </div>
-                
-                <!-- Service 2 (Featured) -->
-                <div class="service-card featured">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <span class="service-badge popular">
-                            <i class="fas fa-fire"></i>
-                            Le plus demandé
-                        </span>
+
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
                     </div>
-                    
-                    <h3 class="service-title">Développement Web</h3>
-                    
-                    <p class="service-description">
-                        Création de sites vitrines, e-commerce et applications web. 
-                        Technologies modernes avec performance et SEO optimisés.
-                    </p>
-                    
+                    <h3>Développement Web</h3>
+                    <p>Sites web responsives et applications modernes avec les dernières technologies.</p>
                     <ul class="service-features">
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Site responsive mobile-first</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Optimisation SEO intégrée</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Hébergement & maintenance</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Formation incluse</span>
-                        </li>
+                        <li>HTML5/CSS3</li>
+                        <li>JavaScript</li>
+                        <li>React/Vue.js</li>
                     </ul>
-                    
-                    <div class="service-pricing">
-                        <div class="price-main">
-                            À partir de <span class="price-amount">300€</span>
-                        </div>
-                        <div class="price-note">pour un site vitrine</div>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="/contact?service=developpement" class="btn btn-primary btn-block service-btn">
-                            <i class="fas fa-shopping-cart btn-icon"></i>
-                            Commander ce service
-                        </a>
-                        <a href="/services#development" class="service-link">
-                            Voir les détails <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
                 </div>
-                
+
                 <!-- Service 3 -->
                 <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <span class="service-badge creative">
-                            <i class="fas fa-magic"></i>
-                            Créatif
-                        </span>
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    
-                    <h3 class="service-title">Design & Identité Visuelle</h3>
-                    
-                    <p class="service-description">
-                        Logo, charte graphique, maquettes UI/UX et designs sur mesure. 
-                        Identité visuelle qui marque les esprits.
-                    </p>
-                    
+                    <h3>Applications Mobile</h3>
+                    <p>Applications iOS et Android natives ou hybrides pour toucher votre audience mobile.</p>
                     <ul class="service-features">
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Logo unique & mémorable</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Charte graphique complète</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Maquettes Figma/Adobe XD</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-check feature-check"></i>
-                            <span>Formats print & web</span>
-                        </li>
+                        <li>React Native</li>
+                        <li>UI Mobile</li>
+                        <li>Publication stores</li>
                     </ul>
-                    
-                    <div class="service-pricing">
-                        <div class="price-main">
-                            À partir de <span class="price-amount">150€</span>
-                        </div>
-                        <div class="price-note">logo + charte graphique</div>
-                    </div>
-                    
-                    <div class="service-actions">
-                        <a href="/contact?service=design" class="btn btn-block service-btn">
-                            <i class="fas fa-shopping-cart btn-icon"></i>
-                            Commander ce service
-                        </a>
-                        <a href="/services#design" class="service-link">
-                            Voir les détails <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
                 </div>
-            </div>
-            
-            <div class="section-footer">
-                <a href="/services" class="btn btn-outline btn-view-all">
-                    <i class="fas fa-list btn-icon"></i>
-                    Voir tous mes services (8+)
-                </a>
+
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce</h3>
+                    <p>Boutiques en ligne performantes avec solutions de paiement sécurisées.</p>
+                    <ul class="service-features">
+                        <li>WooCommerce</li>
+                        <li>Shopify</li>
+                        <li>Paiements en ligne</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="section portfolio-section" id="portfolio">
+    <!-- Section Portfolio -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Projets</span>
-                <h2 class="section-title">
-                    Mes <span class="highlight">Réalisations</span>
-                </h2>
-                <p class="section-subtitle">
-                    Des projets concrets qui démontrent mon expertise
-                </p>
-            </div>
+            <h2 class="section-title">Mon Portfolio</h2>
+            <p class="section-subtitle">Une sélection de mes projets récents</p>
             
+            <!-- Filtres -->
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="design">Design</button>
+            </div>
+
+            <!-- Galerie Portfolio -->
             <div class="portfolio-grid">
                 <!-- Projet 1 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <div class="image-overlay">
-                            <div class="portfolio-category">
-                                <i class="fas fa-code category-icon"></i>
-                                Développement Web
-                            </div>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">HTML/CSS</span>
-                                <span class="tech-tag">JavaScript</span>
-                                <span class="tech-tag">PHP</span>
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Boutique Moderne</h3>
+                                <p>Site e-commerce avec React</p>
+                                <a href="#" class="view-btn">Voir le projet</a>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Site E-commerce "TechStore"</h3>
-                        <p class="portfolio-description">
-                            Plateforme de vente en ligne complète avec panier, 
-                            paiement sécurisé et dashboard administrateur.
-                        </p>
-                        
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <i class="fas fa-calendar-alt stat-icon"></i>
-                                <span class="stat-value">3 semaines</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-chart-line stat-icon"></i>
-                                <span class="stat-value">+40% ventes</span>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="portfolio-link">
-                            <span>Voir le projet</span>
-                            <i class="fas fa-arrow-right link-icon"></i>
-                        </a>
                     </div>
                 </div>
-                
+
                 <!-- Projet 2 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <div class="image-overlay">
-                            <div class="portfolio-category">
-                                <i class="fas fa-video category-icon"></i>
-                                Montage Vidéo
-                            </div>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">Premiere Pro</span>
-                                <span class="tech-tag">After Effects</span>
-                                <span class="tech-tag">Photoshop</span>
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI Design">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Application Fintech</h3>
+                                <p>UI/UX Design complet</p>
+                                <a href="#" class="view-btn">Voir le projet</a>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Série YouTube "Coding"</h3>
-                        <p class="portfolio-description">
-                            Montage de 20 épisodes avec effets, animations, 
-                            sous-titres et habillage personnalisé.
-                        </p>
-                        
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <i class="fas fa-eye stat-icon"></i>
-                                <span class="stat-value">50K vues</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-thumbs-up stat-icon"></i>
-                                <span class="stat-value">95% likes</span>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="portfolio-link">
-                            <span>Voir la série</span>
-                            <i class="fas fa-arrow-right link-icon"></i>
-                        </a>
                     </div>
                 </div>
-                
+
                 <!-- Projet 3 -->
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <div class="image-overlay">
-                            <div class="portfolio-category">
-                                <i class="fas fa-paint-brush category-icon"></i>
-                                Design Graphique
-                            </div>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">Illustrator</span>
-                                <span class="tech-tag">InDesign</span>
-                                <span class="tech-tag">Photoshop</span>
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>App Fitness</h3>
+                                <p>Application React Native</p>
+                                <a href="#" class="view-btn">Voir le projet</a>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="portfolio-content">
-                        <h3 class="portfolio-title">Identité "Café Artisan"</h3>
-                        <p class="portfolio-description">
-                            Création complète de logo, carte de visite, 
-                            menu et packaging pour un café parisien.
-                        </p>
-                        
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <i class="fas fa-award stat-icon"></i>
-                                <span class="stat-value">Design primé</span>
-                            </div>
-                            <div class="stat">
-                                <i class="fas fa-users stat-icon"></i>
-                                <span class="stat-value">Client ravi</span>
-                            </div>
-                        </div>
-                        
-                        <a href="#" class="portfolio-link">
-                            <span>Voir les designs</span>
-                            <i class="fas fa-arrow-right link-icon"></i>
-                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Process Section -->
-    <section class="section process-section" id="process">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Méthodologie</span>
-                <h2 class="section-title">
-                    Mon <span class="highlight">Processus</span> de Travail
-                </h2>
-                <p class="section-subtitle">
-                    4 étapes simples pour un projet réussi
-                </p>
-            </div>
-            
-            <div class="process-steps">
-                <!-- Étape 1 -->
-                <div class="process-step">
-                    <div class="step-visual">
-                        <div class="step-number">01</div>
-                        <div class="step-icon">
-                            <i class="fas fa-comments"></i>
+                <!-- Projet 4 -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Dashboard Analytics</h3>
+                                <p>Vue.js + Chart.js</p>
+                                <a href="#" class="view-btn">Voir le projet</a>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="step-content">
-                        <h3 class="step-title">Consultation</h3>
-                        <p class="step-description">
-                            Nous échangeons sur votre projet, vos besoins 
-                            et vos attentes. Définition claire des objectifs.
-                        </p>
-                        <ul class="step-details">
-                            <li>Analyse des besoins</li>
-                            <li>Brief créatif</li>
-                            <li>Objectifs SMART</li>
-                        </ul>
-                    </div>
                 </div>
-                
-                <!-- Étape 2 -->
-                <div class="process-step">
-                    <div class="step-visual">
-                        <div class="step-number">02</div>
-                        <div class="step-icon">
-                            <i class="fas fa-file-contract"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="step-content">
-                        <h3 class="step-title">Devis & Planification</h3>
-                        <p class="step-description">
-                            Je vous envoie un devis détaillé avec délais, 
-                            échéances et livrables. Validation du planning.
-                        </p>
-                        <ul class="step-details">
-                            <li>Devis transparent</li>
-                            <li>Planning détaillé</li>
-                            <li>Validation client</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Étape 3 -->
-                <div class="process-step">
-                    <div class="step-visual">
-                        <div class="step-number">03</div>
-                        <div class="step-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="step-content">
-                        <h3 class="step-title">Réalisation</h3>
-                        <p class="step-description">
-                            Je travaille sur votre projet avec des points 
-                            réguliers pour validation des avancées.
-                        </p>
-                        <ul class="step-details">
-                            <li>Développement/design</li>
-                            <li>Points réguliers</li>
-                            <li>Feedback continu</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Étape 4 -->
-                <div class="process-step">
-                    <div class="step-visual">
-                        <div class="step-number">04</div>
-                        <div class="step-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                    </div>
-                    
-                    <div class="step-content">
-                        <h3 class="step-title">Livraison & Support</h3>
-                        <p class="step-description">
-                            Livraison du projet final et support 
-                            post-livraison pour garantir votre satisfaction.
-                        </p>
-                        <ul class="step-details">
-                            <li>Livraison complète</li>
-                            <li>Formation</li>
-                            <li>Support 30 jours</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Témoignages</span>
-                <h2 class="section-title">
-                    Ce que disent <span class="highlight">mes clients</span>
-                </h2>
-                <p class="section-subtitle">
-                    Ils m'ont fait confiance pour leurs projets
-                </p>
-            </div>
-            
-            <div class="testimonials-grid">
-                <!-- Témoignage 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                    <div class="testimonial-content">
-                        <p>
-                            "Sl03A a créé mon site de A à Z. Professionnel, 
-                            réactif et d'une grande qualité. Je recommande à 100% !"
-                        </p>
-                    </div>
-                    
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4 class="author-name">Marie Dubois</h4>
-                            <p class="author-title">Fondatrice de "Ma Boutique Bio"</p>
+                <!-- Projet 5 -->
+                <div class="portfolio-item" data-category="design">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Branding">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>Identité Visuelle</h3>
+                                <p>Logo & Branding</p>
+                                <a href="#" class="view-btn">Voir le projet</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Témoignage 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                    <div class="testimonial-content">
-                        <p>
-                            "Mes vidéos YouTube ont gagné en qualité grâce 
-                            à son montage pro. Les délais sont toujours respectés."
-                        </p>
-                    </div>
-                    
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4 class="author-name">Thomas Leroy</h4>
-                            <p class="author-title">Créateur de contenu tech</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Témoignage 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                    <div class="testimonial-content">
-                        <p>
-                            "Un freelance sérieux qui comprend rapidement 
-                            les besoins. Mon nouveau logo est parfait !"
-                        </p>
-                    </div>
-                    
-                    <div class="testimonial-author">
-                        <div class="author-avatar">
-                            <i class="fas fa-user-circle"></i>
-                        </div>
-                        <div class="author-info">
-                            <h4 class="author-name">Sophie Martin</h4>
-                            <p class="author-title">Artisan pâtissier</p>
+
+                <!-- Projet 6 -->
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-img">
+                        <img src="https://images.unsplash.com/photo-1546054451-aa3d3aee2a6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food App">
+                        <div class="portfolio-overlay">
+                            <div class="overlay-content">
+                                <h3>App Restaurant</h3>
+                                <p>Commande en ligne</p>
+                                <a href="#" class="view-btn">Voir le projet</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -733,49 +202,26 @@
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="cta-final">
+    <!-- Section Contact -->
+    <section id="contact" class="contact">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Prêt à concrétiser votre projet ?</h2>
-                
-                <p class="cta-text">
-                    Contactez-moi pour un devis gratuit et personnalisé. 
-                    Réponse garantie sous 24h.
-                </p>
-                
-                <div class="cta-buttons">
-                    <a href="/contact" class="btn btn-primary btn-xl cta-btn">
-                        <i class="fas fa-paper-plane btn-icon"></i>
-                        Demander un devis
-                    </a>
-                    
-                    <a href="tel:+33612345678" class="btn btn-outline-light btn-xl cta-btn">
-                        <i class="fas fa-phone btn-icon"></i>
-                        06 12 34 56 78
-                    </a>
-                </div>
-                
-                <div class="cta-features">
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                        <span class="feature-text">Démarrage rapide</span>
+            <h2 class="section-title">Travaillons ensemble</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>contact@monportfolio.com</p>
                     </div>
-                    
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <span class="feature-text">Paiement sécurisé</span>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Téléphone</h3>
+                        <p>+33 1 23 45 67 89</p>
                     </div>
-                    
-                    <div class="feature">
-                        <div class="feature-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <span class="feature-text">Support 7j/7</span>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Localisation</h3>
+                        <p>Paris, France</p>
                     </div>
                 </div>
             </div>
@@ -785,124 +231,19 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-main">
-                <!-- Colonne 1 -->
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <span class="logo-icon">◈</span>
-                        <span class="logo-text">Sl03<span class="logo-accent">A</span></span>
-                    </div>
-                    
-                    <p class="footer-description">
-                        Freelance spécialisé en développement web, montage vidéo 
-                        et design créatif. Des solutions sur mesure pour vos projets digitaux.
-                    </p>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Colonne 2 -->
-                <div class="footer-col">
-                    <h4 class="footer-title">
-                        <i class="fas fa-concierge-bell title-icon"></i>
-                        Services
-                    </h4>
-                    <ul class="footer-links">
-                        <li><a href="/services#development">Développement Web</a></li>
-                        <li><a href="/services#video">Montage Vidéo</a></li>
-                        <li><a href="/services#design">Design Graphique</a></li>
-                        <li><a href="/services#seo">Référencement SEO</a></li>
-                        <li><a href="/services#consulting">Conseil Digital</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Colonne 3 -->
-                <div class="footer-col">
-                    <h4 class="footer-title">
-                        <i class="fas fa-compass title-icon"></i>
-                        Navigation
-                    </h4>
-                    <ul class="footer-links">
-                        <li><a href="/">Accueil</a></li>
-                        <li><a href="/services">Services</a></li>
-                        <li><a href="/#portfolio">Réalisations</a></li>
-                        <li><a href="/#process">Processus</a></li>
-                        <li><a href="/contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Colonne 4 -->
-                <div class="footer-col">
-                    <h4 class="footer-title">
-                        <i class="fas fa-envelope title-icon"></i>
-                        Contact
-                    </h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-envelope contact-icon"></i>
-                            <a href="mailto:contact@sl03a.fr">contact@sl03a.fr</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone contact-icon"></i>
-                            <a href="tel:+33612345678">+33 6 12 34 56 78</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt contact-icon"></i>
-                            <span>Disponible en télétravail</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock contact-icon"></i>
-                            <span>Lun-Ven: 9h-19h</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="payment-methods">
-                    <i class="fab fa-cc-visa payment-icon" title="Visa"></i>
-                    <i class="fab fa-cc-mastercard payment-icon" title="Mastercard"></i>
-                    <i class="fab fa-cc-paypal payment-icon" title="PayPal"></i>
-                    <i class="fab fa-cc-stripe payment-icon" title="Stripe"></i>
-                    <i class="fab fa-bitcoin payment-icon" title="Bitcoin"></i>
-                </div>
-                
-                <div class="footer-copyright">
-                    <p>&copy; 2024 Sl03A Services. Tous droits réservés.</p>
-                    <p class="footer-credits">
-                        <i class="fas fa-heart heart-icon"></i>
-                        Créé avec passion par Sl03A
-                    </p>
-                </div>
-                
-                <div class="footer-legal">
-                    <a href="#" class="legal-link">Mentions légales</a>
-                    <a href="#" class="legal-link">Politique de confidentialité</a>
-                    <a href="#" class="legal-link">Conditions générales</a>
-                </div>
+            <p>&copy; 2024 MonPortfolio. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
-        <i class="fas fa-chevron-up"></i>
+    <!-- Bouton Retour en haut -->
+    <button class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="script.js"></script>
