@@ -1,486 +1,503 @@
-// script.js - Fonctionnalités interactives pour le site Sl03A
-
+// =============================================
+// CONFIGURATION INITIALE
+// =============================================
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Portfolio chargé avec succès !');
     
-    // ============================================
-    // 1. MENU MOBILE
-    // ============================================
+    // =============================================
+    // MENU MOBILE ET NAVIGATION
+    // =============================================
+    const menuBtn = document.querySelector('.menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const navbar = document.querySelector('.navbar');
     
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
+    // Toggle menu mobile
+    if (menuBtn) {
+        menuBtn.addEventListener('click', function() {
             navMenu.classList.toggle('active');
-            menuToggle.innerHTML = navMenu.classList.contains('active') 
+            this.innerHTML = navMenu.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
+            
+            // Animation du bouton
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
         });
-        
-        // Fermer le menu en cliquant sur un lien
-        document.querySelectorAll('.nav-list a').forEach(link => {
-            link.addEventListener('click', () => {
+    }
+    
+    // Fermer le menu au clic sur un lien
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Fermer le menu mobile s'il est ouvert
+            if (navMenu.classList.contains('active')) {
                 navMenu.classList.remove('active');
-                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                if (menuBtn) {
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+            
+            // Animation douce pour les ancres
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+    
+    // =============================================
+    // FILTRES PORTFOLIO
+    // =============================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Retirer la classe active de tous les boutons
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.style.transform = 'scale(1)';
+                });
+                
+                // Ajouter la classe active au bouton cliqué
+                this.classList.add('active');
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+                
+                // Récupérer la catégorie à filtrer
+                const filter = this.getAttribute('data-filter');
+                
+                // Filtrer les éléments du portfolio
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filter === 'all' || filter === category) {
+                        // Afficher l'élément avec animation
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        }, 50);
+                    } else {
+                        // Masquer l'élément avec animation
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Animation de réorganisation de la grille
+                setTimeout(() => {
+                    document.querySelector('.portfolio-grid').style.transform = 'translateY(5px)';
+                    setTimeout(() => {
+                        document.querySelector('.portfolio-grid').style.transform = 'translateY(0)';
+                    }, 100);
+                }, 50);
             });
         });
     }
     
-    // ============================================
-    // 2. BACK TO TOP BUTTON
-    // ============================================
+    // =============================================
+    // BOUTON RETOUR EN HAUT
+    // =============================================
+    const backToTopBtn = document.querySelector('.back-to-top');
     
-    const backToTop = document.getElementById('backToTop');
-    
-    if (backToTop) {
+    if (backToTopBtn) {
+        // Afficher/masquer le bouton au scroll
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
+            if (window.pageYOffset > 500) {
+                backToTopBtn.classList.add('visible');
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.visibility = 'visible';
+                backToTopBtn.style.transform = 'translateY(0)';
             } else {
-                backToTop.classList.remove('visible');
+                backToTopBtn.classList.remove('visible');
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.visibility = 'hidden';
+                backToTopBtn.style.transform = 'translateY(10px)';
             }
         });
         
-        backToTop.addEventListener('click', function() {
+        // Fonction de retour en haut
+        backToTopBtn.addEventListener('click', function() {
+            // Animation du bouton
+            this.style.transform = 'scale(0.9)';
+            
+            // Scroll doux vers le haut
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
+            
+            // Réinitialiser l'animation
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 300);
         });
     }
     
-    // ============================================
-    // 3. ANIMATION AU SCROLL
-    // ============================================
-    
+    // =============================================
+    // ANIMATIONS AU SCROLL
+    // =============================================
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card, .process-step');
+        const elements = document.querySelectorAll(
+            '.service-card, .portfolio-item, .contact-item, .section-title, .section-subtitle'
+        );
         
         elements.forEach(element => {
             const elementPosition = element.getBoundingClientRect().top;
             const screenPosition = window.innerHeight / 1.2;
             
             if (elementPosition < screenPosition) {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
+                if (!element.classList.contains('animated')) {
+                    element.classList.add('animated');
+                    element.style.animation = 'fadeInUp 0.8s ease forwards';
+                    
+                    // Délai progressif pour les éléments en grille
+                    if (element.classList.contains('service-card') || 
+                        element.classList.contains('portfolio-item')) {
+                        const index = Array.from(elements).indexOf(element);
+                        element.style.animationDelay = `${(index % 4) * 0.1}s`;
+                    }
+                }
             }
         });
     };
     
-    // Initialiser l'opacité et la position
-    document.querySelectorAll('.service-card, .portfolio-card, .testimonial-card, .process-step').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    });
-    
+    // Initialiser les animations
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Appel initial
+    animateOnScroll(); // Exécuter une fois au chargement
     
-    // ============================================
-    // 4. FORMULAIRE DE CONTACT
-    // ============================================
-    
-    const contactForm = document.getElementById('contactForm');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validation basique
-            const requiredFields = contactForm.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#ef476f';
-                    isValid = false;
-                    
-                    // Réinitialiser la couleur après 2 secondes
-                    setTimeout(() => {
-                        field.style.borderColor = '';
-                    }, 2000);
-                }
-            });
-            
-            if (!isValid) {
-                showNotification('Veuillez remplir tous les champs obligatoires.', 'error');
-                return;
-            }
-            
-            // Simuler l'envoi
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-            submitBtn.disabled = true;
-            
-            // Simulation d'un délai d'envoi
-            setTimeout(() => {
-                showNotification('Votre message a été envoyé avec succès ! Je vous répondrai dans les 24h.', 'success');
-                contactForm.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                
-                // Scroll vers le haut du formulaire
-                contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 1500);
-        });
-        
-        // Réinitialiser les bordures lors de la saisie
-        contactForm.querySelectorAll('input, textarea, select').forEach(input => {
-            input.addEventListener('input', function() {
-                this.style.borderColor = '';
-            });
-        });
-    }
-    
-    // ============================================
-    // 5. NOTIFICATIONS
-    // ============================================
-    
-    function showNotification(message, type = 'info') {
-        // Créer la notification
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'}"></i>
-                <span>${message}</span>
-            </div>
-            <button class="notification-close"><i class="fas fa-times"></i></button>
-        `;
-        
-        // Styles pour la notification
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${type === 'success' ? '#4cc9f0' : type === 'error' ? '#ef476f' : '#4361ee'};
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            max-width: 400px;
-            animation: slideIn 0.3s ease;
-        `;
-        
-        // Ajouter les styles d'animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100%); opacity: 0; }
-            }
-            .notification-content {
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                flex: 1;
-            }
-            .notification-close {
-                background: none;
-                border: none;
-                color: white;
-                cursor: pointer;
-                font-size: 1rem;
-                padding: 0.25rem;
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Ajouter au body
-        document.body.appendChild(notification);
-        
-        // Fermer la notification
-        const closeBtn = notification.querySelector('.notification-close');
-        closeBtn.addEventListener('click', function() {
-            notification.style.animation = 'slideOut 0.3s ease';
-            setTimeout(() => {
-                notification.remove();
-            }, 300);
-        });
-        
-        // Auto-fermer après 5 secondes
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.remove();
-                    }
-                }, 300);
-            }
-        }, 5000);
-    }
-    
-    // ============================================
-    // 6. COMPTEUR ANIMÉ
-    // ============================================
-    
-    function animateCounter(element, target, duration = 2000) {
-        let start = 0;
-        const increment = target / (duration / 16); // 60fps
-        const timer = setInterval(() => {
-            start += increment;
-            if (start >= target) {
-                element.textContent = target + '+';
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(start) + '+';
-            }
-        }, 16);
-    }
-    
-    // Démarrer les compteurs lorsqu'ils sont visibles
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target.querySelector('.stat-number');
-                if (counter && !counter.classList.contains('animated')) {
-                    const target = parseInt(counter.textContent);
-                    animateCounter(counter, target);
-                    counter.classList.add('animated');
-                }
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    // Observer les sections avec des statistiques
-    document.querySelectorAll('.hero-stats').forEach(stats => {
-        observer.observe(stats);
-    });
-    
-    // ============================================
-    // 7. PRELOADER SIMPLE
-    // ============================================
-    
-    window.addEventListener('load', function() {
-        const preloader = document.createElement('div');
-        preloader.id = 'preloader';
-        preloader.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #4361ee, #7209b7);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease;
-        `;
-        
-        preloader.innerHTML = `
-            <div class="spinner">
-                <div style="
-                    width: 60px;
-                    height: 60px;
-                    border: 5px solid rgba(255,255,255,0.3);
-                    border-top-color: white;
-                    border-radius: 50%;
-                    animation: spin 1s linear infinite;
-                "></div>
-                <h2 style="color: white; margin-top: 20px; font-family: Montserrat, sans-serif;">Sl03A Services</h2>
-            </div>
-        `;
-        
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes spin {
-                to { transform: rotate(360deg); }
-            }
-        `;
-        
-        document.head.appendChild(style);
-        document.body.appendChild(preloader);
-        
-        // Masquer le preloader
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                if (preloader.parentNode) {
-                    preloader.remove();
-                }
-            }, 500);
-        }, 1000);
-    });
-    
-    // ============================================
-    // 8. ACTIVE NAV LINK ON SCROLL
-    // ============================================
-    
-    const sections = document.querySelectorAll('section[id]');
-    
-    function activateNavLinkOnScroll() {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelector(`.nav-list a[href*="${sectionId}"]`)?.classList.add('active');
-            } else {
-                document.querySelector(`.nav-list a[href*="${sectionId}"]`)?.classList.remove('active');
-            }
-        });
-    }
-    
-    window.addEventListener('scroll', activateNavLinkOnScroll);
-    
-    // ============================================
-    // 9. COPYRIGHT YEAR AUTO-UPDATE
-    // ============================================
-    
-    const yearSpans = document.querySelectorAll('.footer-copyright p');
-    const currentYear = new Date().getFullYear();
-    
-    yearSpans.forEach(span => {
-        if (span.textContent.includes('2024')) {
-            span.textContent = span.textContent.replace('2024', currentYear);
+    // =============================================
+    // NAVBAR DYNAMIQUE AU SCROLL
+    // =============================================
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            navbar.style.padding = '0.5rem 0';
+        } else {
+            navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+            navbar.style.backdropFilter = 'blur(10px)';
+            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            navbar.style.padding = '1rem 0';
         }
     });
     
-    // ============================================
-    // 10. SERVICE CARDS HOVER EFFECT
-    // ============================================
-    
-    const serviceCards = document.querySelectorAll('.service-card, .package-card');
-    
+    // =============================================
+    // HOVER EFFECTS AVANCÉS
+    // =============================================
+    // Effet sur les cartes de service
+    const serviceCards = document.querySelectorAll('.service-card');
     serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
-            this.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
+            this.style.boxShadow = '0 20px 40px rgba(37, 99, 235, 0.2)';
+            
+            // Animation de l'icône
+            const icon = this.querySelector('.service-icon');
+            if (icon) {
+                icon.style.transform = 'rotate(10deg) scale(1.1)';
+                icon.style.transition = 'transform 0.3s ease';
+            }
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '';
+            this.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.08)';
+            
+            // Réinitialiser l'icône
+            const icon = this.querySelector('.service-icon');
+            if (icon) {
+                icon.style.transform = 'rotate(0) scale(1)';
+            }
         });
     });
+    
+    // Effet sur les projets portfolio
+    portfolioItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const overlay = this.querySelector('.portfolio-overlay');
+            const img = this.querySelector('img');
+            
+            if (overlay) overlay.style.opacity = '1';
+            if (img) img.style.transform = 'scale(1.1)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            const overlay = this.querySelector('.portfolio-overlay');
+            const img = this.querySelector('img');
+            
+            if (overlay) overlay.style.opacity = '0';
+            if (img) img.style.transform = 'scale(1)';
+        });
+    });
+    
+    // =============================================
+    // ANIMATION DES CHIFFRES (POUR EXTENSION FUTURE)
+    // =============================================
+    const animateNumbers = function() {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const increment = target / 100;
+            let current = 0;
+            
+            const updateCounter = () => {
+                if (current < target) {
+                    current += increment;
+                    counter.innerText = Math.ceil(current);
+                    setTimeout(updateCounter, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            updateCounter();
+        });
+    };
+    
+    // Observer pour l'animation des chiffres (si ajoutés plus tard)
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(statsSection);
+    }
+    
+    // =============================================
+    // PRELOADER SIMPLE (OPTIONNEL)
+    // =============================================
+    window.addEventListener('load', function() {
+        // Simuler un temps de chargement
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+            
+            // Supprimer le preloader si présent
+            const preloader = document.querySelector('.preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                setTimeout(() => {
+                    preloader.remove();
+                }, 500);
+            }
+        }, 500);
+    });
+    
+    // =============================================
+    // GESTION DU RESIZE
+    // =============================================
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        // Désactiver les transitions pendant le resize
+        document.body.classList.add('resize-active');
+        
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            document.body.classList.remove('resize-active');
+            
+            // Réinitialiser le menu mobile si on passe en desktop
+            if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                if (menuBtn) {
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        }, 250);
+    });
+    
+    // =============================================
+    // EFFETS SONORES (OPTIONNEL - COMMENTÉ)
+    // =============================================
+    /*
+    const hoverSound = new Audio('hover-sound.mp3');
+    const clickSound = new Audio('click-sound.mp3');
+    
+    // Configurer les sons
+    hoverSound.volume = 0.1;
+    clickSound.volume = 0.2;
+    
+    // Ajouter les sons aux interactions
+    document.querySelectorAll('button, a, .service-card, .portfolio-item').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            hoverSound.currentTime = 0;
+            hoverSound.play().catch(e => console.log("Audio non chargé"));
+        });
+        
+        el.addEventListener('click', () => {
+            clickSound.currentTime = 0;
+            clickSound.play().catch(e => console.log("Audio non chargé"));
+        });
+    });
+    */
+    
+    // =============================================
+    // THEME SWITCHER (POUR EXTENSION FUTURE)
+    // =============================================
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.innerHTML = document.body.classList.contains('dark-mode')
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+            
+            // Sauvegarder la préférence
+            localStorage.setItem('theme', 
+                document.body.classList.contains('dark-mode') ? 'dark' : 'light'
+            );
+        });
+        
+        // Charger le thème sauvegardé
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            if (themeToggle) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+    }
+    
+    // =============================================
+    // CONSOLE LOG STYLÉ (POUR LE FUN)
+    // =============================================
+    console.log('%c✨ Portfolio Prêt! ✨', 
+        'color: #2563eb; font-size: 18px; font-weight: bold;');
+    console.log('%cDéveloppé avec passion ❤️', 
+        'color: #7c3aed; font-size: 14px;');
 });
 
-// ============================================
-// FONCTIONS GLOBALES UTILITAIRES
-// ============================================
+// =============================================
+// FONCTIONS UTILITAIRES
+// =============================================
 
-// Debounce function pour optimiser les événements scroll/resize
-function debounce(func, wait = 20, immediate = true) {
-    let timeout;
-    return function() {
-        const context = this, args = arguments;
-        const later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        const callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
+// Fonction pour copier l'email (extension future)
+function copyEmail() {
+    const email = 'contact@monportfolio.com';
+    navigator.clipboard.writeText(email).then(() => {
+        alert('Email copié dans le presse-papier !');
+    });
 }
 
-// Formater les prix
-function formatPrice(price, currency = '€') {
-    return new Intl.NumberFormat('fr-FR', {
-        style: 'currency',
-        currency: 'EUR'
-    }).format(price);
-}
-
-// Détection du thème système (dark/light mode)
-function detectColorScheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+// Fonction pour partager le portfolio
+function sharePortfolio() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Mon Portfolio',
+            text: 'Découvrez mon portfolio de création web',
+            url: window.location.href
+        });
     } else {
-        document.documentElement.setAttribute('data-theme', 'light');
+        // Fallback pour les navigateurs qui ne supportent pas l'API Share
+        alert('Partagez ce lien : ' + window.location.href);
     }
 }
 
-// Initialiser la détection de thème
-detectColorScheme();
-
-// Écouter les changements de thème
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectColorScheme);
-
-// Initialiser les tooltips
-function initTooltips() {
-    const tooltips = document.querySelectorAll('[title]');
+// Fonction pour afficher une notification
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()">&times;</button>
+    `;
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        z-index: 9999;
+        animation: slideIn 0.3s ease;
+    `;
     
-    tooltips.forEach(el => {
-        el.addEventListener('mouseenter', function(e) {
-            const tooltip = document.createElement('div');
-            tooltip.className = 'tooltip';
-            tooltip.textContent = this.getAttribute('title');
-            
-            document.body.appendChild(tooltip);
-            
-            const rect = this.getBoundingClientRect();
-            tooltip.style.cssText = `
-                position: fixed;
-                top: ${rect.top - tooltip.offsetHeight - 10}px;
-                left: ${rect.left + rect.width / 2 - tooltip.offsetWidth / 2}px;
-                background: var(--dark);
-                color: white;
-                padding: 0.5rem 1rem;
-                border-radius: 6px;
-                font-size: 0.9rem;
-                z-index: 9999;
-                pointer-events: none;
-            `;
-            
-            this._tooltip = tooltip;
-        });
-        
-        el.addEventListener('mouseleave', function() {
-            if (this._tooltip) {
-                this._tooltip.remove();
-                this._tooltip = null;
-            }
-        });
-    });
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
 }
 
-// Lazy loading des images
-function initLazyLoading() {
-    const lazyImages = document.querySelectorAll('img[data-src]');
+// =============================================
+// AJOUT DE STYLES DYNAMIQUES POUR LES NOTIFICATIONS
+// =============================================
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
     
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    });
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
     
-    lazyImages.forEach(img => imageObserver.observe(img));
-}
-
-// Ajouter la classe "loaded" au body quand tout est chargé
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
-    initTooltips();
-    initLazyLoading();
-});
-
-// Exporter les fonctions globales si besoin
-window.Sl03A = {
-    showNotification,
-    formatPrice,
-    debounce
-};
+    .notification button {
+        background: transparent;
+        border: none;
+        color: white;
+        font-size: 20px;
+        margin-left: 15px;
+        cursor: pointer;
+        padding: 0;
+        width: 24px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background 0.3s;
+    }
+    
+    .notification button:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    
+    .resize-active * {
+        transition: none !important;
+    }
+`;
+document.head.appendChild(notificationStyles);
