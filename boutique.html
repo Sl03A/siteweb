@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slozw - Boutique | Services Digitaux</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Slozw</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="boutique.html" class="active">Boutique</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Boutique Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Boutique Slozw</h1>
+            <p>Commandez vos services digitaux en ligne</p>
+        </div>
+    </section>
+
+    <!-- Boutique Content -->
+    <section class="section boutique-section">
+        <div class="container">
+            <!-- Catégories -->
+            <div class="categories">
+                <button class="category-btn active" data-category="all">Tous les services</button>
+                <button class="category-btn" data-category="design">Design</button>
+                <button class="category-btn" data-category="web">Développement Web</button>
+                <button class="category-btn" data-category="ecommerce">E-commerce</button>
+                <button class="category-btn" data-category="pack">Packs</button>
+            </div>
+            
+            <!-- Produits Grid -->
+            <div class="produits-grid">
+                <!-- Produit 1 -->
+                <div class="produit-card" data-category="design">
+                    <div class="produit-badge">Populaire</div>
+                    <div class="produit-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design Logo">
+                    </div>
+                    <div class="produit-content">
+                        <span class="produit-category">Design</span>
+                        <h3>Design de Logo Professionnel</h3>
+                        <p class="produit-description">
+                            Création d'un logo unique et mémorable avec 3 propositions de concepts et fichiers vectoriels.
+                        </p>
+                        <div class="produit-features">
+                            <span><i class="fas fa-check"></i> 3 concepts initiaux</span>
+                            <span><i class="fas fa-check"></i> Révisions illimitées</span>
+                            <span><i class="fas fa-check"></i> Fichiers vectoriels</span>
+                        </div>
+                        <div class="produit-footer">
+                            <div class="produit-prix">
+                                <span class="prix-actuel">199€</span>
+                            </div>
+                            <button class="btn-ajouter-panier" data-id="1" data-nom="Design de Logo" data-prix="199">
+                                <i class="fas fa-cart-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 2 -->
+                <div class="produit-card" data-category="web">
+                    <div class="produit-image">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site Vitrine">
+                    </div>
+                    <div class="produit-content">
+                        <span class="produit-category">Développement Web</span>
+                        <h3>Site Vitrine Standard</h3>
+                        <p class="produit-description">
+                            Site web responsive avec 5 pages, formulaire de contact et intégration SEO de base.
+                        </p>
+                        <div class="produit-features">
+                            <span><i class="fas fa-check"></i> 5 pages maximum</span>
+                            <span><i class="fas fa-check"></i> Design responsive</span>
+                            <span><i class="fas fa-check"></i> Formulaire de contact</span>
+                        </div>
+                        <div class="produit-footer">
+                            <div class="produit-prix">
+                                <span class="prix-actuel">899€</span>
+                            </div>
+                            <button class="btn-ajouter-panier" data-id="2" data-nom="Site Vitrine Standard" data-prix="899">
+                                <i class="fas fa-cart-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 3 -->
+                <div class="produit-card" data-category="ecommerce">
+                    <div class="produit-badge">Bestseller</div>
+                    <div class="produit-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce">
+                    </div>
+                    <div class="produit-content">
+                        <span class="produit-category">E-commerce</span>
+                        <h3>Boutique E-commerce Basique</h3>
+                        <p class="produit-description">
+                            Boutique en ligne avec jusqu'à 50 produits, paiement sécurisé et gestion des commandes.
+                        </p>
+                        <div class="produit-features">
+                            <span><i class="fas fa-check"></i> Jusqu'à 50 produits</span>
+                            <span><i class="fas fa-check"></i> Paiement Stripe/PayPal</span>
+                            <span><i class="fas fa-check"></i> Dashboard admin</span>
+                        </div>
+                        <div class="produit-footer">
+                            <div class="produit-prix">
+                                <span class="prix-actuel">1499€</span>
+                            </div>
+                            <button class="btn-ajouter-panier" data-id="3" data-nom="Boutique E-commerce Basique" data-prix="1499">
+                                <i class="fas fa-cart-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 4 -->
+                <div class="produit-card" data-category="pack">
+                    <div class="produit-badge">Économique</div>
+                    <div class="produit-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pack Complet">
+                    </div>
+                    <div class="produit-content">
+                        <span class="produit-category">Pack</span>
+                        <h3>Pack Création d'Entreprise</h3>
+                        <p class="produit-description">
+                            Solution complète : logo, site vitrine et cartes de visite pour votre lancement.
+                        </p>
+                        <div class="produit-features">
+                            <span><i class="fas fa-check"></i> Logo professionnel</span>
+                            <span><i class="fas fa-check"></i> Site web 5 pages</span>
+                            <span><i class="fas fa-check"></i> Cartes de visite</span>
+                        </div>
+                        <div class="produit-footer">
+                            <div class="produit-prix">
+                                <span class="prix-ancien">1198€</span>
+                                <span class="prix-actuel">999€</span>
+                            </div>
+                            <button class="btn-ajouter-panier" data-id="4" data-nom="Pack Création d'Entreprise" data-prix="999">
+                                <i class="fas fa-cart-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 5 -->
+                <div class="produit-card" data-category="design">
+                    <div class="produit-image">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI Design">
+                    </div>
+                    <div class="produit-content">
+                        <span class="produit-category">Design</span>
+                        <h3>Design UI/UX Application</h3>
+                        <p class="produit-description">
+                            Design complet d'application mobile ou web avec maquettes interactives et prototypes.
+                        </p>
+                        <div class="produit-features">
+                            <span><i class="fas fa-check"></i> Wireframes</span>
+                            <span><i class="fas fa-check"></i> Maquettes haute fidélité</span>
+                            <span><i class="fas fa-check"></i> Prototype interactif</span>
+                        </div>
+                        <div class="produit-footer">
+                            <div class="produit-prix">
+                                <span class="prix-actuel">599€</span>
+                            </div>
+                            <button class="btn-ajouter-panier" data-id="5" data-nom="Design UI/UX Application" data-prix="599">
+                                <i class="fas fa-cart-plus"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produit 6 -->
+                <div class="produit-card" data-category="pack">
+                    <div class="produit-image">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance">
+                    </div>
+                    <div class="produit-content">
+                        <span class="produit-category">Pack</span>
+                        <h3>Maintenance Mensuelle</h3>
+                        <p class="produit-description">
+                            Forfait de maintenance incluant mises à jour, sauvegardes et support technique.
+                        </p>
+                        <div class="produit-features">
+                            <span><i class="fas fa-check"></i> Mises à jour mensuelles</span>
+                            <span><i class="fas fa-check"></i> Sauvegardes quotidiennes</span>
+                            <span><i class="fas fa-check"></i> Support par email</span>
+                        </div>
+                        <div class="produit-footer">
+                            <div class="produit-prix">
+                                <span class="prix-actuel">99€<span class="prix-mois">/mois</span></span>
+                            </div>
+                            <button class="btn-souscrire" data-id="6" data-nom="Maintenance Mensuelle" data-prix="99">
+                                <i class="fas fa-calendar-alt"></i> S'abonner
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panier Modal -->
+    <div class="panier-modal" id="panierModal">
+        <div class="panier-content">
+            <div class="panier-header">
+                <h2><i class="fas fa-shopping-cart"></i> Votre Panier</h2>
+                <button class="close-panier">&times;</button>
+            </div>
+            
+            <div class="panier-items" id="panierItems">
+                <!-- Articles ajoutés dynamiquement -->
+                <div class="panier-vide">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Votre panier est vide</p>
+                    <a href="boutique.html" class="btn btn-outline">Continuer vos achats</a>
+                </div>
+            </div>
+            
+            <div class="panier-footer">
+                <div class="panier-total">
+                    <span>Total:</span>
+                    <span id="totalPanier">0€</span>
+                </div>
+                <div class="panier-actions">
+                    <button class="btn btn-secondary" id="viderPanier">Vider le panier</button>
+                    <button class="btn btn-primary" id="proceedCheckout">Procéder au paiement</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h2>Finaliser votre commande</h2>
+                <button class="close-checkout">&times;</button>
+            </div>
+            
+            <div class="checkout-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Informations</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Paiement</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Confirmation</span>
+                </div>
+            </div>
+            
+            <div class="checkout-body">
+                <!-- Étape 1 : Informations -->
+                <div class="checkout-step active" id="step1">
+                    <h3>Vos coordonnées</h3>
+                    <form class="checkout-form">
+                        <div class="form-group">
+                            <label for="checkoutName">Nom complet *</label>
+                            <input type="text" id="checkoutName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkoutEmail">Email *</label>
+                            <input type="email" id="checkoutEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkoutPhone">Téléphone *</label>
+                            <input type="tel" id="checkoutPhone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkoutCompany">Entreprise</label>
+                            <input type="text" id="checkoutCompany">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkoutNotes">Notes sur votre commande</label>
+                            <textarea id="checkoutNotes" rows="3" placeholder="Décrivez vos besoins spécifiques..."></textarea>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary next-step" data-next="2">
+                            Suivant <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Étape 2 : Paiement -->
+                <div class="checkout-step" id="step2">
+                    <h3>Méthode de paiement</h3>
+                    <div class="payment-methods">
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="card" checked>
+                            <div class="payment-content">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Carte bancaire</span>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="paypal">
+                            <div class="payment-content">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                        </label>
+                        
+                        <label class="payment-method">
+                            <input type="radio" name="payment" value="transfer">
+                            <div class="payment-content">
+                                <i class="fas fa-university"></i>
+                                <span>Virement bancaire</span>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="checkout-summary">
+                        <h4>Récapitulatif</h4>
+                        <div id="checkoutSummary">
+                            <!-- Articles dynamiques -->
+                        </div>
+                        <div class="summary-total">
+                            <strong>Total à payer:</strong>
+                            <strong id="checkoutTotal">0€</strong>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-actions">
+                        <button type="button" class="btn btn-secondary prev-step" data-prev="1">
+                            <i class="fas fa-arrow-left"></i> Retour
+                        </button>
+                        <button type="button" class="btn btn-primary next-step" data-next="3">
+                            Payer maintenant <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Étape 3 : Confirmation -->
+                <div class="checkout-step" id="step3">
+                    <div class="confirmation-content">
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Commande confirmée !</h3>
+                        <p>Merci pour votre commande. Je vous contacte dans les <strong>24 heures</strong> pour discuter des détails de votre projet.</p>
+                        <p class="order-number">Référence : <strong id="orderReference">SLZW-XXXXXX</strong></p>
+                        <div class="confirmation-actions">
+                            <button class="btn btn-primary" id="closeCheckout">
+                                <i class="fas fa-home"></i> Retour à l'accueil
+                            </button>
+                            <a href="contact.html" class="btn btn-outline">
+                                <i class="fas fa-headset"></i> Me contacter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Slozw Boutique</h3>
+                    <p>Services digitaux professionnels disponibles à l'achat en ligne.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Boutique</h4>
+                    <a href="boutique.html">Tous les services</a>
+                    <a href="boutique.html?category=design">Design</a>
+                    <a href="boutique.html?category=web">Développement Web</a>
+                    <a href="boutique.html?category=ecommerce">E-commerce</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <a href="contact.html">Contact</a>
+                    <a href="contact.html#faq">FAQ</a>
+                    <a href="#">Conditions de vente</a>
+                    <a href="#">Politique de confidentialité</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Paiement sécurisé</h4>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-stripe"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw Boutique. Tous droits réservés.</p>
+                <p>SIRET : XXX XXX XXX XXXXX</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
