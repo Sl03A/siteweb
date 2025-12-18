@@ -1,6 +1,5 @@
 [file name]: script.js
 [file content begin]
-
 // =============================================
 // GESTION DU POPUP COOKIES (Nouveau système)
 // =============================================
@@ -87,6 +86,88 @@ function resetCookiePreferences() {
             cookiePopup.classList.add('show');
         }, 10);
     }
+}
+
+// =============================================
+// FONCTIONS DE FILTRAGE BOUTIQUE & PORTFOLIO
+// =============================================
+
+// Filtrer les produits par catégorie (BOUTIQUE)
+function filterProducts(category) {
+    const products = document.querySelectorAll('.produit-card');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    
+    if (products.length === 0 || categoryBtns.length === 0) {
+        return; // Pas sur la page boutique
+    }
+    
+    console.log(`Filtrage des produits - Catégorie: ${category}`);
+    
+    // Mettre à jour les boutons actifs
+    categoryBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.category === category) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Filtrer les produits
+    products.forEach(product => {
+        const productCategory = product.dataset.category;
+        
+        if (category === 'all' || productCategory === category) {
+            product.style.display = 'block';
+            // Animation d'apparition
+            setTimeout(() => {
+                product.style.opacity = '1';
+                product.style.transform = 'translateY(0)';
+            }, 50);
+        } else {
+            // Animation de disparition
+            product.style.opacity = '0';
+            product.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                product.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+
+// Filtrer les projets portfolio
+function filterPortfolio(filter) {
+    const items = document.querySelectorAll('.portfolio-item');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    if (items.length === 0 || filterBtns.length === 0) {
+        return; // Pas sur la page portfolio
+    }
+    
+    console.log(`Filtrage du portfolio - Filtre: ${filter}`);
+    
+    // Mettre à jour les boutons actifs
+    filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === filter) {
+            btn.classList.add('active');
+        }
+    });
+    
+    // Filtrer les projets
+    items.forEach(item => {
+        if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 50);
+        } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 300);
+        }
+    });
 }
 
 // =============================================
@@ -227,68 +308,6 @@ function generateOrderReference() {
     }
 }
 
-// Filtrer les produits par catégorie
-function filterProducts(category) {
-    const products = document.querySelectorAll('.produit-card');
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    
-    // Mettre à jour les boutons actifs
-    categoryBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.category === category) {
-            btn.classList.add('active');
-        }
-    });
-    
-    // Filtrer les produits
-    products.forEach(product => {
-        if (category === 'all' || product.dataset.category === category) {
-            product.style.display = 'block';
-            setTimeout(() => {
-                product.style.opacity = '1';
-                product.style.transform = 'translateY(0)';
-            }, 50);
-        } else {
-            product.style.opacity = '0';
-            product.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                product.style.display = 'none';
-            }, 300);
-        }
-    });
-}
-
-// Filtrer les projets portfolio
-function filterPortfolio(filter) {
-    const items = document.querySelectorAll('.portfolio-item');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    
-    // Mettre à jour les boutons actifs
-    filterBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === filter) {
-            btn.classList.add('active');
-        }
-    });
-    
-    // Filtrer les projets
-    items.forEach(item => {
-        if (filter === 'all' || item.dataset.category === filter) {
-            item.style.display = 'block';
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, 50);
-        } else {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                item.style.display = 'none';
-            }, 300);
-        }
-    });
-}
-
 // Gestion des étapes du checkout
 function goToStep(stepNumber) {
     // Cacher toutes les étapes
@@ -330,23 +349,31 @@ function showNotification(message, type = 'success') {
 // =============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialiser le popup de cookies
+    initCookiePopup();
+    
     // Initialiser le compteur du panier
     updatePanierCount();
     
     // Boutique - Filtrage par catégorie
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            filterProducts(this.dataset.category);
+            const category = this.dataset.category;
+            console.log(`Clic sur catégorie: ${category}`);
+            filterProducts(category);
         });
     });
     
     // Portfolio - Filtrage
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            filterPortfolio(this.dataset.filter);
+            const filter = this.dataset.filter;
+            console.log(`Clic sur filtre: ${filter}`);
+            filterPortfolio(filter);
         });
     });
     
+    // Gestion du panier (boutique)
     // Ouvrir le panier
     document.querySelectorAll('.panier-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
@@ -467,6 +494,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Ajouter un produit au panier (BOUTIQUE)
+    document.addEventListener('click', function(e) {
+        const addBtn = e.target.closest('.btn-ajouter-panier, .btn-souscrire');
+        
+        if (addBtn) {
+            const id = addBtn.dataset.id;
+            const nom = addBtn.dataset.nom;
+            const prix = parseFloat(addBtn.dataset.prix);
+            
+            // Vérifier si l'article est déjà dans le panier
+            const existingItem = panier.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantite += 1;
+            } else {
+                panier.push({
+                    id: id,
+                    nom: nom,
+                    prix: prix,
+                    quantite: 1
+                });
+            }
+            
+            // Sauvegarder dans localStorage
+            localStorage.setItem('panier', JSON.stringify(panier));
+            
+            // Mettre à jour l'affichage
+            updatePanierCount();
+            
+            // Notification
+            showNotification(`"${nom}" ajouté au panier`, 'success');
+            
+            // Ouvrir le panier (optionnel)
+            // openPanierModal();
+        }
+    });
+    
     // Fermer les modales en cliquant à l'extérieur
     document.querySelectorAll('.panier-modal, .checkout-modal').forEach(modal => {
         modal.addEventListener('click', function(e) {
@@ -578,5 +642,14 @@ document.addEventListener('DOMContentLoaded', function() {
         item.style.opacity = '1';
         item.style.transform = 'translateY(0)';
     });
+    
+    // Initialiser le bouton "Cookies" dans le footer
+    const openCookieSettings = document.getElementById('openCookieSettings');
+    if (openCookieSettings) {
+        openCookieSettings.addEventListener('click', function(e) {
+            e.preventDefault();
+            resetCookiePreferences();
+        });
+    }
 });
 [file content end]
