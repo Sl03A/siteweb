@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "title": "Slozw - Créations Digitales",
+    "description": "Créateur digital spécialisé en design, développement web et solutions e-commerce sur mesure. Transformez vos idées en réalité digitale."
+  },
+  "hero": {
+    "title": "Créations Digitales d'Excellence",
+    "subtitle": "Design, Développement & Solutions E-commerce sur mesure",
+    "button1": "Voir mon travail",
+    "button2": "Me contacter"
+  },
+  "services": {
+    "title": "Mes Services",
+    "subtitle": "Des solutions complètes pour votre présence digitale",
+    "design": {
+      "title": "UI/UX Design",
+      "description": "Interfaces intuitives et esthétiques"
+    },
+    "dev": {
+      "title": "Développement Web",
+      "description": "Sites performants et responsives"
+    },
+    "ecommerce": {
+      "title": "E-commerce",
+      "description": "Boutiques en ligne optimisées"
+    },
+    "learnMore": "En savoir plus →",
+    "allServices": "Voir tous les services"
+  },
+  "portfolio": {
+    "title": "Derniers Projets",
+    "subtitle": "Quelques-unes de mes réalisations récentes",
+    "project1": {
+      "title": "Boutique Moderne",
+      "description": "E-commerce avec paiement sécurisé"
+    },
+    "project2": {
+      "title": "Dashboard Analytics",
+      "description": "Interface d'administration complète"
+    },
+    "project3": {
+      "title": "Application Mobile",
+      "description": "App iOS & Android native"
+    },
+    "viewProject": "Voir le projet",
+    "allProjects": "Voir tout le portfolio"
+  },
+  "newsletter": {
+    "title": "Restez informé",
+    "subtitle": "Recevez des conseils digitaux et des offres exclusives",
+    "placeholder": "Votre email",
+    "button": "S'inscrire",
+    "disclaimer": "En vous inscrivant, vous acceptez notre <a href='privacy.html'>politique de confidentialité</a>."
+  },
+  "cta": {
+    "title": "Prêt à donner vie à votre projet ?",
+    "subtitle": "Contactez-moi pour discuter de vos besoins",
+    "button1": "Prendre rendez-vous",
+    "button2": "Voir la boutique"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "shop": "Boutique",
+    "contact": "Contact"
+  },
+  "footer": {
+    "description": "Créateur digital spécialisé en design, développement et e-commerce.",
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "languages": "Langues",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "cookies": "Cookies",
+    "rights": "Tous droits réservés."
+  },
+  "contact": {
+    "title": "Contactez-moi",
+    "subtitle": "Discutons de votre projet digital",
+    "form": {
+      "name": "Votre nom *",
+      "email": "Votre email *",
+      "phone": "Téléphone",
+      "service": "Service intéressé",
+      "serviceOptions": {
+        "select": "Sélectionnez un service",
+        "design": "UI/UX Design",
+        "dev": "Développement Web",
+        "ecommerce": "E-commerce",
+        "maintenance": "Maintenance",
+        "other": "Autre"
+      },
+      "budget": "Budget approximatif",
+      "budgetOptions": {
+        "select": "Sélectionnez un budget",
+        "500-1000": "500€ - 1000€",
+        "1000-3000": "1000€ - 3000€",
+        "3000-5000": "3000€ - 5000€",
+        "5000+": "Plus de 5000€",
+        "unknown": "À discuter"
+      },
+      "message": "Votre message *",
+      "messagePlaceholder": "Décrivez votre projet en détail...",
+      "newsletter": "S'inscrire à la newsletter pour recevoir des conseils digitaux",
+      "submit": "Envoyer le message",
+      "success": "Message envoyé avec succès !",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Téléphone",
+      "location": "Localisation",
+      "availability": "Disponible pour vos projets",
+      "hours": "Horaires",
+      "hoursWeek": "Lundi - Vendredi: 9h - 18h",
+      "response": "Réponse sous 24h",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "follow": "Suivez-moi"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": "Quels sont vos délais de réalisation ?",
+      "a1": "Les délais varient selon la complexité du projet. En moyenne : 2-3 semaines pour un site vitrine, 4-6 semaines pour un e-commerce, et 6-8 semaines pour une application web complète.",
+      "q2": "Proposez-vous des révisions après livraison ?",
+      "a2": "Oui, chaque projet comprend 30 jours de support gratuit après livraison avec jusqu'à 3 révisions mineures incluses.",
+      "q3": "Fournissez-vous l'hébergement ?",
+      "a3": "Je peux configurer l'hébergement pour vous ou vous aider à choisir la meilleure solution selon vos besoins. Je propose également des forfaits de maintenance incluant hébergement.",
+      "q4": "Travaillez-vous avec des clients internationaux ?",
+      "a4": "Absolument ! Je travaille avec des clients partout dans le monde. Les communications peuvent se faire en français ou en anglais selon votre préférence."
+    }
+  },
+  "boutique": {
+    "title": "Boutique Slozw",
+    "subtitle": "Commandez vos services digitaux en ligne",
+    "categories": {
+      "all": "Tous les services",
+      "design": "Design",
+      "web": "Développement Web",
+      "ecommerce": "E-commerce",
+      "pack": "Packs"
+    },
+    "badges": {
+      "popular": "Populaire",
+      "bestseller": "Bestseller",
+      "economical": "Économique"
+    },
+    "actions": {
+      "add": "Ajouter",
+      "subscribe": "S'abonner",
+      "view": "Voir détails"
+    },
+    "cart": {
+      "title": "Votre Panier",
+      "empty": "Votre panier est vide",
+      "continue": "Continuer vos achats",
+      "total": "Total:",
+      "clear": "Vider le panier",
+      "checkout": "Procéder au paiement",
+      "remove": "Supprimer"
+    },
+    "checkout": {
+      "title": "Finaliser votre commande",
+      "steps": {
+        "info": "Informations",
+        "payment": "Paiement",
+        "confirmation": "Confirmation"
+      },
+      "fields": {
+        "name": "Nom complet *",
+        "email": "Email *",
+        "phone": "Téléphone *",
+        "company": "Entreprise",
+        "notes": "Notes sur votre commande",
+        "notesPlaceholder": "Décrivez vos besoins spécifiques..."
+      },
+      "payment": {
+        "title": "Méthode de paiement",
+        "card": "Carte bancaire",
+        "paypal": "PayPal",
+        "transfer": "Virement bancaire"
+      },
+      "summary": "Récapitulatif",
+      "total": "Total à payer:",
+      "actions": {
+        "back": "Retour",
+        "next": "Suivant",
+        "pay": "Payer maintenant",
+        "close": "Fermer"
+      },
+      "confirmation": {
+        "title": "Commande confirmée !",
+        "message": "Merci pour votre commande. Je vous contacte dans les <strong>24 heures</strong> pour discuter des détails de votre projet.",
+        "reference": "Référence :",
+        "actions": {
+          "home": "Retour à l'accueil",
+          "contact": "Me contacter"
+        }
+      }
+    }
+  },
+  "appointment": {
+    "title": "Prendre rendez-vous",
+    "subtitle": "Planifiez une consultation gratuite",
+    "form": {
+      "name": "Votre nom *",
+      "email": "Votre email *",
+      "phone": "Téléphone",
+      "date": "Date *",
+      "time": "Heure *",
+      "service": "Service *",
+      "serviceOptions": {
+        "consultation": "Consultation gratuite",
+        "design": "UI/UX Design",
+        "development": "Développement Web",
+        "ecommerce": "E-commerce",
+        "other": "Autre"
+      },
+      "message": "Message (optionnel)",
+      "messagePlaceholder": "Décrivez brièvement votre projet...",
+      "submit": "Prendre rendez-vous",
+      "success": "Rendez-vous confirmé !",
+      "error": "Erreur de réservation"
+    },
+    "details": {
+      "duration": "Durée : 45 minutes",
+      "method": "Méthode : Visioconférence",
+      "preparation": "Préparation : Questions et documents"
+    }
+  },
+  "cookies": {
+    "banner": "🍪 Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre <a href='privacy.html'>politique de confidentialité</a>.",
+    "buttons": {
+      "reject": "Refuser",
+      "accept": "Accepter",
+      "customize": "Personnaliser",
+      "save": "Sauvegarder les préférences"
+    },
+    "preferences": {
+      "title": "Préférences des cookies",
+      "essential": {
+        "label": "Cookies essentiels",
+        "required": "(Requis)",
+        "description": "Nécessaires au fonctionnement du site"
+      },
+      "analytics": {
+        "label": "Cookies analytiques",
+        "description": "Nous aident à améliorer le site"
+      },
+      "marketing": {
+        "label": "Cookies marketing",
+        "description": "Personnalisation des publicités"
+      }
+    },
+    "notifications": {
+      "saved": "Préférences de cookies sauvegardées",
+      "disabled": "Cookies non essentiels désactivés"
+    }
+  },
+  "errors": {
+    "required": "Ce champ est requis",
+    "email": "Email invalide",
+    "phone": "Numéro de téléphone invalide",
+    "date": "Date invalide",
+    "time": "Heure invalide",
+    "rateLimit": "Trop de tentatives. Veuillez réessayer plus tard.",
+    "csrf": "Token de sécurité invalide",
+    "general": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "success": {
+    "messageSent": "Message envoyé avec succès !",
+    "subscribed": "Inscription réussie !",
+    "appointmentBooked": "Rendez-vous confirmé !",
+    "orderPlaced": "Commande passée avec succès !"
+  },
+  "loading": {
+    "sending": "Envoi en cours...",
+    "processing": "Traitement...",
+    "loading": "Chargement..."
+  },
+  "seo": {
+    "keywords": "design, développement web, e-commerce, création site internet, UX/UI, freelance digital, Paris",
+    "author": "Slozw",
+    "robots": "index, follow"
+  },
+  "social": {
+    "share": "Partager",
+    "twitter": "Partager sur Twitter",
+    "facebook": "Partager sur Facebook",
+    "linkedin": "Partager sur LinkedIn",
+    "instagram": "Suivre sur Instagram",
+    "behance": "Voir sur Behance",
+    "dribbble": "Voir sur Dribbble"
+  },
+  "legal": {
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "cookies": "Politique des cookies",
+    "contact": "Contact légal"
+  },
+  "accessibility": {
+    "skip": "Passer au contenu",
+    "menu": "Menu principal",
+    "language": "Sélecteur de langue",
+    "contrast": "Contraste élevé"
+  }
+}
