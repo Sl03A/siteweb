@@ -261,6 +261,299 @@ function handleFilterClick() {
 }
 
 // =============================================
+// SYSTÈME DE RÉDUCTION
+// =============================================
+
+let codesPromo = {
+    "SLZW10": {
+        type: "pourcentage",
+        valeur: 10,
+        description: "-10% sur toute commande",
+        actif: true,
+        dateFin: "2024-12-31"
+    },
+    "SLZW15": {
+        type: "pourcentage", 
+        valeur: 15,
+        description: "-15% pour première commande",
+        premiereCommande: true,
+        actif: true
+    },
+    "PARRAIN20": {
+        type: "montant",
+        valeur: 20,
+        description: "-20€ parrainage",
+        actif: true,
+        minMontant: 100
+    },
+    "ETE2024": {
+        type: "pourcentage",
+        valeur: 20,
+        description: "-20% offre estivale",
+        actif: true,
+        dateFin: "2024-09-30"
+    },
+    "LOYAL10": {
+        type: "pourcentage",
+        valeur: 10,
+        description: "-10% fidélité",
+        actif: true,
+        minCommandes: 2
+    }
+};
+
+let promoActuel = null;
+
+function openPromoModal() {
+    document.getElementById('promoModal').classList.add('active');
+    document.getElementById('promoCodeInput').focus();
+}
+
+function closePromoModal() {
+    document.getElementById('promoModal').classList.remove('active');
+    document.getElementById('promoMessage').textContent = '';
+    document.getElementById('promoMessage').className = 'promo-message';
+}
+
+function showPromoCodes() {
+    let message = "📋 Codes promotionnels disponibles :\n\n";
+    for (let code in codesPromo) {
+        if (codesPromo[code].actif) {
+            message += `• ${code} : ${codesPromo[code].description}\n`;
+        }
+    }
+    message += "\n🎁 SLZW15 réservé aux premières commandes";
+    alert(message);
+}
+
+function applyPromoCode() {
+    const codeInput = document.getElementById('promoCodeInput').value.toUpperCase().trim();
+    const messageDiv = document.getElementById('promoMessage');
+    
+    if (!codeInput) {
+        messageDiv.textContent = "Veuillez entrer un code promo";
+        messageDiv.className = "promo-message error";
+        return;
+    }
+    
+    // Vérifier si le code existe
+    if (!codesPromo[codeInput]) {
+        messageDiv.textContent = "Code promo invalide";
+        messageDiv.className = "promo-message error";
+        return;
+    }
+    
+    const code = codesPromo[codeInput];
+    
+    // Vérifier si actif
+    if (!code.actif) {
+        messageDiv.textContent = "Ce code promo n'est plus actif";
+        messageDiv.className = "promo-message error";
+        return;
+    }
+    
+    // Vérifier date d'expiration
+    if (code.dateFin) {
+        const today = new Date();
+        const expiryDate = new Date(code.dateFin);
+        if (today > expiryDate) {
+            messageDiv.textContent = "Ce code promo a expiré";
+            messageDiv.className = "promo-message error";
+            return;
+        }
+    }
+    
+    // Vérifier première commande
+    if (code.premiereCommande) {
+        const hasPreviousOrders = localStorage.getItem('hasOrders') === 'true';
+        if (hasPreviousOrders) {
+            messageDiv.textContent = "Ce code est réservé à la première commande";
+            messageDiv.className = "promo-message error";
+            return;
+        }
+    }
+    
+    // Vérifier montant minimum
+    const sousTotal = panier.reduce((sum, item) => sum + (item.prix * item.quantite), 0);
+    if (code.minMontant && sousTotal < code.minMontant) {
+        messageDiv.textContent = `Minimum ${code.minMontant}€ pour ce code`;
+        messageDiv.className = "promo-message error";
+        return;
+    }
+    
+    // Appliquer le code
+    promoActuel = {
+        code: codeInput,
+        type: code.type,
+        valeur: code.valeur,
+        description: code.description
+    };
+    
+    // Sauvegarder dans localStorage
+    localStorage.setItem('promoCode', JSON.stringify(promoActuel));
+    
+    messageDiv.textContent = `✅ Code appliqué : ${code.description}`;
+    messageDiv.className = "promo-message success";
+    
+    // Mettre à jour l'affichage du panier
+    updatePanierDisplay();
+    
+    // Fermer le modal après 1.5 secondes
+    setTimeout(() => {
+        closePromoModal();
+        if (document.getElementById('panierModal').classList.contains('show')) {
+            updatePromoDisplay();
+        }
+    }, 1500);
+}
+
+function updatePromoDisplay() {
+    const promoSection = document.getElementById('promoSection');
+    const sousTotalEl = document.getElementById('sousTotal');
+    const promoDiscountEl = document.getElementById('promoDiscount');
+    const totalPanierEl = document.getElementById('totalPanier');
+    const promoDiscountText = document.getElementById('promoDiscountText');
+    const promoTotalRow = document.querySelector('.promo-total');
+    
+    if (!promoActuel) {
+        if (promoSection) promoSection.style.display = 'none';
+        if (promoTotalRow) promoTotalRow.style.display = 'none';
+        return;
+    }
+    
+    // Calculer les montants
+    const sousTotal = panier.reduce((sum, item) => sum + (item.prix * item.quantite), 0);
+    let discount = 0;
+    
+    if (promoActuel.type === 'pourcentage') {
+        discount = sousTotal * (promoActuel.valeur / 100);
+    } else if (promoActuel.type === 'montant') {
+        discount = promoActuel.valeur;
+    }
+    
+    // S'assurer que la réduction ne dépasse pas le total
+    if (discount > sousTotal) {
+        discount = sousTotal;
+    }
+    
+    const total = sousTotal - discount;
+    
+    // Mettre à jour l'affichage
+    if (promoSection) promoSection.style.display = 'block';
+    if (promoTotalRow) promoTotalRow.style.display = 'flex';
+    
+    if (sousTotalEl) sousTotalEl.textContent = sousTotal.toFixed(2) + '€';
+    if (promoDiscountEl) promoDiscountEl.textContent = '-' + discount.toFixed(2) + '€';
+    if (totalPanierEl) totalPanierEl.textContent = total.toFixed(2) + '€';
+    if (promoDiscountText) promoDiscountText.textContent = `${promoActuel.code} : ${promoActuel.description}`;
+}
+
+function removePromo() {
+    promoActuel = null;
+    localStorage.removeItem('promoCode');
+    updatePanierDisplay();
+    showNotification('Réduction supprimée', 'success');
+}
+
+// =============================================
+// SYSTÈME D'EMAILS AUTOMATIQUES
+// =============================================
+
+// 1. Email de bienvenue après newsletter
+function sendWelcomeEmail(email, name = "Client") {
+    console.log(`📧 Envoi email bienvenue à: ${email}`);
+    
+    // Données pour l'email
+    const templateParams = {
+        to_name: name,
+        to_email: email,
+        guide_url: "https://slozw.com/guides/debuter-en-ligne.pdf",
+        site_url: "https://slozw.com",
+        date: new Date().toLocaleDateString('fr-FR')
+    };
+    
+    // Envoyer via EmailJS
+    emailjs.send("service_slozw", "template_bienvenue", templateParams)
+        .then(function(response) {
+            console.log('✅ Email bienvenue envoyé:', response.status, response.text);
+            // Sauvegarder dans localStorage pour éviter doublons
+            localStorage.setItem(`emailSent_${email}`, 'true');
+        }, function(error) {
+            console.log('❌ Erreur email:', error);
+        });
+}
+
+// 2. Email après commande
+function sendOrderEmail(orderData) {
+    console.log(`📧 Envoi email commande à: ${orderData.client.email}`);
+    
+    // Préparer les détails de la commande
+    const orderDetails = orderData.articles.map(item => 
+        `• ${item.nom} (×${item.quantite}) : ${item.prix * item.quantite}€`
+    ).join('\n');
+    
+    const templateParams = {
+        to_name: orderData.client.name,
+        to_email: orderData.client.email,
+        order_reference: orderData.reference,
+        order_date: new Date(orderData.date).toLocaleDateString('fr-FR'),
+        order_total: orderData.total + '€',
+        order_details: orderDetails,
+        next_steps: `1. Appel de briefing sous 24h\n2. Maquettes sous 3-5 jours\n3. Développement sous 7-10 jours`,
+        contact_email: "contact@slozw.com",
+        contact_phone: "+33 1 23 45 67 89"
+    };
+    
+    emailjs.send("service_slozw", "template_commande", templateParams)
+        .then(function(response) {
+            console.log('✅ Email commande envoyé');
+            
+            // Marquer que l'utilisateur a maintenant des commandes
+            localStorage.setItem('hasOrders', 'true');
+            
+            // Planifier l'email de suivi (3 jours après)
+            setTimeout(() => {
+                sendFollowupEmail(orderData);
+            }, 3 * 24 * 60 * 60 * 1000); // 3 jours
+        });
+}
+
+// 3. Email de suivi
+function sendFollowupEmail(orderData) {
+    console.log(`📧 Envoi email suivi à: ${orderData.client.email}`);
+    
+    const templateParams = {
+        to_name: orderData.client.name,
+        to_email: orderData.client.email,
+        project_name: orderData.articles[0]?.nom || "Votre projet",
+        days_since: 3,
+        feedback_link: "https://slozw.com/feedback",
+        support_email: "support@slozw.com"
+    };
+    
+    emailjs.send("service_slozw", "template_suivi", templateParams)
+        .then(function(response) {
+            console.log('✅ Email suivi envoyé');
+        });
+}
+
+// 4. Email d'anniversaire (exemple)
+function sendBirthdayEmail(email, name) {
+    const templateParams = {
+        to_name: name,
+        to_email: email,
+        discount_code: "ANNIV2024",
+        discount_value: "20%",
+        valid_until: "7 jours"
+    };
+    
+    emailjs.send("service_slozw", "template_anniversaire", templateParams)
+        .then(function(response) {
+            console.log('✅ Email anniversaire envoyé');
+        });
+}
+
+// =============================================
 // GESTION DU PANIER - BOUTIQUE
 // =============================================
 
@@ -314,6 +607,9 @@ function closeCheckoutModal() {
 function updatePanierDisplay() {
     const container = document.getElementById('panierItems');
     const totalElement = document.getElementById('totalPanier');
+    const sousTotalElement = document.getElementById('sousTotal');
+    const promoDiscountElement = document.getElementById('promoDiscount');
+    const promoTotalRow = document.querySelector('.promo-total');
     
     if (!container || !totalElement) return;
     
@@ -322,19 +618,25 @@ function updatePanierDisplay() {
             <div class="panier-vide">
                 <i class="fas fa-shopping-basket"></i>
                 <p>Votre panier est vide</p>
-                <a href="boutique.html" class="btn btn-outline">Continuer vos achats</a>
+                <button class="btn btn-outline" onclick="closePanierModal(); openPromoModal()">
+                    <i class="fas fa-ticket-alt"></i> Utiliser un code promo
+                </button>
+                <a href="boutique.html" class="btn btn-primary">Continuer vos achats</a>
             </div>
         `;
         totalElement.textContent = '0€';
+        if (sousTotalElement) sousTotalElement.textContent = '0€';
+        if (promoDiscountElement) promoDiscountElement.textContent = '-0€';
+        if (promoTotalRow) promoTotalRow.style.display = 'none';
         return;
     }
     
-    let total = 0;
+    let sousTotal = 0;
     container.innerHTML = '';
     
     panier.forEach(item => {
         const itemTotal = item.prix * item.quantite;
-        total += itemTotal;
+        sousTotal += itemTotal;
         
         const div = document.createElement('div');
         div.className = 'panier-item';
@@ -353,7 +655,52 @@ function updatePanierDisplay() {
         container.appendChild(div);
     });
     
+    // Calculer la réduction
+    let discount = 0;
+    if (promoActuel) {
+        if (promoActuel.type === 'pourcentage') {
+            discount = sousTotal * (promoActuel.valeur / 100);
+        } else if (promoActuel.type === 'montant') {
+            discount = promoActuel.valeur;
+        }
+        
+        // Limiter la réduction au sous-total
+        if (discount > sousTotal) {
+            discount = sousTotal;
+        }
+    }
+    
+    const total = sousTotal - discount;
+    
+    // Mettre à jour tous les montants
+    if (sousTotalElement) sousTotalElement.textContent = sousTotal.toFixed(2) + '€';
+    if (promoDiscountElement) {
+        promoDiscountElement.textContent = '-' + discount.toFixed(2) + '€';
+        promoDiscountElement.style.color = '#10b981';
+        promoDiscountElement.style.fontWeight = 'bold';
+    }
     totalElement.textContent = total.toFixed(2) + '€';
+    
+    // Afficher/masquer la ligne réduction
+    if (promoTotalRow) {
+        if (discount > 0) {
+            promoTotalRow.style.display = 'flex';
+        } else {
+            promoTotalRow.style.display = 'none';
+        }
+    }
+    
+    // Afficher la section promo si applicable
+    updatePromoDisplay();
+    
+    // Ajouter le bouton promo si pas de réduction
+    if (!promoActuel) {
+        const promoBtn = document.createElement('button');
+        promoBtn.className = 'btn-promo';
+        promoBtn.innerHTML = '<i class="fas fa-ticket-alt"></i> Utiliser un code promo';
+        promoBtn.onclick = openPromoModal;
+        container.parentNode.insertBefore(promoBtn, container.nextSibling);
+    }
 }
 
 // Mettre à jour le récapitulatif du checkout
@@ -435,7 +782,7 @@ function showNotification(message, type = 'success') {
 }
 
 // =============================================
-// ÉVÉNEMENTS ET INITIALISATION PRINCIPALE
+// ÉVÉNEMENTS ET INITIALISATION
 // =============================================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -452,6 +799,35 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialiser les filtres PORTFOLIO
     initPortfolioFilters();
+    
+    // Charger le code promo sauvegardé
+    const savedPromo = localStorage.getItem('promoCode');
+    if (savedPromo) {
+        promoActuel = JSON.parse(savedPromo);
+    }
+    
+    // Vérifier si l'utilisateur a déjà commandé
+    if (!localStorage.getItem('hasOrders')) {
+        localStorage.setItem('hasOrders', 'false');
+    }
+    
+    // Boutique - Filtrage par catégorie (alternative pour compatibilité)
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.dataset.category;
+            console.log(`Clic sur catégorie: ${category}`);
+            filterProducts(category);
+        });
+    });
+    
+    // Portfolio - Filtrage (alternative pour compatibilité)
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            console.log(`Clic sur filtre: ${filter}`);
+            filterPortfolio(filter);
+        });
+    });
     
     // Gestion du panier (boutique)
     // Ouvrir le panier
@@ -483,6 +859,27 @@ document.addEventListener('DOMContentLoaded', function() {
             showNotification('Votre panier est vide', 'error');
             return;
         }
+        
+        // Préparer les données de la commande
+        const orderData = {
+            date: new Date().toISOString(),
+            reference: document.getElementById('orderReference')?.textContent || 'SLZW-' + Date.now(),
+            articles: [...panier],
+            total: panier.reduce((sum, item) => sum + (item.prix * item.quantite), 0),
+            client: {
+                name: document.getElementById('checkoutName')?.value || '',
+                email: document.getElementById('checkoutEmail')?.value || '',
+                phone: document.getElementById('checkoutPhone')?.value || '',
+                company: document.getElementById('checkoutCompany')?.value || '',
+                notes: document.getElementById('checkoutNotes')?.value || ''
+            }
+        };
+        
+        // Envoyer l'email de commande
+        if (orderData.client.email) {
+            sendOrderEmail(orderData);
+        }
+        
         closePanierModal();
         openCheckoutModal();
     });
@@ -541,6 +938,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     updatePanierCount();
                     
                     showNotification('Commande confirmée avec succès !', 'success');
+                    
+                    // Retirer le code promo après utilisation
+                    if (promoActuel?.premiereCommande) {
+                        removePromo();
+                    }
                 }, 1500);
             }
             
@@ -612,13 +1014,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Fermer les modales en cliquant à l'extérieur
-    document.querySelectorAll('.panier-modal, .checkout-modal').forEach(modal => {
+    document.querySelectorAll('.panier-modal, .checkout-modal, .promo-modal').forEach(modal => {
         modal.addEventListener('click', function(e) {
             if (e.target === this) {
                 if (this.classList.contains('panier-modal')) {
                     closePanierModal();
-                } else {
+                } else if (this.classList.contains('checkout-modal')) {
                     closeCheckoutModal();
+                } else if (this.classList.contains('promo-modal')) {
+                    closePromoModal();
                 }
             }
         });
