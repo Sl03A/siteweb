@@ -4,177 +4,6 @@
    STYLES COMMUNS POUR TOUTES LES PAGES
    ============================================= */
 
-
-/* =============================================
-   SYSTÈME DE RÉDUCTION
-   ============================================= */
-
-/* Bannière promo */
-.promo-banner {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 0.9rem;
-    position: relative;
-    animation: slideDown 0.5s ease;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
-}
-
-.promo-banner span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.promo-banner strong {
-    background: white;
-    color: #059669;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-/* Bouton promo dans le panier */
-.btn-promo {
-    background: #f8fafc;
-    border: 2px dashed #cbd5e1;
-    color: #64748b;
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.btn-promo:hover {
-    background: #e2e8f0;
-    border-color: #94a3b8;
-}
-
-/* Modal promo */
-.promo-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 3000;
-    align-items: center;
-    justify-content: center;
-}
-
-.promo-modal.active {
-    display: flex;
-}
-
-.promo-content {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-    animation: modalPop 0.3s ease;
-}
-
-@keyframes modalPop {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-.promo-content h3 {
-    margin-bottom: 1rem;
-    color: #1e293b;
-}
-
-.promo-input-group {
-    display: flex;
-    gap: 10px;
-    margin: 1.5rem 0;
-}
-
-.promo-input-group input {
-    flex: 1;
-    padding: 12px;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-.promo-input-group input:focus {
-    outline: none;
-    border-color: #2563eb;
-}
-
-.promo-actions {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.promo-message {
-    margin-top: 1rem;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: 500;
-}
-
-.promo-message.success {
-    background: #d1fae5;
-    color: #065f46;
-}
-
-.promo-message.error {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-/* Réduction appliquée dans le panier */
-.promo-applied {
-    background: #d1fae5;
-    border: 2px solid #10b981;
-    padding: 15px;
-    border-radius: 10px;
-    margin: 15px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    animation: fadeIn 0.5s ease;
-}
-
-.promo-applied .remove-promo {
-    background: #fef2f2;
-    border: none;
-    color: #ef4444;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s;
-}
-
-.promo-applied .remove-promo:hover {
-    background: #ef4444;
-    color: white;
-}
-
 /* Reset et base */
 * {
     margin: 0;
@@ -301,6 +130,326 @@ body {
     padding: 0.5rem;
 }
 
+/* =============================================
+   SYSTÈME DE RÉDUCTION
+   ============================================= */
+
+/* Bannière promo */
+.promo-banner {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    position: relative;
+    animation: slideDown 0.5s ease;
+    margin-top: 70px; /* Pour éviter la navbar fixe */
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.promo-banner span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.promo-banner strong {
+    background: white;
+    color: #059669;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-promo-small {
+    margin-left: 10px;
+    padding: 3px 8px;
+    background: white;
+    color: #059669;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+.btn-promo-small:hover {
+    background: #f0fdf4;
+    transform: translateY(-1px);
+}
+
+/* Bouton promo dans le panier */
+.btn-promo {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    color: #64748b;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-promo:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+}
+
+/* Modal promo */
+.promo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-modal.active {
+    display: flex;
+}
+
+.promo-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.promo-content h3 {
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.promo-input-group {
+    display: flex;
+    gap: 10px;
+    margin: 1.5rem 0;
+}
+
+.promo-input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.promo-input-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.promo-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.promo-message {
+    margin-top: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-message.success {
+    background: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+}
+
+.promo-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+}
+
+/* Réduction appliquée dans le panier */
+.promo-applied {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.promo-applied .remove-promo {
+    background: #fef2f2;
+    border: none;
+    color: #ef4444;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.promo-applied .remove-promo:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.promo-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid #e2e8f0;
+    color: #10b981;
+    font-weight: 600;
+}
+
+.promo-total.final {
+    border-top: 2px solid #2563eb;
+    font-size: 1.2rem;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+/* =============================================
+   POPUP COOKIES (Nouveau système)
+   ============================================= */
+
+.cookie-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 1.5rem;
+    max-width: 350px;
+    z-index: 9999;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 1px solid #e2e8f0;
+}
+
+.cookie-popup.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.cookie-popup.hide {
+    transform: translateY(100px);
+    opacity: 0;
+}
+
+.cookie-popup-content h3 {
+    margin-bottom: 0.5rem;
+    color: #1e293b;
+    font-size: 1.2rem;
+}
+
+.cookie-popup-content p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.cookie-popup-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.cookie-popup-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex: 1;
+    min-width: 100px;
+}
+
+.cookie-popup-accept {
+    background: #2563eb;
+    color: white;
+}
+
+.cookie-popup-accept:hover {
+    background: #1d4ed8;
+}
+
+.cookie-popup-reject {
+    background: #f8fafc;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+
+.cookie-popup-reject:hover {
+    background: #f1f5f9;
+}
+
+.cookie-popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.cookie-popup-close:hover {
+    background: #f8fafc;
+}
+
 /* Header de page (pour pages services.html, portfolio.html, etc.) */
 .page-header {
     background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
@@ -402,7 +551,6 @@ body {
     color: white;
     padding: 150px 0 100px;
     text-align: center;
-    margin-top: 70px;
 }
 
 .hero-content h1 {
@@ -1440,6 +1588,14 @@ body {
     color: #1e293b;
 }
 
+.panier-total.final {
+    border-top: 2px solid #2563eb;
+    padding-top: 15px;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    color: #1e293b;
+}
+
 .panier-actions {
     display: flex;
     gap: 1rem;
@@ -1456,7 +1612,7 @@ body {
     background: rgba(0,0,0,0.5);
     z-index: 2001;
     align-items: center;
-    justify-content: center;
+    justify-content center;
     padding: 1rem;
 }
 
@@ -1816,6 +1972,10 @@ body {
     background: #3b82f6;
 }
 
+.notification.warning {
+    background: #f59e0b;
+}
+
 /* =============================================
    RESPONSIVE DESIGN
    ============================================= */
@@ -1933,7 +2093,8 @@ body {
     }
     
     .panier-content,
-    .checkout-content {
+    .checkout-content,
+    .promo-content {
         margin: 0 10px;
         width: calc(100% - 20px);
     }
@@ -1991,6 +2152,37 @@ body {
     .btn {
         padding: 10px 20px;
         font-size: 0.95rem;
+    }
+    
+    /* Popup cookies mobile */
+    .cookie-popup {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+        bottom: 10px;
+    }
+    
+    .cookie-popup-actions {
+        flex-direction: column;
+    }
+    
+    .cookie-popup-btn {
+        width: 100%;
+    }
+    
+    /* Bannière promo mobile */
+    .promo-banner {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
+    
+    .promo-banner span {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .promo-input-group {
+        flex-direction: column;
     }
 }
 
@@ -2093,5 +2285,11 @@ input, select, textarea {
 p, li, span {
     color: #333;
     line-height: 1.6;
+}
+
+/* Animation de base */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 [file content end]
