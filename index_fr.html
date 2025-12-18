@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slozw - Accueil | Créations Digitales</title>
+    <meta name="description" content="Créateur digital spécialisé en design, développement web et solutions e-commerce sur mesure. Transformez vos idées en réalité digitale.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="alternate" hreflang="fr" href="https://slozw.com/fr/">
+    <link rel="alternate" hreflang="en" href="https://slozw.com/en/">
+    <link rel="alternate" hreflang="es" href="https://slozw.com/es/">
+    <link rel="alternate" hreflang="de" href="https://slozw.com/de/">
+</head>
+<body>
+    <!-- Bannière Cookies -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>🍪 Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre <a href="privacy.html">politique de confidentialité</a>.</p>
+            <div class="cookie-buttons">
+                <button class="btn btn-outline" id="cookieReject">Refuser</button>
+                <button class="btn btn-primary" id="cookieAccept">Accepter</button>
+                <button class="btn btn-secondary" id="cookieCustomize">Personnaliser</button>
+            </div>
+        </div>
+        <div class="cookie-preferences" id="cookiePreferences">
+            <h3>Préférences des cookies</h3>
+            <div class="cookie-option">
+                <input type="checkbox" id="cookieEssential" checked disabled>
+                <label for="cookieEssential">Cookies essentiels <span class="cookie-required">(Requis)</span></label>
+                <p>Nécessaires au fonctionnement du site</p>
+            </div>
+            <div class="cookie-option">
+                <input type="checkbox" id="cookieAnalytics">
+                <label for="cookieAnalytics">Cookies analytiques</label>
+                <p>Nous aident à améliorer le site</p>
+            </div>
+            <div class="cookie-option">
+                <input type="checkbox" id="cookieMarketing">
+                <label for="cookieMarketing">Cookies marketing</label>
+                <p>Personnalisation des publicités</p>
+            </div>
+            <button class="btn btn-primary" id="savePreferences">Sauvegarder les préférences</button>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index_fr.html" class="logo">Slozw</a>
+            <div class="nav-links">
+                <a href="index_fr.html" class="active">Accueil</a>
+                <a href="services_fr.html">Services</a>
+                <a href="portfolio_fr.html">Portfolio</a>
+                <a href="boutique_fr.html">Boutique</a>
+                <a href="contact_fr.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <!-- Sélecteur de langue -->
+                <div class="language-selector">
+                    <button class="language-btn">
+                        <span class="flag-icon">🇫🇷</span> FR
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="index_fr.html" class="language-option active">
+                            <span class="flag-icon">🇫🇷</span> Français
+                        </a>
+                        <a href="index_en.html" class="language-option">
+                            <span class="flag-icon">🇬🇧</span> English
+                        </a>
+                        <a href="index_es.html" class="language-option">
+                            <span class="flag-icon">🇪🇸</span> Español
+                        </a>
+                        <a href="index_de.html" class="language-option">
+                            <span class="flag-icon">🇩🇪</span> Deutsch
+                        </a>
+                    </div>
+                </div>
+                
+                <a href="#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">Créations Digitales d'Excellence</h1>
+            <p data-i18n="hero.subtitle">Design, Développement & Solutions E-commerce sur mesure</p>
+            <div class="hero-buttons">
+                <a href="portfolio_fr.html" class="btn btn-primary" data-i18n="hero.button1">Voir mon travail</a>
+                <a href="contact_fr.html" class="btn btn-secondary" data-i18n="hero.button2">Me contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="section services-preview">
+        <div class="container">
+            <h2 class="section-title" data-i18n="services.title">Mes Services</h2>
+            <p class="section-subtitle" data-i18n="services.subtitle">Des solutions complètes pour votre présence digitale</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3 data-i18n="services.design.title">UI/UX Design</h3>
+                    <p data-i18n="services.design.description">Interfaces intuitives et esthétiques</p>
+                    <a href="services_fr.html#design" class="service-link" data-i18n="services.learnMore">En savoir plus →</a>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3 data-i18n="services.dev.title">Développement Web</h3>
+                    <p data-i18n="services.dev.description">Sites performants et responsives</p>
+                    <a href="services_fr.html#developpement" class="service-link" data-i18n="services.learnMore">En savoir plus →</a>
+                </div>
+                
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3 data-i18n="services.ecommerce.title">E-commerce</h3>
+                    <p data-i18n="services.ecommerce.description">Boutiques en ligne optimisées</p>
+                    <a href="services_fr.html#ecommerce" class="service-link" data-i18n="services.learnMore">En savoir plus →</a>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="services_fr.html" class="btn btn-outline" data-i18n="services.allServices">Voir tous les services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview -->
+    <section class="section portfolio-preview">
+        <div class="container">
+            <h2 class="section-title" data-i18n="portfolio.title">Derniers Projets</h2>
+            <p class="section-subtitle" data-i18n="portfolio.subtitle">Quelques-unes de mes réalisations récentes</p>
+            
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site E-commerce" loading="lazy">
+                    <div class="project-info">
+                        <h3 data-i18n="portfolio.project1.title">Boutique Moderne</h3>
+                        <p data-i18n="portfolio.project1.description">E-commerce avec paiement sécurisé</p>
+                        <a href="portfolio_fr.html#projet1" class="project-link" data-i18n="portfolio.viewProject">Voir le projet</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dashboard" loading="lazy">
+                    <div class="project-info">
+                        <h3 data-i18n="portfolio.project2.title">Dashboard Analytics</h3>
+                        <p data-i18n="portfolio.project2.description">Interface d'administration complète</p>
+                        <a href="portfolio_fr.html#projet2" class="project-link" data-i18n="portfolio.viewProject">Voir le projet</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="App Mobile" loading="lazy">
+                    <div class="project-info">
+                        <h3 data-i18n="portfolio.project3.title">Application Mobile</h3>
+                        <p data-i18n="portfolio.project3.description">App iOS & Android native</p>
+                        <a href="portfolio_fr.html#projet3" class="project-link" data-i18n="portfolio.viewProject">Voir le projet</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="portfolio_fr.html" class="btn btn-outline" data-i18n="portfolio.allProjects">Voir tout le portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <h2 data-i18n="newsletter.title">Restez informé</h2>
+                <p data-i18n="newsletter.subtitle">Recevez des conseils digitaux et des offres exclusives</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Votre email" required 
+                           data-i18n-placeholder="newsletter.placeholder">
+                    <input type="hidden" name="lang" value="fr">
+                    <input type="hidden" name="csrf_token" id="newsletterCsrf">
+                    <button type="submit" class="btn btn-primary" data-i18n="newsletter.button">
+                        <i class="fas fa-paper-plane"></i> S'inscrire
+                    </button>
+                </form>
+                <p class="newsletter-disclaimer" data-i18n="newsletter.disclaimer">
+                    En vous inscrivant, vous acceptez notre <a href="privacy.html">politique de confidentialité</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 data-i18n="cta.title">Prêt à donner vie à votre projet ?</h2>
+                <p data-i18n="cta.subtitle">Contactez-moi pour discuter de vos besoins</p>
+                <div class="cta-buttons">
+                    <a href="contact_fr.html" class="btn btn-primary" data-i18n="cta.button1">Prendre rendez-vous</a>
+                    <a href="boutique_fr.html" class="btn btn-secondary" data-i18n="cta.button2">Voir la boutique</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Slozw</h3>
+                    <p data-i18n="footer.description">Créateur digital spécialisé en design, développement et e-commerce.</p>
+                    <div class="legal-links">
+                        <a href="privacy.html" data-i18n="footer.privacy">Confidentialité</a>
+                        <a href="terms.html" data-i18n="footer.terms">Conditions</a>
+                        <a href="#" data-i18n="footer.cookies" id="openCookieSettings">Cookies</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.navigation">Navigation</h4>
+                    <a href="index_fr.html" data-i18n="nav.home">Accueil</a>
+                    <a href="services_fr.html" data-i18n="nav.services">Services</a>
+                    <a href="portfolio_fr.html" data-i18n="nav.portfolio">Portfolio</a>
+                    <a href="boutique_fr.html" data-i18n="nav.shop">Boutique</a>
+                    <a href="contact_fr.html" data-i18n="nav.contact">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4 data-i18n="footer.contact">Contact</h4>
+                    <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
+                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 data-i18n="footer.languages">Langues</h4>
+                    <div class="footer-languages">
+                        <a href="index_fr.html" class="footer-lang active">🇫🇷 Français</a>
+                        <a href="index_en.html" class="footer-lang">🇬🇧 English</a>
+                        <a href="index_es.html" class="footer-lang">🇪🇸 Español</a>
+                        <a href="index_de.html" class="footer-lang">🇩🇪 Deutsch</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <!-- CSRF Token pour JavaScript -->
+    <script>
+        window.CSRF_TOKEN = "<?php echo bin2hex(random_bytes(32)); ?>";
+    </script>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+    <script src="translations/fr.json" type="application/json" id="translationData"></script>
+</body>
+</html>
