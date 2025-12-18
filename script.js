@@ -1,10 +1,7 @@
-[file name]: script.js
-[file content begin]
 // =============================================
 // GESTION DU POPUP COOKIES (Nouveau système)
 // =============================================
 
-// Fonction pour initialiser le popup de cookies
 function initCookiePopup() {
     const cookiePopup = document.getElementById('cookiePopup');
     const cookieAccept = document.getElementById('cookiePopupAccept');
@@ -12,53 +9,43 @@ function initCookiePopup() {
     const cookieClose = document.getElementById('cookiePopupClose');
     
     if (!cookiePopup || !cookieAccept || !cookieReject || !cookieClose) {
-        return; // Le popup n'existe pas sur cette page
+        return;
     }
     
-    // Vérifier si l'utilisateur a déjà répondu
     const cookieChoice = localStorage.getItem('cookieChoice');
     
     if (!cookieChoice) {
-        // Afficher le popup après 1 seconde
         setTimeout(() => {
             cookiePopup.classList.add('show');
         }, 1000);
     } else {
-        // Masquer le popup si déjà répondu
         cookiePopup.style.display = 'none';
     }
     
-    // Accepter les cookies
     cookieAccept.addEventListener('click', function() {
         localStorage.setItem('cookieChoice', 'accepted');
         cookiePopup.classList.remove('show');
         cookiePopup.classList.add('hide');
         
-        // Masquer complètement après l'animation
         setTimeout(() => {
             cookiePopup.style.display = 'none';
         }, 500);
         
-        // Notification
         showNotification('Préférences de cookies enregistrées', 'success');
     });
     
-    // Refuser les cookies
     cookieReject.addEventListener('click', function() {
         localStorage.setItem('cookieChoice', 'rejected');
         cookiePopup.classList.remove('show');
         cookiePopup.classList.add('hide');
         
-        // Masquer complètement après l'animation
         setTimeout(() => {
             cookiePopup.style.display = 'none';
         }, 500);
         
-        // Notification
         showNotification('Préférences de cookies enregistrées', 'success');
     });
     
-    // Fermer le popup (sans choix)
     cookieClose.addEventListener('click', function() {
         cookiePopup.classList.remove('show');
         cookiePopup.classList.add('hide');
@@ -67,14 +54,12 @@ function initCookiePopup() {
             cookiePopup.style.display = 'none';
         }, 500);
         
-        // Si l'utilisateur ferme sans répondre, on considère qu'il a refusé
         if (!cookieChoice) {
             localStorage.setItem('cookieChoice', 'closed');
         }
     });
 }
 
-// Fonction pour réinitialiser les préférences cookies (pour le bouton dans le footer)
 function resetCookiePreferences() {
     localStorage.removeItem('cookieChoice');
     
@@ -90,178 +75,6 @@ function resetCookiePreferences() {
 
 // =============================================
 // FONCTIONS DE FILTRAGE BOUTIQUE & PORTFOLIO
-// =============================================
-
-// Filtrer les produits par catégorie (BOUTIQUE)
-function filterProducts(category) {
-    console.log('🚀 filterProducts appelé avec catégorie:', category);
-    
-    const products = document.querySelectorAll('.produit-card');
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    
-    console.log('📦 Produits trouvés:', products.length);
-    console.log('🎯 Boutons trouvés:', categoryBtns.length);
-    
-    if (products.length === 0 || categoryBtns.length === 0) {
-        console.log('❌ Pas sur la page boutique ou éléments non trouvés');
-        return;
-    }
-    
-    // Mettre à jour les boutons actifs
-    categoryBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.category === category) {
-            btn.classList.add('active');
-            console.log('✅ Bouton activé:', btn.textContent);
-        }
-    });
-    
-    // Filtrer les produits
-    products.forEach(product => {
-        const productCategory = product.dataset.category;
-        console.log(`📋 Produit: ${product.querySelector('h3').textContent}, Catégorie: ${productCategory}`);
-        
-        if (category === 'all' || productCategory === category) {
-            console.log(`✅ AFFICHER produit: ${product.querySelector('h3').textContent}`);
-            product.style.display = 'block';
-            // Petit délai pour l'animation
-            setTimeout(() => {
-                product.style.opacity = '1';
-                product.style.transform = 'translateY(0)';
-            }, 50);
-        } else {
-            console.log(`❌ CACHER produit: ${product.querySelector('h3').textContent}`);
-            // Animation de disparition
-            product.style.opacity = '0';
-            product.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                product.style.display = 'none';
-            }, 300);
-        }
-    });
-    
-    console.log('🎉 Filtrage terminé pour catégorie:', category);
-}
-
-// Filtrer les projets portfolio
-function filterPortfolio(filter) {
-    console.log('🎨 filterPortfolio appelé avec filtre:', filter);
-    
-    const items = document.querySelectorAll('.portfolio-item');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    
-    console.log('🖼️ Items portfolio trouvés:', items.length);
-    console.log('🎯 Filtres trouvés:', filterBtns.length);
-    
-    if (items.length === 0 || filterBtns.length === 0) {
-        console.log('❌ Pas sur la page portfolio ou éléments non trouvés');
-        return;
-    }
-    
-    // Mettre à jour les boutons actifs
-    filterBtns.forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === filter) {
-            btn.classList.add('active');
-            console.log('✅ Filtre activé:', btn.textContent);
-        }
-    });
-    
-    // Filtrer les projets
-    items.forEach(item => {
-        const itemCategory = item.dataset.category;
-        console.log(`📋 Portfolio item: ${item.querySelector('h3').textContent}, Catégorie: ${itemCategory}`);
-        
-        if (filter === 'all' || itemCategory === filter) {
-            console.log(`✅ AFFICHER item: ${item.querySelector('h3').textContent}`);
-            item.style.display = 'block';
-            setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-            }, 50);
-        } else {
-            console.log(`❌ CACHER item: ${item.querySelector('h3').textContent}`);
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                item.style.display = 'none';
-            }, 300);
-        }
-    });
-    
-    console.log('🎉 Filtrage portfolio terminé pour:', filter);
-}
-
-// =============================================
-// INITIALISATION DES FILTRES
-// =============================================
-
-// Initialiser les filtres de la boutique
-function initBoutiqueFilters() {
-    const categoryBtns = document.querySelectorAll('.category-btn');
-    
-    console.log('🛒 Initialisation des filtres boutique...');
-    console.log('🎯 Boutons de catégorie trouvés:', categoryBtns.length);
-    
-    if (categoryBtns.length === 0) {
-        console.log('❌ Aucun bouton de catégorie trouvé');
-        return;
-    }
-    
-    categoryBtns.forEach(btn => {
-        console.log('🔘 Bouton trouvé:', btn.textContent, 'data-category:', btn.dataset.category);
-        
-        // Supprimer les anciens événements
-        btn.removeEventListener('click', handleCategoryClick);
-        
-        // Ajouter le nouvel événement
-        btn.addEventListener('click', handleCategoryClick);
-    });
-    
-    console.log('✅ Filtres boutique initialisés');
-}
-
-// Initialiser les filtres du portfolio
-function initPortfolioFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    
-    console.log('🎨 Initialisation des filtres portfolio...');
-    console.log('🎯 Filtres trouvés:', filterBtns.length);
-    
-    if (filterBtns.length === 0) {
-        console.log('❌ Aucun filtre trouvé');
-        return;
-    }
-    
-    filterBtns.forEach(btn => {
-        console.log('🔘 Filtre trouvé:', btn.textContent, 'data-filter:', btn.dataset.filter);
-        
-        // Supprimer les anciens événements
-        btn.removeEventListener('click', handleFilterClick);
-        
-        // Ajouter le nouvel événement
-        btn.addEventListener('click', handleFilterClick);
-    });
-    
-    console.log('✅ Filtres portfolio initialisés');
-}
-
-// Gestionnaire de clic pour les catégories boutique
-function handleCategoryClick() {
-    const category = this.dataset.category;
-    console.log('👆 Clic sur catégorie boutique:', category);
-    filterProducts(category);
-}
-
-// Gestionnaire de clic pour les filtres portfolio
-function handleFilterClick() {
-    const filter = this.dataset.filter;
-    console.log('👆 Clic sur filtre portfolio:', filter);
-    filterPortfolio(filter);
-}
-
-// =============================================
-// SYSTÈME DE RÉDUCTION
 // =============================================
 
 let codesPromo = {
@@ -336,7 +149,6 @@ function applyPromoCode() {
         return;
     }
     
-    // Vérifier si le code existe
     if (!codesPromo[codeInput]) {
         messageDiv.textContent = "Code promo invalide";
         messageDiv.className = "promo-message error";
@@ -345,14 +157,12 @@ function applyPromoCode() {
     
     const code = codesPromo[codeInput];
     
-    // Vérifier si actif
     if (!code.actif) {
         messageDiv.textContent = "Ce code promo n'est plus actif";
         messageDiv.className = "promo-message error";
         return;
     }
     
-    // Vérifier date d'expiration
     if (code.dateFin) {
         const today = new Date();
         const expiryDate = new Date(code.dateFin);
@@ -363,7 +173,6 @@ function applyPromoCode() {
         }
     }
     
-    // Vérifier première commande
     if (code.premiereCommande) {
         const hasPreviousOrders = localStorage.getItem('hasOrders') === 'true';
         if (hasPreviousOrders) {
@@ -373,7 +182,6 @@ function applyPromoCode() {
         }
     }
     
-    // Vérifier montant minimum
     const sousTotal = panier.reduce((sum, item) => sum + (item.prix * item.quantite), 0);
     if (code.minMontant && sousTotal < code.minMontant) {
         messageDiv.textContent = `Minimum ${code.minMontant}€ pour ce code`;
@@ -381,7 +189,6 @@ function applyPromoCode() {
         return;
     }
     
-    // Appliquer le code
     promoActuel = {
         code: codeInput,
         type: code.type,
@@ -389,16 +196,13 @@ function applyPromoCode() {
         description: code.description
     };
     
-    // Sauvegarder dans localStorage
     localStorage.setItem('promoCode', JSON.stringify(promoActuel));
     
     messageDiv.textContent = `✅ Code appliqué : ${code.description}`;
     messageDiv.className = "promo-message success";
     
-    // Mettre à jour l'affichage du panier
     updatePanierDisplay();
     
-    // Fermer le modal après 1.5 secondes
     setTimeout(() => {
         closePromoModal();
         if (document.getElementById('panierModal').classList.contains('show')) {
@@ -421,7 +225,6 @@ function updatePromoDisplay() {
         return;
     }
     
-    // Calculer les montants
     const sousTotal = panier.reduce((sum, item) => sum + (item.prix * item.quantite), 0);
     let discount = 0;
     
@@ -431,14 +234,12 @@ function updatePromoDisplay() {
         discount = promoActuel.valeur;
     }
     
-    // S'assurer que la réduction ne dépasse pas le total
     if (discount > sousTotal) {
         discount = sousTotal;
     }
     
     const total = sousTotal - discount;
     
-    // Mettre à jour l'affichage
     if (promoSection) promoSection.style.display = 'block';
     if (promoTotalRow) promoTotalRow.style.display = 'flex';
     
@@ -459,11 +260,9 @@ function removePromo() {
 // SYSTÈME D'EMAILS AUTOMATIQUES
 // =============================================
 
-// 1. Email de bienvenue après newsletter
 function sendWelcomeEmail(email, name = "Client") {
     console.log(`📧 Envoi email bienvenue à: ${email}`);
     
-    // Données pour l'email
     const templateParams = {
         to_name: name,
         to_email: email,
@@ -472,22 +271,18 @@ function sendWelcomeEmail(email, name = "Client") {
         date: new Date().toLocaleDateString('fr-FR')
     };
     
-    // Envoyer via EmailJS
     emailjs.send("service_slozw", "template_bienvenue", templateParams)
         .then(function(response) {
             console.log('✅ Email bienvenue envoyé:', response.status, response.text);
-            // Sauvegarder dans localStorage pour éviter doublons
             localStorage.setItem(`emailSent_${email}`, 'true');
         }, function(error) {
             console.log('❌ Erreur email:', error);
         });
 }
 
-// 2. Email après commande
 function sendOrderEmail(orderData) {
     console.log(`📧 Envoi email commande à: ${orderData.client.email}`);
     
-    // Préparer les détails de la commande
     const orderDetails = orderData.articles.map(item => 
         `• ${item.nom} (×${item.quantite}) : ${item.prix * item.quantite}€`
     ).join('\n');
@@ -508,17 +303,14 @@ function sendOrderEmail(orderData) {
         .then(function(response) {
             console.log('✅ Email commande envoyé');
             
-            // Marquer que l'utilisateur a maintenant des commandes
             localStorage.setItem('hasOrders', 'true');
             
-            // Planifier l'email de suivi (3 jours après)
             setTimeout(() => {
                 sendFollowupEmail(orderData);
-            }, 3 * 24 * 60 * 60 * 1000); // 3 jours
+            }, 3 * 24 * 60 * 60 * 1000);
         });
 }
 
-// 3. Email de suivi
 function sendFollowupEmail(orderData) {
     console.log(`📧 Envoi email suivi à: ${orderData.client.email}`);
     
@@ -537,7 +329,6 @@ function sendFollowupEmail(orderData) {
         });
 }
 
-// 4. Email d'anniversaire (exemple)
 function sendBirthdayEmail(email, name) {
     const templateParams = {
         to_name: name,
@@ -559,7 +350,6 @@ function sendBirthdayEmail(email, name) {
 
 let panier = JSON.parse(localStorage.getItem('panier')) || [];
 
-// Mettre à jour le compteur du panier
 function updatePanierCount() {
     const count = panier.reduce((total, item) => total + item.quantite, 0);
     document.querySelectorAll('.panier-count').forEach(el => {
@@ -567,7 +357,6 @@ function updatePanierCount() {
     });
 }
 
-// Fonctions pour la boutique
 function openPanierModal() {
     const modal = document.getElementById('panierModal');
     if (modal) {
@@ -603,7 +392,6 @@ function closeCheckoutModal() {
     }
 }
 
-// Mettre à jour l'affichage du panier
 function updatePanierDisplay() {
     const container = document.getElementById('panierItems');
     const totalElement = document.getElementById('totalPanier');
@@ -655,7 +443,6 @@ function updatePanierDisplay() {
         container.appendChild(div);
     });
     
-    // Calculer la réduction
     let discount = 0;
     if (promoActuel) {
         if (promoActuel.type === 'pourcentage') {
@@ -664,7 +451,6 @@ function updatePanierDisplay() {
             discount = promoActuel.valeur;
         }
         
-        // Limiter la réduction au sous-total
         if (discount > sousTotal) {
             discount = sousTotal;
         }
@@ -672,7 +458,6 @@ function updatePanierDisplay() {
     
     const total = sousTotal - discount;
     
-    // Mettre à jour tous les montants
     if (sousTotalElement) sousTotalElement.textContent = sousTotal.toFixed(2) + '€';
     if (promoDiscountElement) {
         promoDiscountElement.textContent = '-' + discount.toFixed(2) + '€';
@@ -681,7 +466,6 @@ function updatePanierDisplay() {
     }
     totalElement.textContent = total.toFixed(2) + '€';
     
-    // Afficher/masquer la ligne réduction
     if (promoTotalRow) {
         if (discount > 0) {
             promoTotalRow.style.display = 'flex';
@@ -690,10 +474,8 @@ function updatePanierDisplay() {
         }
     }
     
-    // Afficher la section promo si applicable
     updatePromoDisplay();
     
-    // Ajouter le bouton promo si pas de réduction
     if (!promoActuel) {
         const promoBtn = document.createElement('button');
         promoBtn.className = 'btn-promo';
@@ -703,7 +485,6 @@ function updatePanierDisplay() {
     }
 }
 
-// Mettre à jour le récapitulatif du checkout
 function updateCheckoutSummary() {
     const container = document.getElementById('checkoutSummary');
     const totalElement = document.getElementById('checkoutTotal');
@@ -735,7 +516,6 @@ function updateCheckoutSummary() {
     totalElement.textContent = total.toFixed(2) + '€';
 }
 
-// Générer une référence de commande
 function generateOrderReference() {
     const refElement = document.getElementById('orderReference');
     if (refElement) {
@@ -745,20 +525,16 @@ function generateOrderReference() {
     }
 }
 
-// Gestion des étapes du checkout
 function goToStep(stepNumber) {
-    // Cacher toutes les étapes
     document.querySelectorAll('.checkout-step').forEach(step => {
         step.classList.remove('active');
     });
     
-    // Montrer l'étape sélectionnée
     const stepElement = document.getElementById(`step${stepNumber}`);
     if (stepElement) {
         stepElement.classList.add('active');
     }
     
-    // Mettre à jour les indicateurs d'étape
     document.querySelectorAll('.step').forEach(step => {
         step.classList.remove('active');
         if (parseInt(step.dataset.step) === stepNumber) {
@@ -767,7 +543,176 @@ function goToStep(stepNumber) {
     });
 }
 
-// Notification
+// =============================================
+// FONCTIONS DE FILTRAGE CORRIGÉES
+// =============================================
+
+// Filtrer les produits par catégorie (BOUTIQUE)
+function filterProducts(category) {
+    console.log('🚀 filterProducts appelé avec catégorie:', category);
+    
+    const products = document.querySelectorAll('.produit-card');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    
+    if (products.length === 0 || categoryBtns.length === 0) {
+        console.log('❌ Pas sur la page boutique ou éléments non trouvés');
+        return;
+    }
+    
+    // Mettre à jour les boutons actifs
+    categoryBtns.forEach(btn => {
+        btn.classList.remove('active');
+        const btnCategory = btn.dataset.category;
+        if (btnCategory === category) {
+            btn.classList.add('active');
+            console.log('✅ Bouton activé:', btn.textContent);
+        }
+    });
+    
+    // Filtrer les produits
+    let produitsAffiches = 0;
+    products.forEach(product => {
+        const productCategory = product.dataset.category;
+        
+        if (category === 'all' || productCategory === category) {
+            product.style.display = 'block';
+            produitsAffiches++;
+            
+            setTimeout(() => {
+                product.style.opacity = '1';
+                product.style.transform = 'translateY(0)';
+            }, 50);
+        } else {
+            product.style.opacity = '0';
+            product.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                product.style.display = 'none';
+            }, 300);
+        }
+    });
+    
+    console.log(`🎉 ${produitsAffiches} produits affichés pour la catégorie ${category}`);
+    
+    // Notification visuelle
+    showNotification(`${produitsAffiches} produits ${category === 'all' ? 'affichés' : category}`, 'success');
+}
+
+// Filtrer les projets portfolio
+function filterPortfolio(filter) {
+    console.log('🎨 filterPortfolio appelé avec filtre:', filter);
+    
+    const items = document.querySelectorAll('.portfolio-item');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    if (items.length === 0 || filterBtns.length === 0) {
+        console.log('❌ Pas sur la page portfolio ou éléments non trouvés');
+        return;
+    }
+    
+    // Mettre à jour les boutons actifs
+    filterBtns.forEach(btn => {
+        btn.classList.remove('active');
+        const btnFilter = btn.dataset.filter;
+        if (btnFilter === filter) {
+            btn.classList.add('active');
+            console.log('✅ Filtre activé:', btn.textContent);
+        }
+    });
+    
+    // Filtrer les projets
+    let projetsAffiches = 0;
+    items.forEach(item => {
+        const itemCategory = item.dataset.category;
+        
+        if (filter === 'all' || itemCategory === filter) {
+            item.style.display = 'block';
+            projetsAffiches++;
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 50);
+        } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 300);
+        }
+    });
+    
+    console.log(`🎉 ${projetsAffiches} projets affichés pour: ${filter}`);
+    
+    // Notification visuelle
+    showNotification(`${projetsAffiches} projets ${filter === 'all' ? 'affichés' : 'de ' + filter}`, 'success');
+}
+
+// =============================================
+// INITIALISATION DES FILTRES
+// =============================================
+
+// Initialiser les filtres de la boutique
+function initBoutiqueFilters() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    
+    console.log('🛒 Initialisation des filtres boutique...');
+    console.log('🎯 Boutons de catégorie trouvés:', categoryBtns.length);
+    
+    if (categoryBtns.length === 0) {
+        console.log('❌ Aucun bouton de catégorie trouvé');
+        return;
+    }
+    
+    categoryBtns.forEach(btn => {
+        console.log('🔘 Bouton trouvé:', btn.textContent, 'data-category:', btn.dataset.category);
+        
+        // Supprimer les anciens événements et en ajouter un nouveau
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', function() {
+            const category = this.dataset.category;
+            console.log('👆 Clic sur catégorie boutique:', category);
+            filterProducts(category);
+        });
+    });
+    
+    console.log('✅ Filtres boutique initialisés');
+}
+
+// Initialiser les filtres du portfolio
+function initPortfolioFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    console.log('🎨 Initialisation des filtres portfolio...');
+    console.log('🎯 Filtres trouvés:', filterBtns.length);
+    
+    if (filterBtns.length === 0) {
+        console.log('❌ Aucun filtre trouvé');
+        return;
+    }
+    
+    filterBtns.forEach(btn => {
+        console.log('🔘 Filtre trouvé:', btn.textContent, 'data-filter:', btn.dataset.filter);
+        
+        // Supprimer les anciens événements et en ajouter un nouveau
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+            console.log('👆 Clic sur filtre portfolio:', filter);
+            filterPortfolio(filter);
+        });
+    });
+    
+    console.log('✅ Filtres portfolio initialisés');
+}
+
+// =============================================
+// FONCTIONS UTILITAIRES
+// =============================================
+
 function showNotification(message, type = 'success') {
     const notification = document.getElementById('notification');
     if (!notification) return;
@@ -811,26 +756,7 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('hasOrders', 'false');
     }
     
-    // Boutique - Filtrage par catégorie (alternative pour compatibilité)
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const category = this.dataset.category;
-            console.log(`Clic sur catégorie: ${category}`);
-            filterProducts(category);
-        });
-    });
-    
-    // Portfolio - Filtrage (alternative pour compatibilité)
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.dataset.filter;
-            console.log(`Clic sur filtre: ${filter}`);
-            filterPortfolio(filter);
-        });
-    });
-    
     // Gestion du panier (boutique)
-    // Ouvrir le panier
     document.querySelectorAll('.panier-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -860,7 +786,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Préparer les données de la commande
         const orderData = {
             date: new Date().toISOString(),
             reference: document.getElementById('orderReference')?.textContent || 'SLZW-' + Date.now(),
@@ -875,7 +800,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         
-        // Envoyer l'email de commande
         if (orderData.client.email) {
             sendOrderEmail(orderData);
         }
@@ -889,7 +813,6 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.addEventListener('click', function() {
             const nextStep = this.dataset.next;
             
-            // Validation de l'étape 1
             if (nextStep === '2') {
                 const name = document.getElementById('checkoutName');
                 const email = document.getElementById('checkoutEmail');
@@ -900,7 +823,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 
-                // Validation email basique
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(email.value)) {
                     showNotification('Veuillez entrer un email valide', 'error');
@@ -908,13 +830,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
             
-            // Validation de l'étape 2
             if (nextStep === '3') {
-                // Simuler le paiement
                 showNotification('Paiement en cours...', 'info');
                 
                 setTimeout(() => {
-                    // Enregistrer la commande
                     const order = {
                         date: new Date().toISOString(),
                         reference: document.getElementById('orderReference').textContent,
@@ -929,17 +848,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     };
                     
-                    // Sauvegarder dans localStorage (pour historique)
                     localStorage.setItem('lastOrder', JSON.stringify(order));
                     
-                    // Vider le panier
                     panier = [];
                     localStorage.removeItem('panier');
                     updatePanierCount();
                     
                     showNotification('Commande confirmée avec succès !', 'success');
                     
-                    // Retirer le code promo après utilisation
                     if (promoActuel?.premiereCommande) {
                         removePromo();
                     }
@@ -985,7 +901,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const nom = addBtn.dataset.nom;
             const prix = parseFloat(addBtn.dataset.prix);
             
-            // Vérifier si l'article est déjà dans le panier
             const existingItem = panier.find(item => item.id === id);
             
             if (existingItem) {
@@ -999,17 +914,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
             
-            // Sauvegarder dans localStorage
             localStorage.setItem('panier', JSON.stringify(panier));
-            
-            // Mettre à jour l'affichage
             updatePanierCount();
-            
-            // Notification
             showNotification(`"${nom}" ajouté au panier`, 'success');
-            
-            // Ouvrir le panier (optionnel)
-            // openPanierModal();
         }
     });
     
@@ -1034,27 +941,21 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Récupérer les données
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Validation
             if (!data.name || !data.email || !data.message) {
                 showNotification('Veuillez remplir tous les champs obligatoires', 'error');
                 return;
             }
             
-            // Validation email
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(data.email)) {
                 showNotification('Veuillez entrer un email valide', 'error');
                 return;
             }
             
-            // Simulation d'envoi
             console.log('Message envoyé:', data);
-            
-            // Réinitialiser le formulaire
             this.reset();
             showNotification('Message envoyé avec succès ! Je vous réponds dans les 24h.', 'success');
         });
@@ -1140,7 +1041,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // =============================================
-// FONCTION DE TEST MANUEL (à appeler depuis la console)
+// FONCTION DE TEST MANUEL
 // =============================================
 
 function testFiltres() {
@@ -1177,4 +1078,3 @@ function testFiltres() {
         console.log(`${i+1}. ${title} -> data-category: "${item.dataset.category}"`);
     });
 }
-[file content end]
