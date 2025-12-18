@@ -1,5 +1,94 @@
 [file name]: script.js
 [file content begin]
+
+// =============================================
+// GESTION DU POPUP COOKIES (Nouveau système)
+// =============================================
+
+// Fonction pour initialiser le popup de cookies
+function initCookiePopup() {
+    const cookiePopup = document.getElementById('cookiePopup');
+    const cookieAccept = document.getElementById('cookiePopupAccept');
+    const cookieReject = document.getElementById('cookiePopupReject');
+    const cookieClose = document.getElementById('cookiePopupClose');
+    
+    if (!cookiePopup || !cookieAccept || !cookieReject || !cookieClose) {
+        return; // Le popup n'existe pas sur cette page
+    }
+    
+    // Vérifier si l'utilisateur a déjà répondu
+    const cookieChoice = localStorage.getItem('cookieChoice');
+    
+    if (!cookieChoice) {
+        // Afficher le popup après 1 seconde
+        setTimeout(() => {
+            cookiePopup.classList.add('show');
+        }, 1000);
+    } else {
+        // Masquer le popup si déjà répondu
+        cookiePopup.style.display = 'none';
+    }
+    
+    // Accepter les cookies
+    cookieAccept.addEventListener('click', function() {
+        localStorage.setItem('cookieChoice', 'accepted');
+        cookiePopup.classList.remove('show');
+        cookiePopup.classList.add('hide');
+        
+        // Masquer complètement après l'animation
+        setTimeout(() => {
+            cookiePopup.style.display = 'none';
+        }, 500);
+        
+        // Notification
+        showNotification('Préférences de cookies enregistrées', 'success');
+    });
+    
+    // Refuser les cookies
+    cookieReject.addEventListener('click', function() {
+        localStorage.setItem('cookieChoice', 'rejected');
+        cookiePopup.classList.remove('show');
+        cookiePopup.classList.add('hide');
+        
+        // Masquer complètement après l'animation
+        setTimeout(() => {
+            cookiePopup.style.display = 'none';
+        }, 500);
+        
+        // Notification
+        showNotification('Préférences de cookies enregistrées', 'success');
+    });
+    
+    // Fermer le popup (sans choix)
+    cookieClose.addEventListener('click', function() {
+        cookiePopup.classList.remove('show');
+        cookiePopup.classList.add('hide');
+        
+        setTimeout(() => {
+            cookiePopup.style.display = 'none';
+        }, 500);
+        
+        // Si l'utilisateur ferme sans répondre, on considère qu'il a refusé
+        if (!cookieChoice) {
+            localStorage.setItem('cookieChoice', 'closed');
+        }
+    });
+}
+
+// Fonction pour réinitialiser les préférences cookies (pour le bouton dans le footer)
+function resetCookiePreferences() {
+    localStorage.removeItem('cookieChoice');
+    
+    const cookiePopup = document.getElementById('cookiePopup');
+    if (cookiePopup) {
+        cookiePopup.style.display = 'block';
+        setTimeout(() => {
+            cookiePopup.classList.remove('hide');
+            cookiePopup.classList.add('show');
+        }, 10);
+    }
+}
+
 // =============================================
 // GESTION DU PANIER - BOUTIQUE
 // =============================================
