@@ -94,35 +94,43 @@ function resetCookiePreferences() {
 
 // Filtrer les produits par catégorie (BOUTIQUE)
 function filterProducts(category) {
+    console.log('🚀 filterProducts appelé avec catégorie:', category);
+    
     const products = document.querySelectorAll('.produit-card');
     const categoryBtns = document.querySelectorAll('.category-btn');
     
-    if (products.length === 0 || categoryBtns.length === 0) {
-        return; // Pas sur la page boutique
-    }
+    console.log('📦 Produits trouvés:', products.length);
+    console.log('🎯 Boutons trouvés:', categoryBtns.length);
     
-    console.log(`Filtrage des produits - Catégorie: ${category}`);
+    if (products.length === 0 || categoryBtns.length === 0) {
+        console.log('❌ Pas sur la page boutique ou éléments non trouvés');
+        return;
+    }
     
     // Mettre à jour les boutons actifs
     categoryBtns.forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.category === category) {
             btn.classList.add('active');
+            console.log('✅ Bouton activé:', btn.textContent);
         }
     });
     
     // Filtrer les produits
     products.forEach(product => {
         const productCategory = product.dataset.category;
+        console.log(`📋 Produit: ${product.querySelector('h3').textContent}, Catégorie: ${productCategory}`);
         
         if (category === 'all' || productCategory === category) {
+            console.log(`✅ AFFICHER produit: ${product.querySelector('h3').textContent}`);
             product.style.display = 'block';
-            // Animation d'apparition
+            // Petit délai pour l'animation
             setTimeout(() => {
                 product.style.opacity = '1';
                 product.style.transform = 'translateY(0)';
             }, 50);
         } else {
+            console.log(`❌ CACHER produit: ${product.querySelector('h3').textContent}`);
             // Animation de disparition
             product.style.opacity = '0';
             product.style.transform = 'translateY(20px)';
@@ -131,36 +139,48 @@ function filterProducts(category) {
             }, 300);
         }
     });
+    
+    console.log('🎉 Filtrage terminé pour catégorie:', category);
 }
 
 // Filtrer les projets portfolio
 function filterPortfolio(filter) {
+    console.log('🎨 filterPortfolio appelé avec filtre:', filter);
+    
     const items = document.querySelectorAll('.portfolio-item');
     const filterBtns = document.querySelectorAll('.filter-btn');
     
-    if (items.length === 0 || filterBtns.length === 0) {
-        return; // Pas sur la page portfolio
-    }
+    console.log('🖼️ Items portfolio trouvés:', items.length);
+    console.log('🎯 Filtres trouvés:', filterBtns.length);
     
-    console.log(`Filtrage du portfolio - Filtre: ${filter}`);
+    if (items.length === 0 || filterBtns.length === 0) {
+        console.log('❌ Pas sur la page portfolio ou éléments non trouvés');
+        return;
+    }
     
     // Mettre à jour les boutons actifs
     filterBtns.forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.filter === filter) {
             btn.classList.add('active');
+            console.log('✅ Filtre activé:', btn.textContent);
         }
     });
     
     // Filtrer les projets
     items.forEach(item => {
-        if (filter === 'all' || item.dataset.category === filter) {
+        const itemCategory = item.dataset.category;
+        console.log(`📋 Portfolio item: ${item.querySelector('h3').textContent}, Catégorie: ${itemCategory}`);
+        
+        if (filter === 'all' || itemCategory === filter) {
+            console.log(`✅ AFFICHER item: ${item.querySelector('h3').textContent}`);
             item.style.display = 'block';
             setTimeout(() => {
                 item.style.opacity = '1';
                 item.style.transform = 'translateY(0)';
             }, 50);
         } else {
+            console.log(`❌ CACHER item: ${item.querySelector('h3').textContent}`);
             item.style.opacity = '0';
             item.style.transform = 'translateY(20px)';
             setTimeout(() => {
@@ -168,6 +188,76 @@ function filterPortfolio(filter) {
             }, 300);
         }
     });
+    
+    console.log('🎉 Filtrage portfolio terminé pour:', filter);
+}
+
+// =============================================
+// INITIALISATION DES FILTRES
+// =============================================
+
+// Initialiser les filtres de la boutique
+function initBoutiqueFilters() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    
+    console.log('🛒 Initialisation des filtres boutique...');
+    console.log('🎯 Boutons de catégorie trouvés:', categoryBtns.length);
+    
+    if (categoryBtns.length === 0) {
+        console.log('❌ Aucun bouton de catégorie trouvé');
+        return;
+    }
+    
+    categoryBtns.forEach(btn => {
+        console.log('🔘 Bouton trouvé:', btn.textContent, 'data-category:', btn.dataset.category);
+        
+        // Supprimer les anciens événements
+        btn.removeEventListener('click', handleCategoryClick);
+        
+        // Ajouter le nouvel événement
+        btn.addEventListener('click', handleCategoryClick);
+    });
+    
+    console.log('✅ Filtres boutique initialisés');
+}
+
+// Initialiser les filtres du portfolio
+function initPortfolioFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    console.log('🎨 Initialisation des filtres portfolio...');
+    console.log('🎯 Filtres trouvés:', filterBtns.length);
+    
+    if (filterBtns.length === 0) {
+        console.log('❌ Aucun filtre trouvé');
+        return;
+    }
+    
+    filterBtns.forEach(btn => {
+        console.log('🔘 Filtre trouvé:', btn.textContent, 'data-filter:', btn.dataset.filter);
+        
+        // Supprimer les anciens événements
+        btn.removeEventListener('click', handleFilterClick);
+        
+        // Ajouter le nouvel événement
+        btn.addEventListener('click', handleFilterClick);
+    });
+    
+    console.log('✅ Filtres portfolio initialisés');
+}
+
+// Gestionnaire de clic pour les catégories boutique
+function handleCategoryClick() {
+    const category = this.dataset.category;
+    console.log('👆 Clic sur catégorie boutique:', category);
+    filterProducts(category);
+}
+
+// Gestionnaire de clic pour les filtres portfolio
+function handleFilterClick() {
+    const filter = this.dataset.filter;
+    console.log('👆 Clic sur filtre portfolio:', filter);
+    filterPortfolio(filter);
 }
 
 // =============================================
@@ -345,33 +435,23 @@ function showNotification(message, type = 'success') {
 }
 
 // =============================================
-// ÉVÉNEMENTS ET INITIALISATION
+// ÉVÉNEMENTS ET INITIALISATION PRINCIPALE
 // =============================================
 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 DOM entièrement chargé');
+    
     // Initialiser le popup de cookies
     initCookiePopup();
     
     // Initialiser le compteur du panier
     updatePanierCount();
     
-    // Boutique - Filtrage par catégorie
-    document.querySelectorAll('.category-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const category = this.dataset.category;
-            console.log(`Clic sur catégorie: ${category}`);
-            filterProducts(category);
-        });
-    });
+    // Initialiser les filtres BOUTIQUE
+    initBoutiqueFilters();
     
-    // Portfolio - Filtrage
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const filter = this.dataset.filter;
-            console.log(`Clic sur filtre: ${filter}`);
-            filterPortfolio(filter);
-        });
-    });
+    // Initialiser les filtres PORTFOLIO
+    initPortfolioFilters();
     
     // Gestion du panier (boutique)
     // Ouvrir le panier
@@ -651,5 +731,46 @@ document.addEventListener('DOMContentLoaded', function() {
             resetCookiePreferences();
         });
     }
+    
+    console.log('✅ Initialisation terminée');
 });
+
+// =============================================
+// FONCTION DE TEST MANUEL (à appeler depuis la console)
+// =============================================
+
+function testFiltres() {
+    console.log('🧪 TEST MANUEL DES FILTRES');
+    console.log('==========================');
+    
+    // Test boutique
+    const catBtns = document.querySelectorAll('.category-btn');
+    console.log(`🎯 Boutons boutique: ${catBtns.length}`);
+    catBtns.forEach((btn, i) => {
+        console.log(`${i+1}. ${btn.textContent} -> data-category: "${btn.dataset.category}"`);
+    });
+    
+    // Test portfolio
+    const filtreBtns = document.querySelectorAll('.filter-btn');
+    console.log(`🎨 Filtres portfolio: ${filtreBtns.length}`);
+    filtreBtns.forEach((btn, i) => {
+        console.log(`${i+1}. ${btn.textContent} -> data-filter: "${btn.dataset.filter}"`);
+    });
+    
+    // Test produits
+    const produits = document.querySelectorAll('.produit-card');
+    console.log(`📦 Produits boutique: ${produits.length}`);
+    produits.forEach((prod, i) => {
+        const title = prod.querySelector('h3')?.textContent || 'Sans titre';
+        console.log(`${i+1}. ${title} -> data-category: "${prod.dataset.category}"`);
+    });
+    
+    // Test portfolio items
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    console.log(`🖼️ Items portfolio: ${portfolioItems.length}`);
+    portfolioItems.forEach((item, i) => {
+        const title = item.querySelector('h3')?.textContent || 'Sans titre';
+        console.log(`${i+1}. ${title} -> data-category: "${item.dataset.category}"`);
+    });
+}
 [file content end]
