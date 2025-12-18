@@ -1,390 +1,78 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slozw - Portfolio | Créations Digitales</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Style pour l'animation de filtrage */
-        .portfolio-item {
-            transition: all 0.5s ease;
-        }
-        
-        .filter-btn {
-            cursor: pointer;
-        }
-        
-        .filter-btn.active {
-            background: #2563eb !important;
-            color: white !important;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">Slozw</a>
-            <div class="nav-links">
-                <a href="index.html">Accueil</a>
-                <a href="services.html">Services</a>
-                <a href="portfolio.html" class="active">Portfolio</a>
-                <a href="boutique.html">Boutique</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="nav-actions">
-                <a href="#panier" class="panier-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="panier-count">0</span>
-                </a>
-                <button class="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Portfolio Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Mon Portfolio</h1>
-            <p>Découvrez mes réalisations et projets clients</p>
-        </div>
-    </section>
-
-    <!-- Portfolio Filters -->
-    <section class="section portfolio-filters-section">
-        <div class="container">
-            <div class="filters">
-                <button class="filter-btn active" onclick="filtrerPortfolio('all')">Tous les projets</button>
-                <button class="filter-btn" onclick="filtrerPortfolio('web')">Sites Web</button>
-                <button class="filter-btn" onclick="filtrerPortfolio('ecommerce')">E-commerce</button>
-                <button class="filter-btn" onclick="filtrerPortfolio('mobile')">Applications</button>
-                <button class="filter-btn" onclick="filtrerPortfolio('design')">Design</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Grid -->
-    <section class="section portfolio-grid-section">
-        <div class="container">
-            <div class="portfolio-items">
-                <!-- Projet 1 - E-commerce -->
-                <div class="portfolio-item ecommerce" id="projet1">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Moderne">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">E-commerce</span>
-                                <h3>Boutique Moderne</h3>
-                                <p>Site e-commerce complet avec paiement sécurisé</p>
-                                <div class="project-tags">
-                                    <span>React</span>
-                                    <span>Stripe</span>
-                                    <span>Node.js</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Boutique Moderne</h3>
-                        <p>Plateforme e-commerce avec dashboard administrateur</p>
-                    </div>
-                </div>
-
-                <!-- Projet 2 - Web -->
-                <div class="portfolio-item web" id="projet2">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">Web App</span>
-                                <h3>Dashboard Analytics</h3>
-                                <p>Interface d'administration avec données en temps réel</p>
-                                <div class="project-tags">
-                                    <span>Vue.js</span>
-                                    <span>Chart.js</span>
-                                    <span>API REST</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Dashboard Analytics</h3>
-                        <p>Application de visualisation de données</p>
-                    </div>
-                </div>
-
-                <!-- Projet 3 - Mobile -->
-                <div class="portfolio-item mobile" id="projet3">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Fitness">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">Mobile App</span>
-                                <h3>App Fitness</h3>
-                                <p>Application mobile de suivi sportif</p>
-                                <div class="project-tags">
-                                    <span>React Native</span>
-                                    <span>Firebase</span>
-                                    <span>HealthKit</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>App Fitness Pro</h3>
-                        <p>Application mobile de coaching sportif</p>
-                    </div>
-                </div>
-
-                <!-- Projet 4 - Design -->
-                <div class="portfolio-item design" id="projet4">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI Design">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">UI Design</span>
-                                <h3>Système Design</h3>
-                                <p>Design system complet pour application web</p>
-                                <div class="project-tags">
-                                    <span>Figma</span>
-                                    <span>Design System</span>
-                                    <span>Prototype</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Système Design</h3>
-                        <p>Bibliothèque de composants UI complète</p>
-                    </div>
-                </div>
-
-                <!-- Projet 5 - E-commerce -->
-                <div class="portfolio-item ecommerce" id="projet5">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Mode">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">E-commerce</span>
-                                <h3>Boutique Mode</h3>
-                                <p>Site e-commerce pour marque de vêtements</p>
-                                <div class="project-tags">
-                                    <span>Shopify</span>
-                                    <span>Liquid</span>
-                                    <span>JavaScript</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Boutique Mode</h3>
-                        <p>Site e-commerce de prêt-à-porter</p>
-                    </div>
-                </div>
-
-                <!-- Projet 6 - Web -->
-                <div class="portfolio-item web" id="projet6">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Site Corporate">
-                        <div class="portfolio-overlay">
-                            <div class="overlay-content">
-                                <span class="category-tag">Site Web</span>
-                                <h3>Site Corporate</h3>
-                                <p>Site vitrine professionnel pour entreprise</p>
-                                <div class="project-tags">
-                                    <span>HTML/CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>PHP</span>
-                                </div>
-                                <a href="#" class="view-project">Voir le projet</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Site Corporate</h3>
-                        <p>Site vitrine avec portfolio intégré</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="section stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Projets réalisés</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Satisfaction client</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">30+</div>
-                    <div class="stat-label">Clients heureux</div>
-                </div>
-                
-                <div class="stat-card">
-                    <div class="stat-number">5 ans</div>
-                    <div class="stat-label">D'expérience</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Un projet similaire en tête ?</h2>
-                <p>Discutons de la création de votre site ou application</p>
-                <a href="contact.html" class="btn btn-primary">Discuter de mon projet</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Slozw</h3>
-                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <a href="index.html">Accueil</a>
-                    <a href="services.html">Services</a>
-                    <a href="portfolio.html">Portfolio</a>
-                    <a href="boutique.html">Boutique</a>
-                    <a href="contact.html">Contact</a>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p><i class="fas fa-envelope"></i> contact@slozw.com</p>
-                    <p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Paris, France</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-behance"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Script SIMPLE et DIRECT pour le portfolio -->
+    <!-- Scripts -->
+    <script src="script.js"></script>
     <script>
-        // =============================================
-        // GESTION DU PANIER (partagé avec la boutique)
-        // =============================================
-        
-        let panier = JSON.parse(localStorage.getItem('panier')) || [];
-        
-        function updatePanierCount() {
-            const count = panier.reduce((total, item) => total + item.quantite, 0);
-            document.querySelectorAll('.panier-count').forEach(el => {
-                el.textContent = count;
-            });
-        }
-        
-        // =============================================
-        // GESTION DES FILTRES PORTFOLIO
-        // =============================================
-        
-        function filtrerPortfolio(categorie) {
-            console.log('🎨 Filtrage portfolio catégorie:', categorie);
+        // Initialisation spécifique à la boutique
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🛒 Initialisation de la boutique');
             
-            // 1. Mettre à jour les boutons actifs
-            const boutons = document.querySelectorAll('.filter-btn');
-            boutons.forEach(btn => {
-                btn.classList.remove('active');
-            });
+            // Initialiser les filtres boutique
+            initBoutiqueFilters();
             
-            // Activer le bouton cliqué
-            boutons.forEach(btn => {
-                if (btn.textContent.includes(categorie === 'all' ? 'Tous' : 
-                                             categorie === 'web' ? 'Sites Web' :
-                                             categorie === 'ecommerce' ? 'E-commerce' :
-                                             categorie === 'mobile' ? 'Applications' : 'Design')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // 2. Filtrer les projets
-            const projets = document.querySelectorAll('.portfolio-item');
-            let projetsAffiches = 0;
-            
-            projets.forEach(projet => {
-                if (categorie === 'all' || projet.classList.contains(categorie)) {
-                    projet.style.display = 'block';
-                    projetsAffiches++;
+            // Ajouter l'événement onclick pour compatibilité
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            categoryBtns.forEach(btn => {
+                if (!btn.dataset.category) {
+                    // Définir data-category basé sur le texte du bouton
+                    const text = btn.textContent.trim();
+                    let category = 'all';
                     
-                    // Animation d'apparition
-                    setTimeout(() => {
-                        projet.style.opacity = '1';
-                        projet.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    // Animation de disparition
-                    projet.style.opacity = '0';
-                    projet.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        projet.style.display = 'none';
-                    }, 300);
+                    if (text.includes('Design')) category = 'design';
+                    else if (text.includes('Développement')) category = 'web';
+                    else if (text.includes('E-commerce')) category = 'ecommerce';
+                    else if (text.includes('Packs')) category = 'pack';
+                    
+                    btn.dataset.category = category;
                 }
+                
+                // Ajouter l'événement
+                btn.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    console.log('Clic catégorie boutique:', category);
+                    filterProducts(category);
+                });
             });
             
-            console.log(`✅ ${projetsAffiches} projets affichés pour la catégorie ${categorie}`);
+            // Gestion du popup cookies spécifique à la boutique
+            const cookiePopup = document.getElementById('cookiePopup');
+            const cookieAccept = document.getElementById('cookiePopupAccept');
+            const cookieReject = document.getElementById('cookiePopupReject');
+            const cookieClose = document.getElementById('cookiePopupClose');
             
-            // Notification visuelle
-            showNotification(`${projetsAffiches} projets ${categorie === 'all' ? 'affichés' : 'de ' + categorie}`, 'success');
-        }
+            if (cookiePopup && !localStorage.getItem('cookieChoice')) {
+                setTimeout(() => {
+                    cookiePopup.classList.add('show');
+                }, 1500);
+            }
+            
+            if (cookieAccept) {
+                cookieAccept.addEventListener('click', function() {
+                    localStorage.setItem('cookieChoice', 'accepted');
+                    cookiePopup.classList.remove('show');
+                    showNotification('Préférences de cookies enregistrées', 'success');
+                });
+            }
+            
+            if (cookieReject) {
+                cookieReject.addEventListener('click', function() {
+                    localStorage.setItem('cookieChoice', 'rejected');
+                    cookiePopup.classList.remove('show');
+                    showNotification('Préférences de cookies enregistrées', 'success');
+                });
+            }
+            
+            if (cookieClose) {
+                cookieClose.addEventListener('click', function() {
+                    cookiePopup.classList.remove('show');
+                });
+            }
+            
+            console.log('✅ Boutique initialisée');
+        });
         
-        // =============================================
-        // FONCTIONS UTILITAIRES
-        // =============================================
-        
+        // Fonction de notification (copiée depuis script.js pour compatibilité)
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
-            if (!notification) {
-                // Créer une notification si elle n'existe pas
-                const notifDiv = document.createElement('div');
-                notifDiv.className = 'notification';
-                notifDiv.id = 'notification';
-                document.body.appendChild(notifDiv);
-                
-                // Attendre un peu et montrer
-                setTimeout(() => {
-                    notifDiv.textContent = message;
-                    notifDiv.classList.add(type, 'show');
-                    
-                    setTimeout(() => {
-                        notifDiv.classList.remove('show');
-                    }, 3000);
-                }, 100);
-                return;
-            }
+            if (!notification) return;
             
             notification.textContent = message;
             notification.className = 'notification';
@@ -394,92 +82,4 @@
                 notification.classList.remove('show');
             }, 3000);
         }
-        
-        // =============================================
-        // INITIALISATION AU CHARGEMENT
-        // =============================================
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Portfolio chargé');
-            
-            // Initialiser le compteur du panier
-            updatePanierCount();
-            
-            // Gestion du menu mobile
-            const menuToggle = document.querySelector('.menu-toggle');
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function() {
-                    const navLinks = document.querySelector('.nav-links');
-                    navLinks.classList.toggle('active');
-                    this.classList.toggle('active');
-                });
-            }
-            
-            // Fermer le menu au clic sur un lien
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', function() {
-                    document.querySelector('.nav-links').classList.remove('active');
-                    document.querySelector('.menu-toggle')?.classList.remove('active');
-                });
-            });
-            
-            // Gestion des liens "Voir le projet"
-            document.querySelectorAll('.view-project').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const projetTitle = this.closest('.portfolio-item').querySelector('h3').textContent;
-                    showNotification(`Détails du projet "${projetTitle}" - Page à développer`, 'info');
-                });
-            });
-            
-            console.log('✅ Portfolio initialisé avec succès');
-            
-            // =============================================
-            // TEST AUTOMATIQUE - CLIQUEZ SUR "SITES WEB"
-            // =============================================
-            
-            // Test automatique après 1 seconde
-            setTimeout(() => {
-                console.log('🧪 Test automatique: filtre Sites Web');
-                filtrerPortfolio('web');
-            }, 1000);
-        });
-        
-        // =============================================
-        // FONCTIONS POUR LES LIENS DU FOOTER
-        // =============================================
-        
-        // Permettre de filtrer depuis le footer
-        function filtrerDepuisFooter(categorie) {
-            console.log(`🔗 Filtre depuis footer: ${categorie}`);
-            
-            // Retourner à la page portfolio
-            if (window.location.pathname.includes('portfolio.html')) {
-                filtrerPortfolio(categorie);
-            } else {
-                // Si on est sur une autre page, aller au portfolio avec filtre
-                window.location.href = `portfolio.html?filter=${categorie}`;
-            }
-        }
-        
-        // Gestion des paramètres URL (optionnel)
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            const results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-        
-        // Vérifier les paramètres URL au chargement
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterFromUrl = getUrlParameter('filter');
-            if (filterFromUrl) {
-                console.log(`🔗 Filtre depuis URL: ${filterFromUrl}`);
-                setTimeout(() => {
-                    filtrerPortfolio(filterFromUrl);
-                }, 500);
-            }
-        });
     </script>
-</body>
-</html>
