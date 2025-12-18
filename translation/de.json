@@ -1,0 +1,308 @@
+{
+  "meta": {
+    "title": "Slozw - Digitale Kreationen",
+    "description": "Digitaler Creator spezialisiert auf Design, Webentwicklung und maßgeschneiderte E-Commerce-Lösungen. Verwandeln Sie Ihre Ideen in digitale Realität."
+  },
+  "hero": {
+    "title": "Exzellenz in digitalen Kreationen",
+    "subtitle": "Design, Entwicklung & maßgeschneiderte E-Commerce-Lösungen",
+    "button1": "Meine Arbeit sehen",
+    "button2": "Mich kontaktieren"
+  },
+  "services": {
+    "title": "Meine Dienstleistungen",
+    "subtitle": "Komplette Lösungen für Ihre digitale Präsenz",
+    "design": {
+      "title": "UI/UX Design",
+      "description": "Intuitive und ästhetische Schnittstellen"
+    },
+    "dev": {
+      "title": "Webentwicklung",
+      "description": "Leistungsstarke und responsive Websites"
+    },
+    "ecommerce": {
+      "title": "E-Commerce",
+      "description": "Optimierte Online-Shops"
+    },
+    "learnMore": "Mehr erfahren →",
+    "allServices": "Alle Dienstleistungen anzeigen"
+  },
+  "portfolio": {
+    "title": "Letzte Projekte",
+    "subtitle": "Einige meiner aktuellen Arbeiten",
+    "project1": {
+      "title": "Moderner Shop",
+      "description": "E-Commerce mit sicheren Zahlungen"
+    },
+    "project2": {
+      "title": "Analytics Dashboard",
+      "description": "Komplette Admin-Oberfläche"
+    },
+    "project3": {
+      "title": "Mobile App",
+      "description": "Native iOS & Android App"
+    },
+    "viewProject": "Projekt ansehen",
+    "allProjects": "Gesamtes Portfolio ansehen"
+  },
+  "newsletter": {
+    "title": "Bleiben Sie informiert",
+    "subtitle": "Erhalten Sie digitale Tipps und exklusive Angebote",
+    "placeholder": "Ihre E-Mail",
+    "button": "Abonnieren",
+    "disclaimer": "Durch das Abonnieren akzeptieren Sie unsere <a href='privacy.html'>Datenschutzrichtlinie</a>."
+  },
+  "cta": {
+    "title": "Bereit, Ihr Projekt zum Leben zu erwecken?",
+    "subtitle": "Kontaktieren Sie mich, um Ihre Bedürfnisse zu besprechen",
+    "button1": "Meeting vereinbaren",
+    "button2": "Shop ansehen"
+  },
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "portfolio": "Portfolio",
+    "shop": "Shop",
+    "contact": "Kontakt"
+  },
+  "footer": {
+    "description": "Digitaler Creator spezialisiert auf Design, Entwicklung und E-Commerce.",
+    "navigation": "Navigation",
+    "contact": "Kontakt",
+    "languages": "Sprachen",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "cookies": "Cookies",
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "contact": {
+    "title": "Kontaktieren Sie mich",
+    "subtitle": "Lassen Sie uns über Ihr digitales Projekt sprechen",
+    "form": {
+      "name": "Ihr Name *",
+      "email": "Ihre E-Mail *",
+      "phone": "Telefon",
+      "service": "Interessierter Service",
+      "serviceOptions": {
+        "select": "Wählen Sie einen Service",
+        "design": "UI/UX Design",
+        "dev": "Webentwicklung",
+        "ecommerce": "E-Commerce",
+        "maintenance": "Wartung",
+        "other": "Andere"
+      },
+      "budget": "Ungefähres Budget",
+      "budgetOptions": {
+        "select": "Wählen Sie ein Budget",
+        "500-1000": "500€ - 1000€",
+        "1000-3000": "1000€ - 3000€",
+        "3000-5000": "3000€ - 5000€",
+        "5000+": "Mehr als 5000€",
+        "unknown": "Zu besprechen"
+      },
+      "message": "Ihre Nachricht *",
+      "messagePlaceholder": "Beschreiben Sie Ihr Projekt im Detail...",
+      "newsletter": "Newsletter abonnieren für digitale Tipps",
+      "submit": "Nachricht senden",
+      "success": "Nachricht erfolgreich gesendet!",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "info": {
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "location": "Standort",
+      "availability": "Für Ihre Projekte verfügbar",
+      "hours": "Öffnungszeiten",
+      "hoursWeek": "Montag - Freitag: 9h - 18h",
+      "response": "Antwort innerhalb von 24h",
+      "copy": "Kopieren",
+      "copied": "Kopiert!",
+      "follow": "Folgen Sie mir"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Was sind Ihre Realisierungsfristen?",
+      "a1": "Die Fristen variieren je nach Projektkomplexität. Im Durchschnitt: 2-3 Wochen für eine Vorstellungsseite, 4-6 Wochen für E-Commerce und 6-8 Wochen für eine komplette Webanwendung.",
+      "q2": "Bieten Sie Überarbeitungen nach der Lieferung an?",
+      "a2": "Ja, jedes Projekt beinhaltet 30 Tage kostenlosen Support nach der Lieferung mit bis zu 3 kleineren Überarbeitungen.",
+      "q3": "Bieten Sie Hosting an?",
+      "a3": "Ich kann Hosting für Sie konfigurieren oder Ihnen helfen, die beste Lösung entsprechend Ihren Bedürfnissen zu wählen. Ich biete auch Wartungspakete inklusive Hosting an.",
+      "q4": "Arbeiten Sie mit internationalen Kunden?",
+      "a4": "Absolut! Ich arbeite mit Kunden auf der ganzen Welt. Die Kommunikation kann auf Deutsch, Französisch oder Englisch nach Ihrer Präferenz erfolgen."
+    }
+  },
+  "boutique": {
+    "title": "Slozw Shop",
+    "subtitle": "Bestellen Sie Ihre digitalen Dienstleistungen online",
+    "categories": {
+      "all": "Alle Dienstleistungen",
+      "design": "Design",
+      "web": "Webentwicklung",
+      "ecommerce": "E-Commerce",
+      "pack": "Pakete"
+    },
+    "badges": {
+      "popular": "Beliebt",
+      "bestseller": "Bestseller",
+      "economical": "Wirtschaftlich"
+    },
+    "actions": {
+      "add": "Hinzufügen",
+      "subscribe": "Abonnieren",
+      "view": "Details anzeigen"
+    },
+    "cart": {
+      "title": "Ihr Warenkorb",
+      "empty": "Ihr Warenkorb ist leer",
+      "continue": "Weiter einkaufen",
+      "total": "Gesamt:",
+      "clear": "Warenkorb leeren",
+      "checkout": "Zur Kasse gehen",
+      "remove": "Entfernen"
+    },
+    "checkout": {
+      "title": "Ihre Bestellung abschließen",
+      "steps": {
+        "info": "Informationen",
+        "payment": "Zahlung",
+        "confirmation": "Bestätigung"
+      },
+      "fields": {
+        "name": "Vollständiger Name *",
+        "email": "E-Mail *",
+        "phone": "Telefon *",
+        "company": "Unternehmen",
+        "notes": "Bestellnotizen",
+        "notesPlaceholder": "Beschreiben Sie Ihre spezifischen Bedürfnisse..."
+      },
+      "payment": {
+        "title": "Zahlungsmethode",
+        "card": "Kreditkarte",
+        "paypal": "PayPal",
+        "transfer": "Banküberweisung"
+      },
+      "summary": "Zusammenfassung",
+      "total": "Zu zahlender Betrag:",
+      "actions": {
+        "back": "Zurück",
+        "next": "Weiter",
+        "pay": "Jetzt bezahlen",
+        "close": "Schließen"
+      },
+      "confirmation": {
+        "title": "Bestellung bestätigt!",
+        "message": "Vielen Dank für Ihre Bestellung. Ich kontaktiere Sie innerhalb von <strong>24 Stunden</strong>, um die Details Ihres Projekts zu besprechen.",
+        "reference": "Referenz:",
+        "actions": {
+          "home": "Zur Startseite",
+          "contact": "Mich kontaktieren"
+        }
+      }
+    }
+  },
+  "appointment": {
+    "title": "Meeting vereinbaren",
+    "subtitle": "Buchen Sie eine kostenlose Beratung",
+    "form": {
+      "name": "Ihr Name *",
+      "email": "Ihre E-Mail *",
+      "phone": "Telefon",
+      "date": "Datum *",
+      "time": "Uhrzeit *",
+      "service": "Service *",
+      "serviceOptions": {
+        "consultation": "Kostenlose Beratung",
+        "design": "UI/UX Design",
+        "development": "Webentwicklung",
+        "ecommerce": "E-Commerce",
+        "other": "Andere"
+      },
+      "message": "Nachricht (optional)",
+      "messagePlaceholder": "Beschreiben Sie kurz Ihr Projekt...",
+      "submit": "Meeting vereinbaren",
+      "success": "Meeting bestätigt!",
+      "error": "Buchungsfehler"
+    },
+    "details": {
+      "duration": "Dauer: 45 Minuten",
+      "method": "Methode: Videokonferenz",
+      "preparation": "Vorbereitung: Fragen und Dokumente"
+    }
+  },
+  "cookies": {
+    "banner": "🍪 Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Durch Fortfahren akzeptieren Sie unsere <a href='privacy.html'>Datenschutzrichtlinie</a>.",
+    "buttons": {
+      "reject": "Ablehnen",
+      "accept": "Akzeptieren",
+      "customize": "Anpassen",
+      "save": "Einstellungen speichern"
+    },
+    "preferences": {
+      "title": "Cookie-Einstellungen",
+      "essential": {
+        "label": "Essenzielle Cookies",
+        "required": "(Erforderlich)",
+        "description": "Notwendig für die Website-Funktionalität"
+      },
+      "analytics": {
+        "label": "Analytics-Cookies",
+        "description": "Helfen uns, die Website zu verbessern"
+      },
+      "marketing": {
+        "label": "Marketing-Cookies",
+        "description": "Personalisierte Werbung"
+      }
+    },
+    "notifications": {
+      "saved": "Cookie-Einstellungen gespeichert",
+      "disabled": "Nicht-essenzielle Cookies deaktiviert"
+    }
+  },
+  "errors": {
+    "required": "Dieses Feld ist erforderlich",
+    "email": "Ungültige E-Mail",
+    "phone": "Ungültige Telefonnummer",
+    "date": "Ungültiges Datum",
+    "time": "Ungültige Uhrzeit",
+    "rateLimit": "Zu viele Versuche. Bitte versuchen Sie es später erneut.",
+    "csrf": "Ungültiges Sicherheitstoken",
+    "general": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "success": {
+    "messageSent": "Nachricht erfolgreich gesendet!",
+    "subscribed": "Abonnement erfolgreich!",
+    "appointmentBooked": "Meeting bestätigt!",
+    "orderPlaced": "Bestellung erfolgreich aufgegeben!"
+  },
+  "loading": {
+    "sending": "Wird gesendet...",
+    "processing": "Wird verarbeitet...",
+    "loading": "Wird geladen..."
+  },
+  "seo": {
+    "keywords": "Design, Webentwicklung, E-Commerce, Website-Erstellung, UX/UI, Digitaler Freelancer, Paris",
+    "author": "Slozw",
+    "robots": "index, follow"
+  },
+  "social": {
+    "share": "Teilen",
+    "twitter": "Auf Twitter teilen",
+    "facebook": "Auf Facebook teilen",
+    "linkedin": "Auf LinkedIn teilen",
+    "instagram": "Auf Instagram folgen",
+    "behance": "Auf Behance ansehen",
+    "dribbble": "Auf Dribbble ansehen"
+  },
+  "legal": {
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "cookies": "Cookie-Richtlinie",
+    "contact": "Rechtlicher Kontakt"
+  },
+  "accessibility": {
+    "skip": "Zum Inhalt springen",
+    "menu": "Hauptmenü",
+    "language": "Sprachauswahl",
+    "contrast": "Hoher Kontrast"
+  }
+}
