@@ -1,7 +1,6 @@
-# render.yaml
 services:
   - type: web
-    name: selllite
+    name: slozw-creations-digitales
     env: static
     buildCommand: ""
     staticPublishPath: .
@@ -16,9 +15,21 @@ services:
         source: /services
         destination: /services.html
       - type: rewrite
+        source: /portfolio
+        destination: /portfolio.html
+      - type: rewrite
+        source: /boutique
+        destination: /boutique.html
+      - type: rewrite
         source: /contact
         destination: /contact.html
     headers:
       - path: /*
         name: Cache-Control
         value: public, max-age=3600
+      - path: /*.css
+        name: Cache-Control
+        value: public, max-age=86400
+      - path: /*.js
+        name: Cache-Control
+        value: public, max-age=86400
