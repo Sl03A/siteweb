@@ -8,6 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Bannière Cookies -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>🍪 Nous utilisons des cookies pour améliorer votre expérience. En continuant, vous acceptez notre <a href="privacy.html">politique de confidentialité</a>.</p>
+            <div class="cookie-buttons">
+                <button class="btn btn-outline" id="cookieReject">Refuser</button>
+                <button class="btn btn-primary" id="cookieAccept">Accepter</button>
+                <button class="btn btn-secondary" id="cookieCustomize">Personnaliser</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -20,6 +32,19 @@
                 <a href="contact.html">Contact</a>
             </div>
             <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="language-btn">
+                        <span class="flag-icon">🇫🇷</span> FR
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <a href="services.html" class="language-option active">🇫🇷 Français</a>
+                        <a href="services-en.html" class="language-option">🇬🇧 English</a>
+                        <a href="services-es.html" class="language-option">🇪🇸 Español</a>
+                        <a href="services-de.html" class="language-option">🇩🇪 Deutsch</a>
+                    </div>
+                </div>
+                
                 <a href="#panier" class="panier-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="panier-count">0</span>
@@ -45,7 +70,7 @@
             <!-- Service 1 -->
             <div class="service-detail-card" id="design">
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI/UX Design">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI/UX Design" loading="lazy">
                 </div>
                 <div class="service-content">
                     <span class="service-category">Design</span>
@@ -104,14 +129,14 @@
                     </div>
                 </div>
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Développement Web">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Développement Web" loading="lazy">
                 </div>
             </div>
 
             <!-- Service 3 -->
             <div class="service-detail-card" id="ecommerce">
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce" loading="lazy">
                 </div>
                 <div class="service-content">
                     <span class="service-category">E-commerce</span>
@@ -170,7 +195,7 @@
                     </div>
                 </div>
                 <div class="service-image">
-                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance" loading="lazy">
                 </div>
             </div>
         </div>
@@ -265,6 +290,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
 
     <!-- Script -->
     <script src="script.js"></script>
