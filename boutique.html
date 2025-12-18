@@ -6,6 +6,21 @@
     <title>Slozw - Boutique | Services Digitaux</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Style pour l'animation de filtrage */
+        .produit-card {
+            transition: all 0.5s ease;
+        }
+        
+        .category-btn {
+            cursor: pointer;
+        }
+        
+        .category-btn.active {
+            background: #2563eb !important;
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -42,19 +57,19 @@
     <!-- Boutique Content -->
     <section class="section boutique-section">
         <div class="container">
-            <!-- Catégories CORRIGÉES -->
-            <div class="categories">
-                <button class="category-btn active" data-category="all">Tous les services</button>
-                <button class="category-btn" data-category="design">Design</button>
-                <button class="category-btn" data-category="web">Développement Web</button>
-                <button class="category-btn" data-category="ecommerce">E-commerce</button>
-                <button class="category-btn" data-category="pack">Packs</button>
+            <!-- Catégories -->
+            <div class="categories" id="categoriesContainer">
+                <button class="category-btn active" onclick="filtrerProduits('all')">Tous les services</button>
+                <button class="category-btn" onclick="filtrerProduits('design')">Design</button>
+                <button class="category-btn" onclick="filtrerProduits('web')">Développement Web</button>
+                <button class="category-btn" onclick="filtrerProduits('ecommerce')">E-commerce</button>
+                <button class="category-btn" onclick="filtrerProduits('pack')">Packs</button>
             </div>
             
             <!-- Produits Grid -->
-            <div class="produits-grid">
-                <!-- Produit 1 - CATÉGORIE: design -->
-                <div class="produit-card" data-category="design">
+            <div class="produits-grid" id="produitsGrid">
+                <!-- Produit 1 -->
+                <div class="produit-card design">
                     <div class="produit-badge" style="background: #ef4444;">Populaire</div>
                     <div class="produit-image">
                         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Design Logo">
@@ -74,15 +89,15 @@
                             <div class="produit-prix">
                                 <span class="prix-actuel">199€</span>
                             </div>
-                            <button class="btn-ajouter-panier" data-id="1" data-nom="Design de Logo Professionnel" data-prix="199">
+                            <button class="btn-ajouter-panier" onclick="ajouterAuPanier(1, 'Design de Logo Professionnel', 199)">
                                 <i class="fas fa-cart-plus"></i> Ajouter
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produit 2 - CATÉGORIE: web -->
-                <div class="produit-card" data-category="web">
+                <!-- Produit 2 -->
+                <div class="produit-card web">
                     <div class="produit-image">
                         <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Site Vitrine">
                     </div>
@@ -101,15 +116,15 @@
                             <div class="produit-prix">
                                 <span class="prix-actuel">899€</span>
                             </div>
-                            <button class="btn-ajouter-panier" data-id="2" data-nom="Site Vitrine Standard" data-prix="899">
+                            <button class="btn-ajouter-panier" onclick="ajouterAuPanier(2, 'Site Vitrine Standard', 899)">
                                 <i class="fas fa-cart-plus"></i> Ajouter
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produit 3 - CATÉGORIE: ecommerce -->
-                <div class="produit-card" data-category="ecommerce">
+                <!-- Produit 3 -->
+                <div class="produit-card ecommerce">
                     <div class="produit-badge" style="background: #f59e0b;">Bestseller</div>
                     <div class="produit-image">
                         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="E-commerce">
@@ -129,15 +144,15 @@
                             <div class="produit-prix">
                                 <span class="prix-actuel">1499€</span>
                             </div>
-                            <button class="btn-ajouter-panier" data-id="3" data-nom="Boutique E-commerce Basique" data-prix="1499">
+                            <button class="btn-ajouter-panier" onclick="ajouterAuPanier(3, 'Boutique E-commerce Basique', 1499)">
                                 <i class="fas fa-cart-plus"></i> Ajouter
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produit 4 - CATÉGORIE: pack -->
-                <div class="produit-card" data-category="pack">
+                <!-- Produit 4 -->
+                <div class="produit-card pack">
                     <div class="produit-badge" style="background: #10b981;">Économique</div>
                     <div class="produit-image">
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pack Complet">
@@ -158,15 +173,15 @@
                                 <span class="prix-ancien">1198€</span>
                                 <span class="prix-actuel">999€</span>
                             </div>
-                            <button class="btn-ajouter-panier" data-id="4" data-nom="Pack Création d'Entreprise" data-prix="999">
+                            <button class="btn-ajouter-panier" onclick="ajouterAuPanier(4, 'Pack Création d\'Entreprise', 999)">
                                 <i class="fas fa-cart-plus"></i> Ajouter
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produit 5 - CATÉGORIE: design -->
-                <div class="produit-card" data-category="design">
+                <!-- Produit 5 -->
+                <div class="produit-card design">
                     <div class="produit-image">
                         <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="UI Design">
                     </div>
@@ -185,15 +200,15 @@
                             <div class="produit-prix">
                                 <span class="prix-actuel">599€</span>
                             </div>
-                            <button class="btn-ajouter-panier" data-id="5" data-nom="Design UI/UX Application" data-prix="599">
+                            <button class="btn-ajouter-panier" onclick="ajouterAuPanier(5, 'Design UI/UX Application', 599)">
                                 <i class="fas fa-cart-plus"></i> Ajouter
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Produit 6 - CATÉGORIE: pack -->
-                <div class="produit-card" data-category="pack">
+                <!-- Produit 6 -->
+                <div class="produit-card pack">
                     <div class="produit-image">
                         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Maintenance">
                     </div>
@@ -212,7 +227,7 @@
                             <div class="produit-prix">
                                 <span class="prix-actuel">99€<span class="prix-mois">/mois</span></span>
                             </div>
-                            <button class="btn-souscrire" data-id="6" data-nom="Maintenance Mensuelle" data-prix="99">
+                            <button class="btn-souscrire" onclick="ajouterAuPanier(6, 'Maintenance Mensuelle', 99)">
                                 <i class="fas fa-calendar-alt"></i> S'abonner
                             </button>
                         </div>
@@ -227,7 +242,7 @@
         <div class="panier-content">
             <div class="panier-header">
                 <h2><i class="fas fa-shopping-cart"></i> Votre Panier</h2>
-                <button class="close-panier">&times;</button>
+                <button class="close-panier" onclick="fermerPanier()">&times;</button>
             </div>
             
             <div class="panier-items" id="panierItems">
@@ -245,140 +260,8 @@
                     <span id="totalPanier">0€</span>
                 </div>
                 <div class="panier-actions">
-                    <button class="btn btn-secondary" id="viderPanier">Vider le panier</button>
-                    <button class="btn btn-primary" id="proceedCheckout">Procéder au paiement</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Checkout Modal -->
-    <div class="checkout-modal" id="checkoutModal">
-        <div class="checkout-content">
-            <div class="checkout-header">
-                <h2>Finaliser votre commande</h2>
-                <button class="close-checkout">&times;</button>
-            </div>
-            
-            <div class="checkout-steps">
-                <div class="step active" data-step="1">
-                    <span class="step-number">1</span>
-                    <span class="step-label">Informations</span>
-                </div>
-                <div class="step" data-step="2">
-                    <span class="step-number">2</span>
-                    <span class="step-label">Paiement</span>
-                </div>
-                <div class="step" data-step="3">
-                    <span class="step-number">3</span>
-                    <span class="step-label">Confirmation</span>
-                </div>
-            </div>
-            
-            <div class="checkout-body">
-                <!-- Étape 1 : Informations -->
-                <div class="checkout-step active" id="step1">
-                    <h3>Vos coordonnées</h3>
-                    <form class="checkout-form">
-                        <div class="form-group">
-                            <label for="checkoutName">Nom complet *</label>
-                            <input type="text" id="checkoutName" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="checkoutEmail">Email *</label>
-                            <input type="email" id="checkoutEmail" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="checkoutPhone">Téléphone *</label>
-                            <input type="tel" id="checkoutPhone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="checkoutCompany">Entreprise</label>
-                            <input type="text" id="checkoutCompany">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="checkoutNotes">Notes sur votre commande</label>
-                            <textarea id="checkoutNotes" rows="3" placeholder="Décrivez vos besoins spécifiques..."></textarea>
-                        </div>
-                        
-                        <button type="button" class="btn btn-primary next-step" data-next="2">
-                            Suivant <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </form>
-                </div>
-                
-                <!-- Étape 2 : Paiement -->
-                <div class="checkout-step" id="step2">
-                    <h3>Méthode de paiement</h3>
-                    <div class="payment-methods">
-                        <label class="payment-method">
-                            <input type="radio" name="payment" value="card" checked>
-                            <div class="payment-content">
-                                <i class="fas fa-credit-card"></i>
-                                <span>Carte bancaire</span>
-                            </div>
-                        </label>
-                        
-                        <label class="payment-method">
-                            <input type="radio" name="payment" value="paypal">
-                            <div class="payment-content">
-                                <i class="fab fa-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                        </label>
-                        
-                        <label class="payment-method">
-                            <input type="radio" name="payment" value="transfer">
-                            <div class="payment-content">
-                                <i class="fas fa-university"></i>
-                                <span>Virement bancaire</span>
-                            </div>
-                        </label>
-                    </div>
-                    
-                    <div class="checkout-summary">
-                        <h4>Récapitulatif</h4>
-                        <div id="checkoutSummary">
-                            <!-- Articles dynamiques -->
-                        </div>
-                        <div class="summary-total">
-                            <strong>Total à payer:</strong>
-                            <strong id="checkoutTotal">0€</strong>
-                        </div>
-                    </div>
-                    
-                    <div class="checkout-actions">
-                        <button type="button" class="btn btn-secondary prev-step" data-prev="1">
-                            <i class="fas fa-arrow-left"></i> Retour
-                        </button>
-                        <button type="button" class="btn btn-primary next-step" data-next="3">
-                            Payer maintenant <i class="fas fa-lock"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Étape 3 : Confirmation -->
-                <div class="checkout-step" id="step3">
-                    <div class="confirmation-content">
-                        <div class="confirmation-icon">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <h3>Commande confirmée !</h3>
-                        <p>Merci pour votre commande. Je vous contacte dans les <strong>24 heures</strong> pour discuter des détails de votre projet.</p>
-                        <p class="order-number">Référence : <strong id="orderReference">SLZW-XXXXXX</strong></p>
-                        <div class="confirmation-actions">
-                            <button class="btn btn-primary" id="closeCheckout">
-                                <i class="fas fa-home"></i> Retour à l'accueil
-                            </button>
-                            <a href="contact.html" class="btn btn-outline">
-                                <i class="fas fa-headset"></i> Me contacter
-                            </a>
-                        </div>
-                    </div>
+                    <button class="btn btn-secondary" onclick="viderPanier()">Vider le panier</button>
+                    <button class="btn btn-primary" onclick="procederPaiement()">Procéder au paiement</button>
                 </div>
             </div>
         </div>
@@ -396,9 +279,9 @@
                 <div class="footer-col">
                     <h4>Boutique</h4>
                     <a href="boutique.html">Tous les services</a>
-                    <a href="boutique.html?category=design">Design</a>
-                    <a href="boutique.html?category=web">Développement Web</a>
-                    <a href="boutique.html?category=ecommerce">E-commerce</a>
+                    <a href="boutique.html" onclick="filtrerProduits('design'); return false;">Design</a>
+                    <a href="boutique.html" onclick="filtrerProduits('web'); return false;">Développement Web</a>
+                    <a href="boutique.html" onclick="filtrerProduits('ecommerce'); return false;">E-commerce</a>
                 </div>
                 
                 <div class="footer-col">
@@ -430,7 +313,246 @@
     <!-- Notification -->
     <div class="notification" id="notification"></div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    <!-- Script SIMPLE et DIRECT -->
+    <script>
+        // =============================================
+        // GESTION DES FILTRES - SIMPLE ET EFFICACE
+        // =============================================
+        
+        function filtrerProduits(categorie) {
+            console.log('🔍 Filtrage catégorie:', categorie);
+            
+            // 1. Mettre à jour les boutons actifs
+            const boutons = document.querySelectorAll('.category-btn');
+            boutons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Activer le bouton cliqué
+            boutons.forEach(btn => {
+                if (btn.textContent.includes(categorie === 'all' ? 'Tous' : 
+                                             categorie === 'design' ? 'Design' :
+                                             categorie === 'web' ? 'Développement' :
+                                             categorie === 'ecommerce' ? 'E-commerce' : 'Packs')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // 2. Filtrer les produits
+            const produits = document.querySelectorAll('.produit-card');
+            let produitsAffiches = 0;
+            
+            produits.forEach(prod => {
+                if (categorie === 'all' || prod.classList.contains(categorie)) {
+                    prod.style.display = 'block';
+                    produitsAffiches++;
+                    
+                    // Animation d'apparition
+                    setTimeout(() => {
+                        prod.style.opacity = '1';
+                        prod.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    // Animation de disparition
+                    prod.style.opacity = '0';
+                    prod.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        prod.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            console.log(`✅ ${produitsAffiches} produits affichés pour la catégorie ${categorie}`);
+            
+            // Notification visuelle
+            showNotification(`${produitsAffiches} services ${categorie === 'all' ? 'affichés' : 'de ' + categorie}`, 'success');
+        }
+        
+        // =============================================
+        // GESTION DU PANIER - SIMPLE
+        // =============================================
+        
+        let panier = JSON.parse(localStorage.getItem('panier')) || [];
+        
+        function updatePanierCount() {
+            const count = panier.reduce((total, item) => total + item.quantite, 0);
+            document.querySelectorAll('.panier-count').forEach(el => {
+                el.textContent = count;
+            });
+        }
+        
+        function ajouterAuPanier(id, nom, prix) {
+            // Vérifier si l'article existe déjà
+            const existingItem = panier.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantite += 1;
+            } else {
+                panier.push({
+                    id: id,
+                    nom: nom,
+                    prix: prix,
+                    quantite: 1
+                });
+            }
+            
+            // Sauvegarder
+            localStorage.setItem('panier', JSON.stringify(panier));
+            
+            // Mettre à jour l'affichage
+            updatePanierCount();
+            
+            // Notification
+            showNotification(`"${nom}" ajouté au panier !`, 'success');
+            
+            // Ouvrir le panier automatiquement
+            setTimeout(() => {
+                ouvrirPanier();
+            }, 500);
+        }
+        
+        function ouvrirPanier() {
+            const modal = document.getElementById('panierModal');
+            modal.classList.add('show');
+            updatePanierDisplay();
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function fermerPanier() {
+            const modal = document.getElementById('panierModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function viderPanier() {
+            panier = [];
+            localStorage.removeItem('panier');
+            updatePanierCount();
+            updatePanierDisplay();
+            showNotification('Panier vidé', 'success');
+        }
+        
+        function procederPaiement() {
+            if (panier.length === 0) {
+                showNotification('Votre panier est vide', 'error');
+                return;
+            }
+            showNotification('Fonctionnalité de paiement à implémenter', 'info');
+        }
+        
+        function updatePanierDisplay() {
+            const container = document.getElementById('panierItems');
+            const totalElement = document.getElementById('totalPanier');
+            
+            if (panier.length === 0) {
+                container.innerHTML = `
+                    <div class="panier-vide">
+                        <i class="fas fa-shopping-basket"></i>
+                        <p>Votre panier est vide</p>
+                        <a href="boutique.html" class="btn btn-outline">Continuer vos achats</a>
+                    </div>
+                `;
+                totalElement.textContent = '0€';
+                return;
+            }
+            
+            let total = 0;
+            container.innerHTML = '';
+            
+            panier.forEach(item => {
+                const itemTotal = item.prix * item.quantite;
+                total += itemTotal;
+                
+                const div = document.createElement('div');
+                div.className = 'panier-item';
+                div.innerHTML = `
+                    <div class="panier-item-info">
+                        <h4>${item.nom}</h4>
+                        <p>${item.prix}€ × ${item.quantite}</p>
+                    </div>
+                    <div class="panier-item-actions">
+                        <span class="panier-item-total">${itemTotal}€</span>
+                        <button class="btn-remove" onclick="supprimerDuPanier(${item.id})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+            
+            totalElement.textContent = total.toFixed(2) + '€';
+        }
+        
+        function supprimerDuPanier(id) {
+            panier = panier.filter(item => item.id !== id);
+            localStorage.setItem('panier', JSON.stringify(panier));
+            updatePanierCount();
+            updatePanierDisplay();
+            showNotification('Article supprimé du panier', 'success');
+        }
+        
+        // =============================================
+        // FONCTIONS UTILITAIRES
+        // =============================================
+        
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            if (!notification) return;
+            
+            notification.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type, 'show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // =============================================
+        // INITIALISATION AU CHARGEMENT
+        // =============================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Boutique chargée');
+            
+            // Initialiser le compteur du panier
+            updatePanierCount();
+            
+            // Initialiser les boutons "Ajouter au panier" avec des classes
+            document.querySelectorAll('.btn-ajouter-panier, .btn-souscrire').forEach(btn => {
+                btn.onclick = function() {
+                    const id = this.getAttribute('data-id') || this.parentElement.querySelector('.btn-ajouter-panier')?.getAttribute('data-id');
+                    const nom = this.getAttribute('data-nom') || this.parentElement.querySelector('h3')?.textContent;
+                    const prix = this.getAttribute('data-prix') || this.parentElement.querySelector('.prix-actuel')?.textContent.replace('€', '').replace('/mois', '').trim();
+                    
+                    if (id && nom && prix) {
+                        ajouterAuPanier(id, nom, parseFloat(prix));
+                    }
+                };
+            });
+            
+            // Gestion du menu mobile
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+            
+            console.log('✅ Boutique initialisée avec succès');
+        });
+        
+        // =============================================
+        // TEST IMMÉDIAT - CLIQUEZ SUR "DESIGN"
+        // =============================================
+        
+        // Test automatique après 1 seconde
+        setTimeout(() => {
+            console.log('🧪 Test automatique: filtre Design');
+            filtrerProduits('design');
+        }, 1000);
+    </script>
 </body>
 </html>
