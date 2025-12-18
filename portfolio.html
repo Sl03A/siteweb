@@ -6,6 +6,21 @@
     <title>Slozw - Portfolio | Créations Digitales</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Style pour l'animation de filtrage */
+        .portfolio-item {
+            transition: all 0.5s ease;
+        }
+        
+        .filter-btn {
+            cursor: pointer;
+        }
+        
+        .filter-btn.active {
+            background: #2563eb !important;
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -43,12 +58,11 @@
     <section class="section portfolio-filters-section">
         <div class="container">
             <div class="filters">
-                <!-- CORRIGÉ : Ajout de data-filter -->
-                <button class="filter-btn active" data-filter="all">Tous les projets</button>
-                <button class="filter-btn" data-filter="web">Sites Web</button>
-                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-                <button class="filter-btn" data-filter="mobile">Applications</button>
-                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn active" onclick="filtrerPortfolio('all')">Tous les projets</button>
+                <button class="filter-btn" onclick="filtrerPortfolio('web')">Sites Web</button>
+                <button class="filter-btn" onclick="filtrerPortfolio('ecommerce')">E-commerce</button>
+                <button class="filter-btn" onclick="filtrerPortfolio('mobile')">Applications</button>
+                <button class="filter-btn" onclick="filtrerPortfolio('design')">Design</button>
             </div>
         </div>
     </section>
@@ -57,8 +71,8 @@
     <section class="section portfolio-grid-section">
         <div class="container">
             <div class="portfolio-items">
-                <!-- Projet 1 - CATÉGORIE: ecommerce -->
-                <div class="portfolio-item" data-category="ecommerce" id="projet1">
+                <!-- Projet 1 - E-commerce -->
+                <div class="portfolio-item ecommerce" id="projet1">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Moderne">
                         <div class="portfolio-overlay">
@@ -81,8 +95,8 @@
                     </div>
                 </div>
 
-                <!-- Projet 2 - CATÉGORIE: web -->
-                <div class="portfolio-item" data-category="web" id="projet2">
+                <!-- Projet 2 - Web -->
+                <div class="portfolio-item web" id="projet2">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Analytics">
                         <div class="portfolio-overlay">
@@ -105,8 +119,8 @@
                     </div>
                 </div>
 
-                <!-- Projet 3 - CATÉGORIE: mobile -->
-                <div class="portfolio-item" data-category="mobile" id="projet3">
+                <!-- Projet 3 - Mobile -->
+                <div class="portfolio-item mobile" id="projet3">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="App Fitness">
                         <div class="portfolio-overlay">
@@ -129,8 +143,8 @@
                     </div>
                 </div>
 
-                <!-- Projet 4 - CATÉGORIE: design -->
-                <div class="portfolio-item" data-category="design" id="projet4">
+                <!-- Projet 4 - Design -->
+                <div class="portfolio-item design" id="projet4">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI Design">
                         <div class="portfolio-overlay">
@@ -153,8 +167,8 @@
                     </div>
                 </div>
 
-                <!-- Projet 5 - CATÉGORIE: ecommerce -->
-                <div class="portfolio-item" data-category="ecommerce" id="projet5">
+                <!-- Projet 5 - E-commerce -->
+                <div class="portfolio-item ecommerce" id="projet5">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boutique Mode">
                         <div class="portfolio-overlay">
@@ -177,8 +191,8 @@
                     </div>
                 </div>
 
-                <!-- Projet 6 - CATÉGORIE: web -->
-                <div class="portfolio-item" data-category="web" id="projet6">
+                <!-- Projet 6 - Web -->
+                <div class="portfolio-item web" id="projet6">
                     <div class="portfolio-image">
                         <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Site Corporate">
                         <div class="portfolio-overlay">
@@ -279,7 +293,193 @@
         </div>
     </footer>
 
-    <!-- Script -->
-    <script src="script.js"></script>
+    <!-- Script SIMPLE et DIRECT pour le portfolio -->
+    <script>
+        // =============================================
+        // GESTION DU PANIER (partagé avec la boutique)
+        // =============================================
+        
+        let panier = JSON.parse(localStorage.getItem('panier')) || [];
+        
+        function updatePanierCount() {
+            const count = panier.reduce((total, item) => total + item.quantite, 0);
+            document.querySelectorAll('.panier-count').forEach(el => {
+                el.textContent = count;
+            });
+        }
+        
+        // =============================================
+        // GESTION DES FILTRES PORTFOLIO
+        // =============================================
+        
+        function filtrerPortfolio(categorie) {
+            console.log('🎨 Filtrage portfolio catégorie:', categorie);
+            
+            // 1. Mettre à jour les boutons actifs
+            const boutons = document.querySelectorAll('.filter-btn');
+            boutons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Activer le bouton cliqué
+            boutons.forEach(btn => {
+                if (btn.textContent.includes(categorie === 'all' ? 'Tous' : 
+                                             categorie === 'web' ? 'Sites Web' :
+                                             categorie === 'ecommerce' ? 'E-commerce' :
+                                             categorie === 'mobile' ? 'Applications' : 'Design')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // 2. Filtrer les projets
+            const projets = document.querySelectorAll('.portfolio-item');
+            let projetsAffiches = 0;
+            
+            projets.forEach(projet => {
+                if (categorie === 'all' || projet.classList.contains(categorie)) {
+                    projet.style.display = 'block';
+                    projetsAffiches++;
+                    
+                    // Animation d'apparition
+                    setTimeout(() => {
+                        projet.style.opacity = '1';
+                        projet.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    // Animation de disparition
+                    projet.style.opacity = '0';
+                    projet.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        projet.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            console.log(`✅ ${projetsAffiches} projets affichés pour la catégorie ${categorie}`);
+            
+            // Notification visuelle
+            showNotification(`${projetsAffiches} projets ${categorie === 'all' ? 'affichés' : 'de ' + categorie}`, 'success');
+        }
+        
+        // =============================================
+        // FONCTIONS UTILITAIRES
+        // =============================================
+        
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            if (!notification) {
+                // Créer une notification si elle n'existe pas
+                const notifDiv = document.createElement('div');
+                notifDiv.className = 'notification';
+                notifDiv.id = 'notification';
+                document.body.appendChild(notifDiv);
+                
+                // Attendre un peu et montrer
+                setTimeout(() => {
+                    notifDiv.textContent = message;
+                    notifDiv.classList.add(type, 'show');
+                    
+                    setTimeout(() => {
+                        notifDiv.classList.remove('show');
+                    }, 3000);
+                }, 100);
+                return;
+            }
+            
+            notification.textContent = message;
+            notification.className = 'notification';
+            notification.classList.add(type, 'show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // =============================================
+        // INITIALISATION AU CHARGEMENT
+        // =============================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Portfolio chargé');
+            
+            // Initialiser le compteur du panier
+            updatePanierCount();
+            
+            // Gestion du menu mobile
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+            
+            // Fermer le menu au clic sur un lien
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelector('.nav-links').classList.remove('active');
+                    document.querySelector('.menu-toggle')?.classList.remove('active');
+                });
+            });
+            
+            // Gestion des liens "Voir le projet"
+            document.querySelectorAll('.view-project').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projetTitle = this.closest('.portfolio-item').querySelector('h3').textContent;
+                    showNotification(`Détails du projet "${projetTitle}" - Page à développer`, 'info');
+                });
+            });
+            
+            console.log('✅ Portfolio initialisé avec succès');
+            
+            // =============================================
+            // TEST AUTOMATIQUE - CLIQUEZ SUR "SITES WEB"
+            // =============================================
+            
+            // Test automatique après 1 seconde
+            setTimeout(() => {
+                console.log('🧪 Test automatique: filtre Sites Web');
+                filtrerPortfolio('web');
+            }, 1000);
+        });
+        
+        // =============================================
+        // FONCTIONS POUR LES LIENS DU FOOTER
+        // =============================================
+        
+        // Permettre de filtrer depuis le footer
+        function filtrerDepuisFooter(categorie) {
+            console.log(`🔗 Filtre depuis footer: ${categorie}`);
+            
+            // Retourner à la page portfolio
+            if (window.location.pathname.includes('portfolio.html')) {
+                filtrerPortfolio(categorie);
+            } else {
+                // Si on est sur une autre page, aller au portfolio avec filtre
+                window.location.href = `portfolio.html?filter=${categorie}`;
+            }
+        }
+        
+        // Gestion des paramètres URL (optionnel)
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        
+        // Vérifier les paramètres URL au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterFromUrl = getUrlParameter('filter');
+            if (filterFromUrl) {
+                console.log(`🔗 Filtre depuis URL: ${filterFromUrl}`);
+                setTimeout(() => {
+                    filtrerPortfolio(filterFromUrl);
+                }, 500);
+            }
+        });
+    </script>
 </body>
 </html>
