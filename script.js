@@ -1,4 +1,87 @@
 // =============================================
+// =============================================
+// INTÉGRATION DU SYSTÈME DE COMPTE CLIENT
+// =============================================
+
+// Initialiser l'authentification
+const auth = new AuthSystem();
+
+// Modifier la fonction d'initialisation pour inclure l'auth
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 DOM entièrement chargé');
+    
+    // Initialiser l'authentification
+    auth.init();
+    
+    // Initialiser le popup de cookies
+    initCookiePopup();
+    
+    // Initialiser le compteur du panier
+    updatePanierCount();
+    
+    // Initialiser les filtres BOUTIQUE
+    initBoutiqueFilters();
+    
+    // Initialiser les filtres PORTFOLIO
+    initPortfolioFilters();
+    
+    // ... le reste du code existant ...
+    
+    // MODIFIER la partie panier pour associer les commandes à l'utilisateur
+    document.getElementById('proceedCheckout')?.addEventListener('click', function() {
+        if (panier.length === 0) {
+            showNotification('Votre panier est vide', 'error');
+            return;
+        }
+        
+        // Si l'utilisateur n'est pas connecté, rediriger vers la connexion
+        if (!auth.isLoggedIn()) {
+            localStorage.setItem('redirectAfterLogin', 'boutique.html');
+            localStorage.setItem('pendingCart', JSON.stringify(panier));
+            openCheckoutModal(); // Ouvrir quand même pour montrer l'étape 1
+            showNotification('Connectez-vous pour finaliser votre commande', 'info');
+            return;
+        }
+        
+        // Préparer les données de la commande
+        const user = auth.getCurrentUser();
+        const orderData = {
+            id: Date.now().toString(),
+            userId: user.id,
+            date: new Date().toISOString(),
+            reference: 'SLZW-' + Date.now().toString().slice(-6),
+            articles: [...panier],
+            total: panier.reduce((sum, item) => sum + (item.prix * item.quantite), 0),
+            status: 'pending',
+            client: {
+                name: user.name,
+                email: user.email,
+                phone: document.getElementById('checkoutPhone')?.value || user.phone || '',
+                company: document.getElementById('checkoutCompany')?.value || user.company || '',
+                notes: document.getElementById('checkoutNotes')?.value || ''
+            }
+        };
+        
+        // Sauvegarder la commande
+        const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+        orders.push(orderData);
+        localStorage.setItem('userOrders', JSON.stringify(orders));
+        
+        // Envoyer l'email de commande
+        if (orderData.client.email) {
+            sendOrderEmail(orderData);
+        }
+        
+        closePanierModal();
+        openCheckoutModal();
+    });
+    
+    // ... le reste du code existant ...
+});
+
+
+
+
 // GESTION DU POPUP COOKIES (Nouveau système)
 // =============================================
 
