@@ -4,6 +4,177 @@
    STYLES COMMUNS POUR TOUTES LES PAGES
    ============================================= */
 
+
+/* =============================================
+   SYSTÈME DE RÉDUCTION
+   ============================================= */
+
+/* Bannière promo */
+.promo-banner {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    position: relative;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+.promo-banner span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.promo-banner strong {
+    background: white;
+    color: #059669;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+/* Bouton promo dans le panier */
+.btn-promo {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    color: #64748b;
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-promo:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+}
+
+/* Modal promo */
+.promo-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+}
+
+.promo-modal.active {
+    display: flex;
+}
+
+.promo-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    animation: modalPop 0.3s ease;
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.promo-content h3 {
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.promo-input-group {
+    display: flex;
+    gap: 10px;
+    margin: 1.5rem 0;
+}
+
+.promo-input-group input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.promo-input-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.promo-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.promo-message {
+    margin-top: 1rem;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.promo-message.success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.promo-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Réduction appliquée dans le panier */
+.promo-applied {
+    background: #d1fae5;
+    border: 2px solid #10b981;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.promo-applied .remove-promo {
+    background: #fef2f2;
+    border: none;
+    color: #ef4444;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.promo-applied .remove-promo:hover {
+    background: #ef4444;
+    color: white;
+}
+
 /* Reset et base */
 * {
     margin: 0;
