@@ -23,6 +23,45 @@
     </style>
 </head>
 <body>
+    <!-- Bannière Promo -->
+<div class="promo-banner" id="promoBanner">
+    <span>
+        <i class="fas fa-gift"></i>
+        Codes promo actifs : 
+        <strong>SLZW10</strong> (-10%) | 
+        <strong>SLZW15</strong> (-15% 1ère commande) | 
+        <strong>PARRAIN20</strong> (-20€ parrainage)
+        <button class="btn-promo-small" onclick="openPromoModal()" style="margin-left: 10px; padding: 3px 8px; background: white; color: #059669; border: none; border-radius: 4px; cursor: pointer;">
+            <i class="fas fa-ticket-alt"></i> Utiliser
+        </button>
+    </span>
+</div>
+
+<!-- Modal pour code promo -->
+<div class="promo-modal" id="promoModal">
+    <div class="promo-content">
+        <h3><i class="fas fa-ticket-alt"></i> Code promotionnel</h3>
+        <p>Entrez votre code pour bénéficier d'une réduction</p>
+        
+        <div class="promo-input-group">
+            <input type="text" id="promoCodeInput" placeholder="Ex: SLZW10" maxlength="20">
+            <button class="btn btn-primary" onclick="applyPromoCode()">
+                <i class="fas fa-check"></i> Appliquer
+            </button>
+        </div>
+        
+        <div class="promo-actions">
+            <button class="btn btn-outline" onclick="closePromoModal()">
+                <i class="fas fa-times"></i> Fermer
+            </button>
+            <button class="btn btn-secondary" onclick="showPromoCodes()">
+                <i class="fas fa-list"></i> Voir tous les codes
+            </button>
+        </div>
+        
+        <div class="promo-message" id="promoMessage"></div>
+    </div>
+</div>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
