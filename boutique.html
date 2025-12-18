@@ -1,5 +1,3 @@
-[file name]: boutique.html
-[file content begin]
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -519,9 +517,9 @@
                 <div class="footer-col">
                     <h4>Boutique</h4>
                     <a href="boutique.html">Tous les services</a>
-                    <a href="boutique.html" onclick="event.preventDefault(); filterProducts('design');">Design</a>
-                    <a href="boutique.html" onclick="event.preventDefault(); filterProducts('web');">Développement Web</a>
-                    <a href="boutique.html" onclick="event.preventDefault(); filterProducts('ecommerce');">E-commerce</a>
+                    <a href="#" onclick="event.preventDefault(); filterProducts('design');">Design</a>
+                    <a href="#" onclick="event.preventDefault(); filterProducts('web');">Développement Web</a>
+                    <a href="#" onclick="event.preventDefault(); filterProducts('ecommerce');">E-commerce</a>
                 </div>
                 
                 <div class="footer-col">
@@ -561,14 +559,7 @@
             console.log('🛒 Initialisation de la boutique');
             
             // Initialiser les filtres
-            const categoryBtns = document.querySelectorAll('.category-btn');
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    console.log('Clic catégorie:', category);
-                    filterProducts(category);
-                });
-            });
+            initBoutiqueFilters();
             
             // Gestion du popup cookies spécifique à la boutique
             const cookiePopup = document.getElementById('cookiePopup');
@@ -604,20 +595,10 @@
                 });
             }
             
-            // Test automatique des filtres après 1 seconde
-            setTimeout(() => {
-                console.log('🧪 Test automatique des filtres');
-                // Active le premier filtre après chargement
-                const firstBtn = document.querySelector('.category-btn[data-category="design"]');
-                if (firstBtn) {
-                    firstBtn.click();
-                }
-            }, 1000);
-            
             console.log('✅ Boutique initialisée');
         });
         
-        // Fonction de notification (copiée depuis script.js pour compatibilité)
+        // Fonction de notification
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
             if (!notification) return;
@@ -633,4 +614,3 @@
     </script>
 </body>
 </html>
-[file content end]
