@@ -1,3 +1,5 @@
+[file name]: index.html
+[file content begin]
 <!DOCTYPE html>
 <html lang="fr" data-lang="fr">
 <head>
@@ -7,6 +9,13 @@
     <meta name="description" content="Créateur digital spécialisé en design, développement web et solutions e-commerce sur mesure. Transformez vos idées en réalité digitale.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS pour les emails automatiques -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé EmailJS
+        })();
+    </script>
     <style>
         /* Styles spécifiques pour le popup de cookies */
         .cookie-popup {
@@ -159,9 +168,7 @@
                 <a href="contact.html">Contact</a>
             </div>
             <div class="nav-actions">
-                <!-- Sélecteur de langue SUPPRIMÉ -->
-                
-                <a href="#panier" class="panier-btn">
+                <a href="boutique.html#panier" class="panier-btn">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="panier-count">0</span>
                 </a>
@@ -268,6 +275,7 @@
                 <p>Recevez des conseils digitaux et des offres exclusives</p>
                 <form id="newsletterForm" class="newsletter-form">
                     <input type="email" id="newsletterEmail" placeholder="Votre email" required>
+                    <input type="text" id="newsletterName" placeholder="Votre prénom (optionnel)">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-paper-plane"></i> S'inscrire
                     </button>
@@ -324,7 +332,9 @@
 
                 <div class="footer-col">
                     <h4>Informations</h4>
+                    <a href="privacy.html">Confidentialité</a>
                     <a href="#" id="openCookieSettings">Cookies</a>
+                    <a href="mentions-legales.html">Mentions légales</a>
                 </div>
             </div>
             
@@ -439,7 +449,56 @@
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             }
+            
+            // Gestion du formulaire newsletter
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = document.getElementById('newsletterEmail').value;
+                    const name = document.getElementById('newsletterName').value || 'Client';
+                    
+                    if (!email) {
+                        showNotification('Veuillez entrer votre email', 'error');
+                        return;
+                    }
+                    
+                    // Envoyer l'email de bienvenue
+                    sendWelcomeEmail(email, name);
+                    
+                    // Réinitialiser le formulaire
+                    newsletterForm.reset();
+                    
+                    showNotification('Merci pour votre inscription ! Votre guide arrive dans votre boîte mail.', 'success');
+                });
+            }
+            
+            // Fonction pour envoyer l'email de bienvenue
+            function sendWelcomeEmail(email, name = "Client") {
+                console.log(`📧 Envoi email bienvenue à: ${email}`);
+                
+                // Données pour l'email
+                const templateParams = {
+                    to_name: name,
+                    to_email: email,
+                    guide_url: "https://slozw.com/guides/debuter-en-ligne.pdf",
+                    site_url: "https://slozw.com",
+                    date: new Date().toLocaleDateString('fr-FR')
+                };
+                
+                // Envoyer via EmailJS
+                emailjs.send("service_slozw", "template_bienvenue", templateParams)
+                    .then(function(response) {
+                        console.log('✅ Email bienvenue envoyé:', response.status, response.text);
+                        // Sauvegarder dans localStorage pour éviter doublons
+                        localStorage.setItem(`emailSent_${email}`, 'true');
+                    }, function(error) {
+                        console.log('❌ Erreur email:', error);
+                    });
+            }
         });
     </script>
 </body>
 </html>
+[file content end]
