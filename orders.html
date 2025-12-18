@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slozw - Mes commandes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .orders-section {
+            padding: 100px 0 60px;
+            background: #f8fafc;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .orders-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .orders-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .orders-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .order-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .order-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .order-info h3 {
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+        
+        .order-meta {
+            display: flex;
+            gap: 1rem;
+            color: #64748b;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .order-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .order-details {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .order-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .order-summary {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .summary-row.total {
+            border-top: 2px solid #e2e8f0;
+            border-bottom: none;
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .order-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-header {
+                flex-direction: column;
+            }
+            
+            .orders-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Slozw</a>
+            <div class="nav-links">
+                <a href="index.html">Accueil</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="boutique.html">Boutique</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <!-- Auth buttons seront injectés ici -->
+                <a href="boutique.html#panier" class="panier-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="panier-count">0</span>
+                </a>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page des commandes -->
+    <section class="orders-section">
+        <div class="container">
+            <!-- En-tête -->
+            <div class="orders-header">
+                <div>
+                    <h1>Mes commandes</h1>
+                    <p>Retrouvez l'historique de toutes vos commandes</p>
+                </div>
+                <div class="orders-actions">
+                    <a href="boutique.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Nouvelle commande
+                    </a>
+                    <a href="dashboard.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Tableau de bord
+                    </a>
+                </div>
+            </div>
+
+            <!-- Liste des commandes -->
+            <div class="orders-grid" id="ordersGrid">
+                <!-- Les commandes seront chargées dynamiquement -->
+                <div class="empty-state">
+                    <i class="fas fa-shopping-bag"></i>
+                    <h3>Aucune commande</h3>
+                    <p>Vous n'avez pas encore passé de commande</p>
+                    <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Slozw</h3>
+                    <p>Créateur digital spécialisé en design, développement et e-commerce.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="index.html">Accueil</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="boutique.html">Boutique</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Mon compte</h4>
+                    <a href="dashboard.html">Tableau de bord</a>
+                    <a href="orders.html">Mes commandes</a>
+                    <a href="profile.html">Mon profil</a>
+                    <a href="messages.html">Messages</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Slozw. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Vérifier l'authentification
+            if (!auth.isLoggedIn()) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Charger les commandes de l'utilisateur
+            loadUserOrders();
+        });
+        
+        function loadUserOrders() {
+            const user = auth.getCurrentUser();
+            const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+            const ordersGrid = document.getElementById('ordersGrid');
+            
+            // Filtrer les commandes de l'utilisateur
+            const userOrders = orders.filter(order => order.userId === user.id);
+            
+            if (userOrders.length === 0) {
+                ordersGrid.innerHTML = `
+                    <div class="empty-state" style="text-align: center; padding: 4rem 2rem;">
+                        <i class="fas fa-shopping-bag" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 1rem;"></i>
+                        <h3 style="margin-bottom: 0.5rem; color: #64748b;">Aucune commande</h3>
+                        <p style="color: #94a3b8; margin-bottom: 1.5rem;">Vous n'avez pas encore passé de commande</p>
+                        <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Trier les commandes par date (plus récentes en premier)
+            userOrders.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Afficher les commandes
+            ordersGrid.innerHTML = '';
+            
+            userOrders.forEach(order => {
+                const orderDate = new Date(order.date).toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+                
+                // Calculer le total des articles
+                const articlesTotal = order.articles.reduce((sum, item) => sum + (item.prix * item.quantite), 0);
+                
+                // Créer la carte de commande
+                const orderCard = document.createElement('div');
+                orderCard.className = 'order-card';
+                orderCard.innerHTML = `
+                    <div class="order-header">
+                        <div class="order-info">
+                            <h3>Commande #${order.reference}</h3>
+                            <div class="order-meta">
+                                <span><i class="far fa-calendar"></i> ${orderDate}</span>
+                                <span><i class="fas fa-euro-sign"></i> ${order.total}€</span>
+                                <span><i class="fas fa-box"></i> ${order.articles.length} article(s)</span>
+                            </div>
+                        </div>
+                        <span class="order-status status-${order.status || 'pending'}">
+                            ${getStatusText(order.status)}
+                        </span>
+                    </div>
+                    
+                    <div class="order-details">
+                        <div class="order-items">
+                            <h4 style="margin-bottom: 0.75rem; color: #1e293b;">Articles</h4>
+                            ${order.articles.map(item => `
+                                <div class="order-item">
+                                    <span>${item.nom} × ${item.quantite}</span>
+                                    <span>${item.prix * item.quantite}€</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        
+                        <div class="order-summary">
+                            <h4 style="margin-bottom: 1rem; color: #1e293b;">Résumé</h4>
+                            <div class="summary-row">
+                                <span>Sous-total</span>
+                                <span>${articlesTotal.toFixed(2)}€</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Réduction</span>
+                                <span>-${(articlesTotal - order.total).toFixed(2)}€</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span>${order.total}€</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-actions">
+                        <a href="order-details.html?id=${order.id}" class="btn btn-outline">
+                            <i class="fas fa-eye"></i> Voir les détails
+                        </a>
+                        <button class="btn btn-secondary" onclick="downloadInvoice('${order.id}')">
+                            <i class="fas fa-download"></i> Facture
+                        </button>
+                        ${order.status === 'pending' ? `
+                            <button class="btn btn-outline" onclick="cancelOrder('${order.id}')">
+                                <i class="fas fa-times"></i> Annuler
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+                
+                ordersGrid.appendChild(orderCard);
+                
+                // Ajouter le style du statut
+                const statusElement = orderCard.querySelector('.order-status');
+                const status = order.status || 'pending';
+                if (status === 'pending') {
+                    statusElement.style.background = '#fef3c7';
+                    statusElement.style.color = '#d97706';
+                } else if (status === 'processing') {
+                    statusElement.style.background = '#dbeafe';
+                    statusElement.style.color = '#1d4ed8';
+                } else if (status === 'completed') {
+                    statusElement.style.background = '#d1fae5';
+                    statusElement.style.color = '#059669';
+                } else if (status === 'cancelled') {
+                    statusElement.style.background = '#fee2e2';
+                    statusElement.style.color = '#dc2626';
+                }
+            });
+        }
+        
+        function getStatusText(status) {
+            const statusMap = {
+                'pending': 'En attente',
+                'processing': 'En traitement',
+                'completed': 'Terminée',
+                'cancelled': 'Annulée'
+            };
+            return statusMap[status] || 'En attente';
+        }
+        
+        function downloadInvoice(orderId) {
+            showNotification('Téléchargement de la facture en cours...', 'info');
+            
+            setTimeout(() => {
+                showNotification('Facture téléchargée', 'success');
+            }, 1500);
+        }
+        
+        function cancelOrder(orderId) {
+            if (confirm('Êtes-vous sûr de vouloir annuler cette commande ?')) {
+                const orders = JSON.parse(localStorage.getItem('userOrders')) || [];
+                const orderIndex = orders.findIndex(o => o.id === orderId);
+                
+                if (orderIndex !== -1) {
+                    orders[orderIndex].status = 'cancelled';
+                    localStorage.setItem('userOrders', JSON.stringify(orders));
+                    
+                    showNotification('Commande annulée', 'success');
+                    setTimeout(() => {
+                        loadUserOrders();
+                    }, 1000);
+                }
+            }
+        }
+        
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                z-index: 9999;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transition = 'opacity 0.3s';
+                notification.style.opacity = '0';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
