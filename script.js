@@ -104,7 +104,7 @@ function updateCheckoutSummary() {
     if (!container || !totalElement) return;
     
     if (panier.length === 0) {
-        container.innerHTML = '<p>Aucun article dans le panier</p>';
+        container.innerHTML = '<p class="text-center">Aucun article dans le panier</p>';
         totalElement.textContent = '0€';
         return;
     }
@@ -155,8 +155,16 @@ function filterProducts(category) {
     products.forEach(product => {
         if (category === 'all' || product.dataset.category === category) {
             product.style.display = 'block';
+            setTimeout(() => {
+                product.style.opacity = '1';
+                product.style.transform = 'translateY(0)';
+            }, 50);
         } else {
-            product.style.display = 'none';
+            product.style.opacity = '0';
+            product.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                product.style.display = 'none';
+            }, 300);
         }
     });
 }
@@ -178,8 +186,16 @@ function filterPortfolio(filter) {
     items.forEach(item => {
         if (filter === 'all' || item.dataset.category === filter) {
             item.style.display = 'block';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 50);
         } else {
-            item.style.display = 'none';
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 300);
         }
     });
 }
@@ -290,11 +306,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     showNotification('Veuillez remplir tous les champs obligatoires', 'error');
                     return;
                 }
+                
+                // Validation email basique
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email.value)) {
+                    showNotification('Veuillez entrer un email valide', 'error');
+                    return;
+                }
             }
             
             // Validation de l'étape 2
             if (nextStep === '3') {
                 // Simuler le paiement
+                showNotification('Paiement en cours...', 'info');
+                
                 setTimeout(() => {
                     // Enregistrer la commande
                     const order = {
@@ -305,18 +330,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         client: {
                             name: document.getElementById('checkoutName').value,
                             email: document.getElementById('checkoutEmail').value,
-                            phone: document.getElementById('checkoutPhone').value
+                            phone: document.getElementById('checkoutPhone').value,
+                            company: document.getElementById('checkoutCompany').value,
+                            notes: document.getElementById('checkoutNotes').value
                         }
                     };
                     
-                    // Sauvegarder dans localStorage
+                    // Sauvegarder dans localStorage (pour historique)
                     localStorage.setItem('lastOrder', JSON.stringify(order));
                     
                     // Vider le panier
                     panier = [];
                     localStorage.removeItem('panier');
                     updatePanierCount();
-                }, 500);
+                    
+                    showNotification('Commande confirmée avec succès !', 'success');
+                }, 1500);
             }
             
             goToStep(parseInt(nextStep));
@@ -372,9 +401,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Validation simple
+            // Validation
             if (!data.name || !data.email || !data.message) {
                 showNotification('Veuillez remplir tous les champs obligatoires', 'error');
+                return;
+            }
+            
+            // Validation email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                showNotification('Veuillez entrer un email valide', 'error');
                 return;
             }
             
@@ -391,7 +427,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+            this.classList.toggle('active');
         });
     }
     
@@ -399,6 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', function() {
             document.querySelector('.nav-links').classList.remove('active');
+            document.querySelector('.menu-toggle')?.classList.remove('active');
         });
     });
     
@@ -410,14 +449,45 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(() => {
                     const originalText = this.innerHTML;
                     this.innerHTML = '<i class="fas fa-check"></i> Copié !';
+                    this.style.background = '#10b981';
                     setTimeout(() => {
                         this.innerHTML = originalText;
+                        this.style.background = '';
                     }, 2000);
+                    showNotification('Copié dans le presse-papier', 'success');
                 })
                 .catch(err => {
                     console.error('Erreur de copie:', err);
+                    showNotification('Erreur lors de la copie', 'error');
                 });
         });
+    });
+    
+    // Fermer le menu en cliquant à l'extérieur
+    document.addEventListener('click', function(e) {
+        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        if (navLinks && navLinks.classList.contains('active') &&
+            !navLinks.contains(e.target) &&
+            !menuToggle.contains(e.target)) {
+            navLinks.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+    
+    // Empêcher le comportement par défaut des liens vides
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+        });
+    });
+    
+    // Initialiser les animations des produits
+    document.querySelectorAll('.produit-card, .portfolio-item').forEach(item => {
+        item.style.transition = 'opacity 0.3s, transform 0.3s';
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
     });
 });
 [file content end]
