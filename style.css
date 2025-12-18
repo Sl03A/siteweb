@@ -20,6 +20,8 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f8f9fa;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Container principal */
@@ -104,8 +106,8 @@ body {
 
 .panier-count {
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: -8px;
+    right: -8px;
     background: #ef4444;
     color: white;
     width: 20px;
@@ -114,7 +116,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: bold;
 }
 
@@ -862,6 +864,7 @@ body {
     font-family: inherit;
     font-size: 1rem;
     transition: border 0.3s;
+    background: white;
 }
 
 .contact-form input:focus,
@@ -869,6 +872,7 @@ body {
 .contact-form textarea:focus {
     outline: none;
     border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
 .checkbox-group {
@@ -983,18 +987,6 @@ body {
     z-index: 1;
 }
 
-.produit-badge[data-badge="populaire"] {
-    background: #ef4444;
-}
-
-.produit-badge[data-badge="bestseller"] {
-    background: #f59e0b;
-}
-
-.produit-badge[data-badge="economique"] {
-    background: #10b981;
-}
-
 .produit-image {
     height: 250px;
     overflow: hidden;
@@ -1029,6 +1021,8 @@ body {
 .produit-content h3 {
     margin-bottom: 1rem;
     color: #1e293b;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .produit-description {
@@ -1047,11 +1041,13 @@ body {
 .produit-features span {
     color: #475569;
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .produit-features i {
     color: #10b981;
-    margin-right: 0.5rem;
 }
 
 .produit-footer {
@@ -1353,12 +1349,12 @@ body {
 
 .step-number {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     background: #e2e8f0;
     color: #94a3b8;
     border-radius: 50%;
-    line-height: 30px;
+    line-height: 35px;
     margin: 0 auto 0.5rem;
     font-size: 0.9rem;
 }
@@ -1408,6 +1404,7 @@ body {
     font-family: inherit;
     font-size: 1rem;
     transition: border 0.3s;
+    background: white;
 }
 
 .checkout-form input:focus,
@@ -1574,7 +1571,7 @@ body {
     display: block;
     color: #94a3b8;
     text-decoration: none;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     transition: color 0.3s;
 }
 
@@ -1631,7 +1628,8 @@ body {
     opacity: 0;
     transition: all 0.3s;
     z-index: 3000;
-    max-width: 350px;
+    max-width: 300px;
+    word-wrap: break-word;
 }
 
 .notification.show {
@@ -1681,10 +1679,14 @@ body {
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         z-index: 1000;
         gap: 1rem;
+        transition: all 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
     }
     
     .nav-links.active {
         display: flex;
+        max-height: 500px;
     }
     
     .menu-toggle {
@@ -1693,17 +1695,35 @@ body {
     
     .hero-content h1,
     .page-header h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        line-height: 1.2;
+        padding: 0 10px;
+    }
+    
+    .hero-content p,
+    .page-header p {
+        font-size: 1.1rem;
+        padding: 0 10px;
     }
     
     .section-title {
         font-size: 2rem;
     }
     
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 1rem;
+    }
+    
     .hero-buttons,
     .cta-buttons,
     .service-actions,
-    .confirmation-actions {
+    .confirmation-actions,
+    .panier-actions,
+    .checkout-actions {
         flex-direction: column;
         align-items: center;
     }
@@ -1711,14 +1731,19 @@ body {
     .hero-buttons .btn,
     .cta-buttons .btn,
     .service-actions .btn,
-    .confirmation-actions .btn {
+    .confirmation-actions .btn,
+    .panier-actions .btn,
+    .checkout-actions .btn {
         width: 100%;
         max-width: 300px;
     }
     
     .produits-grid,
-    .portfolio-items {
+    .portfolio-items,
+    .services-grid,
+    .portfolio-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .produit-footer {
@@ -1736,20 +1761,10 @@ body {
         justify-content: center;
     }
     
-    .checkout-actions {
-        flex-direction: column;
-    }
-    
-    .checkout-actions .btn {
-        width: 100%;
-    }
-    
-    .panier-actions {
-        flex-direction: column;
-    }
-    
-    .panier-actions .btn {
-        width: 100%;
+    .panier-content,
+    .checkout-content {
+        margin: 0 10px;
+        width: calc(100% - 20px);
     }
     
     .filters,
@@ -1770,25 +1785,52 @@ body {
     .process-steps {
         grid-template-columns: 1fr;
     }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .service-detail-card {
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+    
+    .service-image img {
+        height: 250px;
+    }
+    
+    .produit-image,
+    .portfolio-image,
+    .service-image img,
+    .project-card img {
+        height: 200px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-col h3,
+    .footer-col h4 {
+        margin-bottom: 1rem;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
 }
 
 @media (max-width: 480px) {
-    .nav-container {
-        padding: 1rem;
-    }
-    
     .hero-content h1,
     .page-header h1 {
-        font-size: 2rem;
-    }
-    
-    .hero-content p,
-    .page-header p {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
     }
     
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     
     .cta-content h2 {
@@ -1821,5 +1863,64 @@ body {
     .step-number {
         font-size: 2.5rem;
     }
+    
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .produit-content,
+    .portfolio-info,
+    .project-info {
+        padding: 1rem;
+    }
+}
+
+/* Empêcher le hover sur mobile */
+@media (hover: none) {
+    .service-card:hover,
+    .project-card:hover,
+    .produit-card:hover {
+        transform: none;
+    }
+    
+    .btn:hover {
+        transform: none;
+    }
+}
+
+/* S'assurer que les formulaires sont bien lisibles sur mobile */
+input, select, textarea {
+    font-size: 16px;
+}
+
+/* Corriger les icônes */
+.fas, .fab {
+    font-size: inherit;
+}
+
+/* Améliorer le contraste pour l'accessibilité */
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-outline {
+    border: 2px solid #2563eb;
+    color: #2563eb;
+}
+
+/* Corriger l'affichage des catégories */
+.produit-category,
+.service-category,
+.category-tag {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Améliorer la lisibilité du texte */
+p, li, span {
+    color: #333;
+    line-height: 1.6;
 }
 [file content end]
