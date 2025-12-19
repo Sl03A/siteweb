@@ -11,7 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 DOM entièrement chargé');
     
     // Initialiser l'authentification
-    auth.init();
+    if (typeof auth !== 'undefined') {
+        auth.init();
+    }
+    
+    // Initialiser le mode sombre
+    initDarkMode();
+    
+    // Initialiser le chatbot
+    initChatbot();
     
     // Initialiser le popup de cookies
     initCookiePopup();
@@ -35,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Si l'utilisateur n'est pas connecté, rediriger vers la connexion
-        if (!auth.isLoggedIn()) {
+        if (auth && auth.isLoggedIn && !auth.isLoggedIn()) {
             localStorage.setItem('redirectAfterLogin', 'boutique.html');
             localStorage.setItem('pendingCart', JSON.stringify(panier));
             openCheckoutModal(); // Ouvrir quand même pour montrer l'étape 1
@@ -79,9 +87,225 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... le reste du code existant ...
 });
 
+// =============================================
+// SYSTÈME DE MODE SOMBRE/CLAIR
+// =============================================
 
+function initDarkMode() {
+    // Vérifier le thème sauvegardé ou détecter la préférence système
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Appliquer le thème
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (prefersDark) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    
+    // Initialiser le bouton de toggle
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerHTML = `
+        <i class="fas fa-moon moon-icon"></i>
+        <i class="fas fa-sun sun-icon"></i>
+    `;
+    themeToggle.setAttribute('title', 'Changer le thème');
+    themeToggle.setAttribute('aria-label', 'Changer le thème');
+    
+    themeToggle.addEventListener('click', toggleDarkMode);
+    
+    // Ajouter le bouton au body
+    document.body.appendChild(themeToggle);
+    
+    // Ajuster la position si le chatbot est présent
+    adjustButtonPositions();
+}
 
+function toggleDarkMode() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    // Changer le thème
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Notification
+    showNotification(`Mode ${newTheme === 'dark' ? 'sombre' : 'clair'} activé`, 'success');
+    
+    // Animation du bouton
+    const themeToggle = document.querySelector('.theme-toggle');
+    themeToggle.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+        themeToggle.style.transform = 'scale(1)';
+    }, 150);
+}
 
+function adjustButtonPositions() {
+    // Ajuster les positions des boutons flottants pour éviter les chevauchements
+    const themeToggle = document.querySelector('.theme-toggle');
+    const chatbotToggle = document.querySelector('.chatbot-toggle');
+    
+    if (themeToggle && chatbotToggle) {
+        themeToggle.style.bottom = '90px';
+        chatbotToggle.style.bottom = '20px';
+    }
+}
+
+// =============================================
+// SYSTÈME DE CHATBOT
+// =============================================
+
+function initChatbot() {
+    // Créer le bouton de toggle du chatbot
+    const chatbotToggle = document.createElement('button');
+    chatbotToggle.className = 'chatbot-toggle';
+    chatbotToggle.innerHTML = '<i class="fas fa-comment-dots"></i>';
+    chatbotToggle.setAttribute('title', 'Ouvrir l\'assistant virtuel');
+    chatbotToggle.setAttribute('aria-label', 'Assistant virtuel');
+    
+    // Créer le container du chatbot
+    const chatbotContainer = document.createElement('div');
+    chatbotContainer.className = 'chatbot-container';
+    chatbotContainer.id = 'chatbotContainer';
+    
+    chatbotContainer.innerHTML = `
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistant Slozw</h3>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-body">
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">
+                    Bonjour ! 👋 Je suis l'assistant virtuel de Slozw. Comment puis-je vous aider ?
+                </div>
+            </div>
+            <div class="chat-options" id="chatOptions">
+                <button class="chat-option" data-question="prix">💰 Combien coûte un site web ?</button>
+                <button class="chat-option" data-question="delais">⏱️ Quels sont vos délais ?</button>
+                <button class="chat-option" data-question="processus">🔄 Comment ça se passe ?</button>
+                <button class="chat-option" data-question="contact">📞 Comment vous contacter ?</button>
+                <button class="chat-option" data-question="portfolio">🎨 Avez-vous des exemples ?</button>
+            </div>
+        </div>
+        <div class="chatbot-footer">
+            <p>💡 Réponses automatiques • Réponse humaine sous 24h</p>
+        </div>
+    `;
+    
+    // Ajouter les éléments au body
+    document.body.appendChild(chatbotToggle);
+    document.body.appendChild(chatbotContainer);
+    
+    // Événements
+    chatbotToggle.addEventListener('click', toggleChatbot);
+    document.getElementById('chatbotClose')?.addEventListener('click', toggleChatbot);
+    
+    // Ajouter les événements aux options
+    document.querySelectorAll('.chat-option').forEach(option => {
+        option.addEventListener('click', function() {
+            const question = this.dataset.question;
+            handleChatQuestion(question, this.textContent);
+        });
+    });
+    
+    // Fermer le chatbot en cliquant à l'extérieur
+    document.addEventListener('click', function(e) {
+        const chatbot = document.getElementById('chatbotContainer');
+        const toggle = document.querySelector('.chatbot-toggle');
+        
+        if (chatbot && chatbot.classList.contains('active') &&
+            !chatbot.contains(e.target) &&
+            !toggle.contains(e.target)) {
+            toggleChatbot();
+        }
+    });
+}
+
+function toggleChatbot() {
+    const chatbot = document.getElementById('chatbotContainer');
+    const toggle = document.querySelector('.chatbot-toggle');
+    
+    if (chatbot) {
+        chatbot.classList.toggle('active');
+        
+        if (chatbot.classList.contains('active')) {
+            toggle.innerHTML = '<i class="fas fa-times"></i>';
+            toggle.setAttribute('title', 'Fermer l\'assistant');
+            
+            // Faire défiler vers le bas
+            const chatMessages = document.getElementById('chatMessages');
+            if (chatMessages) {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        } else {
+            toggle.innerHTML = '<i class="fas fa-comment-dots"></i>';
+            toggle.setAttribute('title', 'Ouvrir l\'assistant virtuel');
+        }
+    }
+    
+    adjustButtonPositions();
+}
+
+function handleChatQuestion(questionType, questionText) {
+    const chatMessages = document.getElementById('chatMessages');
+    if (!chatMessages) return;
+    
+    // Ajouter la question de l'utilisateur
+    const userMessage = document.createElement('div');
+    userMessage.className = 'chat-message user';
+    userMessage.textContent = questionText;
+    chatMessages.appendChild(userMessage);
+    
+    // Générer la réponse du bot
+    let response = getBotResponse(questionType);
+    
+    // Ajouter un délai pour simuler la réflexion
+    setTimeout(() => {
+        const botMessage = document.createElement('div');
+        botMessage.className = 'chat-message bot';
+        botMessage.textContent = response;
+        chatMessages.appendChild(botMessage);
+        
+        // Faire défiler vers le bas
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        
+        // Si c'est une question de contact, ajouter un bouton
+        if (questionType === 'contact') {
+            setTimeout(() => {
+                const contactBtn = document.createElement('button');
+                contactBtn.className = 'chat-option';
+                contactBtn.innerHTML = '<i class="fas fa-envelope"></i> Envoyer un message';
+                contactBtn.onclick = function() {
+                    window.location.href = 'contact.html';
+                };
+                
+                const optionsDiv = document.getElementById('chatOptions');
+                if (optionsDiv) {
+                    optionsDiv.appendChild(contactBtn);
+                }
+            }, 500);
+        }
+    }, 800);
+}
+
+function getBotResponse(questionType) {
+    const responses = {
+        'prix': 'Les prix varient selon le projet :\n• Site vitrine : à partir de 899€\n• E-commerce : à partir de 1499€\n• Logo : à partir de 199€\n\nJe peux vous préparer un devis personnalisé gratuitement !',
+        'delais': 'Délais moyens :\n• Site vitrine : 2-3 semaines\n• E-commerce : 4-6 semaines\n• Logo : 1 semaine\n\nCes délais peuvent varier selon la complexité du projet.',
+        'processus': 'Processus en 4 étapes :\n1. 📞 Briefing et analyse de vos besoins\n2. 🎨 Création des maquettes (validation)\n3. 💻 Développement et intégration\n4. 🚀 Livraison et formation\n\nVous êtes accompagné à chaque étape !',
+        'contact': 'Pour me contacter :\n📧 Email : contact@slozw.com\n📞 Téléphone : +33 1 23 45 67 89\n📍 Paris, France\n\nJe réponds sous 24h !',
+        'portfolio': 'Vous pouvez voir mes réalisations dans la section Portfolio :\n• Sites e-commerce\n• Applications web\n• Design UI/UX\n• Logos professionnels\n\nOu sur Behance : @slozw',
+        'paiement': 'Modes de paiement acceptés :\n• 💳 Carte bancaire (sécurisé)\n• 📱 PayPal\n• 🏦 Virement bancaire\n• 🤝 50% à la commande, 50% à la livraison'
+    };
+    
+    return responses[questionType] || 'Je ne peux pas répondre à cette question pour le moment. Contactez-moi directement pour plus d\'informations !';
+}
+
+// =============================================
 // GESTION DU POPUP COOKIES (Nouveau système)
 // =============================================
 
@@ -815,6 +1039,12 @@ function showNotification(message, type = 'success') {
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 DOM entièrement chargé');
+    
+    // Initialiser le mode sombre
+    initDarkMode();
+    
+    // Initialiser le chatbot
+    initChatbot();
     
     // Initialiser le popup de cookies
     initCookiePopup();
